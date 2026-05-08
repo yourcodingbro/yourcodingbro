@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { ArrowRight } from "lucide-react";
 import SectionBadge from "@/components/SectionBadge";
 
 const codeSnippet = `// Your idea → production-ready code
@@ -138,19 +139,7 @@ export default function Hero() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white bg-brand hover:bg-brand-hover transition-all duration-200 text-sm sm:text-base glow-blue"
             >
               Start Your Project
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
+              <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="#services"

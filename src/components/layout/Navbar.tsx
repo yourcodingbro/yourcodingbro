@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import Logo from "@/components/Logo";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
@@ -62,7 +63,6 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 sm:h-20">
             <Logo />
 
-            {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <a
@@ -75,7 +75,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Desktop right — theme switcher + CTA */}
             <div className="hidden md:flex items-center gap-2">
               <ThemeSwitcher />
               <a
@@ -83,13 +82,10 @@ export default function Navbar() {
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-brand text-white hover:bg-brand-hover transition-all duration-200 glow-blue"
               >
                 Start a Project
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                <ArrowRight className="w-4 h-4" />
               </a>
             </div>
 
-            {/* Mobile right — theme switcher + hamburger */}
             <div className="md:hidden flex items-center gap-1">
               <ThemeSwitcher />
               <button
@@ -150,9 +146,7 @@ export default function Navbar() {
                   className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full text-sm font-semibold bg-brand text-white hover:bg-brand-hover transition-all glow-blue"
                 >
                   Start a Project
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+                  <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </motion.div>
