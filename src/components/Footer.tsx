@@ -32,57 +32,46 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#1e3a5f] bg-[#020817]">
+    <footer className="border-t border-line bg-bg">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-[#1a3f6f] border border-[#2563eb]/40 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-navy border border-brand/40 flex items-center justify-center">
                 <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-                  <path d="M12 2L4 7v10l8 5 8-5V7L12 2z" stroke="#38bdf8" strokeWidth="1.5" strokeLinejoin="round" />
-                  <path d="M12 2v15M4 7l8 5 8-5" stroke="#38bdf8" strokeWidth="1.5" strokeLinejoin="round" />
+                  <path d="M12 2L4 7v10l8 5 8-5V7L12 2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" className="text-accent" />
+                  <path d="M12 2v15M4 7l8 5 8-5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" className="text-accent" />
                 </svg>
               </div>
               <span className="font-bold text-white tracking-tight">
-                YourCoding<span className="text-[#38bdf8]">Bro</span>
+                YourCoding<span className="text-accent">Bro</span>
               </span>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs">
-              Your dedicated development partner. Clean code, fast delivery,
-              real results.
+              Your dedicated development partner. Clean code, fast delivery, real results.
             </p>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">
-              Services
-            </h4>
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Services</h4>
             <ul className="flex flex-col gap-2.5">
-              {["Web App Development", "MVP Building", "API Development", "Code Review", "Tech Consulting"].map(
-                (item) => (
-                  <li key={item}>
-                    <span className="text-slate-500 text-sm hover:text-slate-300 transition-colors cursor-default">
-                      {item}
-                    </span>
-                  </li>
-                )
-              )}
+              {["Web App Development", "MVP Building", "API Development", "Code Review", "Tech Consulting"].map((item) => (
+                <li key={item}>
+                  <span className="text-slate-500 text-sm hover:text-slate-300 transition-colors cursor-default">{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Stack */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">
-              Stack
-            </h4>
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Stack</h4>
             <ul className="flex flex-col gap-2.5">
               {["Next.js / React", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS"].map((item) => (
                 <li key={item}>
-                  <span className="text-slate-500 text-sm hover:text-slate-300 transition-colors cursor-default">
-                    {item}
-                  </span>
+                  <span className="text-slate-500 text-sm hover:text-slate-300 transition-colors cursor-default">{item}</span>
                 </li>
               ))}
             </ul>
@@ -90,28 +79,19 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">
-              Contact
-            </h4>
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Contact</h4>
             <ul className="flex flex-col gap-2.5">
               <li>
-                <a
-                  href="#contact"
-                  className="text-slate-500 text-sm hover:text-[#38bdf8] transition-colors"
-                >
+                <a href="#contact" className="text-slate-500 text-sm hover:text-accent transition-colors">
                   Start a project
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:hello@yourcodingbro.com"
-                  className="text-slate-500 text-sm hover:text-[#38bdf8] transition-colors"
-                >
+                <a href="mailto:hello@yourcodingbro.com" className="text-slate-500 text-sm hover:text-accent transition-colors">
                   hello@yourcodingbro.com
                 </a>
               </li>
             </ul>
-            {/* Social links */}
             <div className="flex gap-3 mt-5">
               {socialLinks.map((s) => (
                 <a
@@ -120,7 +100,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-lg bg-[#112240] border border-[#1e3a5f] flex items-center justify-center text-slate-400 hover:text-[#38bdf8] hover:border-[#38bdf8]/40 transition-all duration-200"
+                  className="w-9 h-9 rounded-lg bg-elevated border border-line flex items-center justify-center text-slate-400 hover:text-accent hover:border-accent/40 transition-all duration-200"
                 >
                   {s.icon}
                 </a>
@@ -129,14 +109,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-8 border-t border-[#1e3a5f] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+        <div className="pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
           <p>© {currentYear} YourCodingBro. All rights reserved.</p>
           <p>
             Built with{" "}
-            <span className="text-[#38bdf8]">Next.js</span> ·{" "}
-            <span className="text-[#38bdf8]">TypeScript</span> ·{" "}
-            <span className="text-[#38bdf8]">Tailwind CSS</span>
+            <span className="text-accent">Next.js</span> ·{" "}
+            <span className="text-accent">TypeScript</span> ·{" "}
+            <span className="text-accent">Tailwind CSS</span>
           </p>
         </div>
       </div>

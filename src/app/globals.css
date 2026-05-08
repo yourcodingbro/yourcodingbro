@@ -1,25 +1,36 @@
 @import "tailwindcss";
 
+/* ─── Design tokens ────────────────────────────────────────── */
+:root {
+  --bg:           #020817;
+  --surface:      #0c1a2e;
+  --elevated:     #112240;
+  --navy:         #1a3f6f;
+  --line:         #1e3a5f;
+  --brand:        #2563eb;
+  --brand-hover:  #1d4ed8;
+  --accent:       #38bdf8;
+  --violet:       #7c3aed;
+}
+
+/* ─── Tailwind theme ───────────────────────────────────────── */
 @theme inline {
-  --color-background: #020817;
-  --color-foreground: #f0f6ff;
-
-  --color-brand-navy: #1a3f6f;
-  --color-brand-blue: #2563eb;
-  --color-brand-cyan: #38bdf8;
-  --color-brand-cyan-light: #7dd3fc;
-
-  --color-surface: #0c1a2e;
-  --color-surface-2: #112240;
-  --color-border: #1e3a5f;
+  --color-bg:          var(--bg);
+  --color-surface:     var(--surface);
+  --color-elevated:    var(--elevated);
+  --color-navy:        var(--navy);
+  --color-line:        var(--line);
+  --color-brand:       var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-accent:      var(--accent);
+  --color-violet:      var(--violet);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-* {
-  box-sizing: border-box;
-}
+/* ─── Base ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -27,16 +38,17 @@ html {
 }
 
 body {
-  background-color: #020817;
-  color: #f0f6ff;
+  background-color: var(--bg);
+  color: #fff;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
+/* ─── Utilities ────────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #38bdf8 0%, #2563eb 50%, #7c3aed 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--brand) 50%, var(--violet) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -44,25 +56,26 @@ body {
 
 .gradient-border {
   position: relative;
-  background: linear-gradient(#0c1a2e, #0c1a2e) padding-box,
-    linear-gradient(135deg, #38bdf8, #2563eb) border-box;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(135deg, var(--accent), var(--brand)) border-box;
   border: 1px solid transparent;
 }
 
 .glow-blue {
-  box-shadow: 0 0 40px rgba(37, 99, 235, 0.3), 0 0 80px rgba(37, 99, 235, 0.1);
+  box-shadow:
+    0 0 40px color-mix(in srgb, var(--brand) 30%, transparent),
+    0 0 80px color-mix(in srgb, var(--brand) 10%, transparent);
 }
 
 .glow-cyan {
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 .hero-grid {
-  background-image: linear-gradient(
-      rgba(56, 189, 248, 0.04) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--accent) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 4%, transparent) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -75,20 +88,16 @@ body {
   opacity: 0.4;
 }
 
+/* ─── Animations ───────────────────────────────────────────── */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(56, 189, 248, 0.5); }
+  0%, 100% { box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 20%, transparent); }
+  50%       { box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 50%, transparent); }
 }
 
-.float-animation {
-  animation: float 6s ease-in-out infinite;
-}
-
-.pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
+.float-animation { animation: float 6s ease-in-out infinite; }
+.pulse-glow      { animation: pulse-glow 3s ease-in-out infinite; }

@@ -44,7 +44,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when drawer is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -55,14 +54,13 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
           scrolled
-            ? "bg-[#020817]/90 backdrop-blur-md border-[#1e3a5f]"
+            ? "bg-bg/90 backdrop-blur-md border-line"
             : "bg-transparent border-transparent"
         }`}
       >
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center group">
+            <Link href="/" className="flex items-center">
               <Image
                 src="/logo-icon.png"
                 alt="YourCodingBro"
@@ -81,7 +79,6 @@ export default function Navbar() {
               />
             </Link>
 
-            {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <a
@@ -94,11 +91,10 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Desktop CTA */}
             <div className="hidden md:block">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-[#2563eb] text-white hover:bg-[#1d4ed8] transition-all duration-200 glow-blue"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-brand text-white hover:bg-brand-hover transition-all duration-200 glow-blue"
               >
                 Start a Project
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -107,7 +103,6 @@ export default function Navbar() {
               </a>
             </div>
 
-            {/* Mobile burger */}
             <button
               className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -120,11 +115,9 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Drawer + backdrop — rendered outside header so it covers full screen */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               key="backdrop"
               className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
@@ -135,17 +128,15 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
             />
 
-            {/* Drawer */}
             <motion.div
               key="drawer"
-              className="fixed top-0 left-0 bottom-0 z-50 w-72 bg-[#020817] border-r border-[#1e3a5f] flex flex-col md:hidden"
+              className="fixed top-0 left-0 bottom-0 z-50 w-72 bg-bg border-r border-line flex flex-col md:hidden"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
-              {/* Drawer header */}
-              <div className="flex items-center px-5 h-16 border-b border-[#1e3a5f] shrink-0">
+              <div className="flex items-center px-5 h-16 border-b border-line shrink-0">
                 <Link href="/" onClick={() => setMenuOpen(false)}>
                   <Image
                     src="/logo-icon.png"
@@ -157,7 +148,6 @@ export default function Navbar() {
                 </Link>
               </div>
 
-              {/* Nav links */}
               <nav className="flex-1 px-4 py-6 flex flex-col gap-1 overflow-y-auto">
                 {navLinks.map((link) => (
                   <a
@@ -171,12 +161,11 @@ export default function Navbar() {
                 ))}
               </nav>
 
-              {/* Drawer CTA */}
               <div className="px-4 pb-8 shrink-0">
                 <a
                   href="#contact"
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full text-sm font-semibold bg-[#2563eb] text-white hover:bg-[#1d4ed8] transition-all glow-blue"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full text-sm font-semibold bg-brand text-white hover:bg-brand-hover transition-all glow-blue"
                 >
                   Start a Project
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

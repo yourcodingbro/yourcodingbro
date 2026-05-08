@@ -15,10 +15,10 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const budgetOptions = [
-  { value: "", label: "Select budget range" },
+  { value: "",         label: "Select budget range" },
   { value: "under-1k", label: "Under $1,000" },
-  { value: "1k-5k", label: "$1,000 – $5,000" },
-  { value: "5k-15k", label: "$5,000 – $15,000" },
+  { value: "1k-5k",    label: "$1,000 – $5,000" },
+  { value: "5k-15k",   label: "$5,000 – $15,000" },
   { value: "15k-plus", label: "$15,000+" },
   { value: "not-sure", label: "Not sure yet" },
 ];
@@ -52,22 +52,22 @@ export default function ContactForm() {
   };
 
   const fieldClass = (hasError: boolean) =>
-    `w-full px-4 py-3 rounded-xl bg-[#0c1a2e] border text-white placeholder-slate-500 text-sm transition-all duration-200 outline-none focus:ring-2 focus:ring-[#2563eb]/50 ${
+    `w-full px-4 py-3 rounded-xl bg-surface border text-white placeholder-slate-500 text-sm transition-all duration-200 outline-none focus:ring-2 focus:ring-brand/50 ${
       hasError
         ? "border-red-500/60 focus:border-red-500"
-        : "border-[#1e3a5f] focus:border-[#2563eb]"
+        : "border-line focus:border-brand"
     }`;
 
   return (
     <section id="contact" className="py-12 sm:py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0c1a2e]/20 to-transparent pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#2563eb]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/20 to-transparent pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — copy */}
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#112240] border border-[#1e3a5f] text-xs font-medium text-[#38bdf8] mb-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-elevated border border-line text-xs font-medium text-accent mb-5">
               Let&apos;s build together
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight leading-tight">
@@ -79,7 +79,6 @@ export default function ContactForm() {
               within 24 hours with a plan and estimate. No pushy sales calls.
             </p>
 
-            {/* Promise list */}
             <div className="flex flex-col gap-4">
               {[
                 { icon: "⚡", text: "Response within 24 hours" },
@@ -99,26 +98,24 @@ export default function ContactForm() {
           <div className="gradient-border rounded-2xl p-6 sm:p-8">
             {submitState === "success" ? (
               <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2563eb] to-[#38bdf8] flex items-center justify-center glow-blue">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand to-accent flex items-center justify-center glow-blue">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-white">Message sent!</h3>
                 <p className="text-slate-400 text-sm max-w-xs">
-                  Thanks for reaching out. I&apos;ll get back to you within 24
-                  hours with next steps.
+                  Thanks for reaching out. I&apos;ll get back to you within 24 hours with next steps.
                 </p>
                 <button
                   onClick={() => setSubmitState("idle")}
-                  className="mt-2 text-sm text-[#38bdf8] hover:underline"
+                  className="mt-2 text-sm text-accent hover:underline"
                 >
                   Send another message
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-5">
-                {/* Name */}
                 <div>
                   <label className="block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wide">
                     Your Name
@@ -129,12 +126,9 @@ export default function ContactForm() {
                     placeholder="John Smith"
                     className={fieldClass(!!errors.name)}
                   />
-                  {errors.name && (
-                    <p className="mt-1.5 text-xs text-red-400">{errors.name.message}</p>
-                  )}
+                  {errors.name && <p className="mt-1.5 text-xs text-red-400">{errors.name.message}</p>}
                 </div>
 
-                {/* Email */}
                 <div>
                   <label className="block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wide">
                     Email Address
@@ -145,12 +139,9 @@ export default function ContactForm() {
                     placeholder="john@company.com"
                     className={fieldClass(!!errors.email)}
                   />
-                  {errors.email && (
-                    <p className="mt-1.5 text-xs text-red-400">{errors.email.message}</p>
-                  )}
+                  {errors.email && <p className="mt-1.5 text-xs text-red-400">{errors.email.message}</p>}
                 </div>
 
-                {/* Budget */}
                 <div>
                   <label className="block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wide">
                     Budget Range
@@ -165,12 +156,9 @@ export default function ContactForm() {
                       </option>
                     ))}
                   </select>
-                  {errors.budget && (
-                    <p className="mt-1.5 text-xs text-red-400">{errors.budget.message}</p>
-                  )}
+                  {errors.budget && <p className="mt-1.5 text-xs text-red-400">{errors.budget.message}</p>}
                 </div>
 
-                {/* Message */}
                 <div>
                   <label className="block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wide">
                     Tell me about your project
@@ -181,9 +169,7 @@ export default function ContactForm() {
                     placeholder="I'm building a SaaS app that helps teams..."
                     className={`${fieldClass(!!errors.message)} resize-none`}
                   />
-                  {errors.message && (
-                    <p className="mt-1.5 text-xs text-red-400">{errors.message.message}</p>
-                  )}
+                  {errors.message && <p className="mt-1.5 text-xs text-red-400">{errors.message.message}</p>}
                 </div>
 
                 {submitState === "error" && (
@@ -195,7 +181,7 @@ export default function ContactForm() {
                 <button
                   type="submit"
                   disabled={submitState === "loading"}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-white bg-[#2563eb] hover:bg-[#1d4ed8] disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 glow-blue text-sm sm:text-base"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-white bg-brand hover:bg-brand-hover disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 glow-blue text-sm sm:text-base"
                 >
                   {submitState === "loading" ? (
                     <>

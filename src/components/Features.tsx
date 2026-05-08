@@ -6,9 +6,8 @@ const features = [
       </svg>
     ),
     title: "Fast Delivery",
-    description:
-      "No endless meetings or scope creep. I move fast, communicate clearly, and get your product shipped.",
-    accent: "from-[#2563eb] to-[#38bdf8]",
+    description: "No endless meetings or scope creep. I move fast, communicate clearly, and get your product shipped.",
+    accent: "from-brand to-accent",
   },
   {
     icon: (
@@ -17,9 +16,8 @@ const features = [
       </svg>
     ),
     title: "Clean Code",
-    description:
-      "TypeScript-first, well-tested, and documented. Code you can maintain and scale confidently.",
-    accent: "from-[#7c3aed] to-[#2563eb]",
+    description: "TypeScript-first, well-tested, and documented. Code you can maintain and scale confidently.",
+    accent: "from-violet to-brand",
   },
   {
     icon: (
@@ -28,9 +26,8 @@ const features = [
       </svg>
     ),
     title: "Mobile-First",
-    description:
-      "Every pixel is designed for mobile first, then refined for desktop. Pixel-perfect across all screen sizes.",
-    accent: "from-[#38bdf8] to-[#7c3aed]",
+    description: "Every pixel is designed for mobile first, then refined for desktop. Pixel-perfect across all screen sizes.",
+    accent: "from-accent to-violet",
   },
   {
     icon: (
@@ -39,9 +36,8 @@ const features = [
       </svg>
     ),
     title: "Secure by Default",
-    description:
-      "Auth, input validation, OWASP best practices, and secure deployments baked in from day one.",
-    accent: "from-[#2563eb] to-[#7c3aed]",
+    description: "Auth, input validation, OWASP best practices, and secure deployments baked in from day one.",
+    accent: "from-brand to-violet",
   },
   {
     icon: (
@@ -50,9 +46,8 @@ const features = [
       </svg>
     ),
     title: "Scalable Architecture",
-    description:
-      "Designed to grow with you. From side project to Series A traffic — built to handle it.",
-    accent: "from-[#38bdf8] to-[#2563eb]",
+    description: "Designed to grow with you. From side project to Series A traffic — built to handle it.",
+    accent: "from-accent to-brand",
   },
   {
     icon: (
@@ -61,9 +56,8 @@ const features = [
       </svg>
     ),
     title: "Clear Communication",
-    description:
-      "Daily updates, async-friendly, timezone-aware. You always know what's happening with your project.",
-    accent: "from-[#7c3aed] to-[#38bdf8]",
+    description: "Daily updates, async-friendly, timezone-aware. You always know what's happening with your project.",
+    accent: "from-violet to-accent",
   },
 ];
 
@@ -72,12 +66,11 @@ const stack = ["Next.js", "TypeScript", "React", "Node.js", "PostgreSQL", "Tailw
 export default function Features() {
   return (
     <section id="services" className="py-12 sm:py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0c1a2e]/30 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/30 to-transparent pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-8 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#112240] border border-[#1e3a5f] text-xs font-medium text-[#38bdf8] mb-5">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-elevated border border-line text-xs font-medium text-accent mb-5">
             What I bring to your project
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
@@ -90,29 +83,23 @@ export default function Features() {
           </p>
         </div>
 
-        {/* Feature grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
           {features.map((f) => (
             <div
               key={f.title}
-              className="group gradient-border rounded-2xl p-6 hover:bg-[#112240]/50 transition-all duration-300 cursor-default"
+              className="group gradient-border rounded-2xl p-6 hover:bg-elevated/50 transition-all duration-300 cursor-default"
             >
-              <div
-                className={`inline-flex p-2.5 rounded-xl bg-gradient-to-br ${f.accent} mb-4`}
-              >
+              <div className={`inline-flex p-2.5 rounded-xl bg-gradient-to-br ${f.accent} mb-4`}>
                 <div className="text-white">{f.icon}</div>
               </div>
-              <h3 className="text-white font-semibold text-base sm:text-lg mb-2 group-hover:text-[#38bdf8] transition-colors">
+              <h3 className="text-white font-semibold text-base sm:text-lg mb-2 group-hover:text-accent transition-colors">
                 {f.title}
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                {f.description}
-              </p>
+              <p className="text-slate-400 text-sm leading-relaxed">{f.description}</p>
             </div>
           ))}
         </div>
 
-        {/* Tech stack */}
         <div className="text-center">
           <p className="text-slate-500 text-xs uppercase tracking-widest mb-6">
             Technologies I work with
@@ -121,7 +108,7 @@ export default function Features() {
             {stack.map((tech) => (
               <span
                 key={tech}
-                className="px-4 py-2 rounded-full bg-[#112240] border border-[#1e3a5f] text-slate-300 text-sm hover:border-[#38bdf8]/40 hover:text-white transition-all duration-200"
+                className="px-4 py-2 rounded-full bg-elevated border border-line text-slate-300 text-sm hover:border-accent/40 hover:text-white transition-all duration-200"
               >
                 {tech}
               </span>
