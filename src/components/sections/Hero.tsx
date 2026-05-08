@@ -179,10 +179,6 @@ export default function Hero() {
                         dangerouslySetInnerHTML={{
                           __html: line
                             .replace(
-                              /\/\/.*/g,
-                              (m) => `<span style="color:#64748b">${m}</span>`
-                            )
-                            .replace(
                               /"([^"]+)"/g,
                               `<span style="color:#38bdf8">"$1"</span>`
                             )
@@ -193,6 +189,10 @@ export default function Hero() {
                             .replace(
                               /\b(yourCodingBro|project)\b/g,
                               `<span style="color:#38bdf8">$1</span>`
+                            )
+                            .replace(
+                              /\/\/.*/g,
+                              (m) => `<span style="color:#64748b">${m}</span>`
                             ),
                         }}
                       />
