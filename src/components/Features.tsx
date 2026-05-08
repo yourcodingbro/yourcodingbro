@@ -113,7 +113,7 @@ export default function Features() {
         </div>
 
         {/* Tech stack */}
-        <div id="why-us" className="text-center">
+        <div className="text-center">
           <p className="text-slate-500 text-xs uppercase tracking-widest mb-6">
             Technologies I work with
           </p>
