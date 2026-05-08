@@ -59,7 +59,7 @@ export default function ContactForm() {
     }`;
 
   return (
-    <section id="contact" className="py-20 sm:py-28 relative">
+    <section id="contact" className="py-12 sm:py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0c1a2e]/20 to-transparent pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#2563eb]/5 rounded-full blur-3xl pointer-events-none" />
 

@@ -54,14 +54,14 @@ function Stars({ count }: { count: number }) {
 
 export default function SocialProof() {
   return (
-    <section id="testimonials" className="py-20 sm:py-28 relative overflow-hidden">
+    <section id="testimonials" className="py-12 sm:py-20 relative overflow-hidden w-full">
       {/* Decorative blobs */}
       <div className="absolute -left-32 top-1/4 w-64 h-64 bg-[#2563eb]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -right-32 bottom-1/4 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-14 sm:mb-20">
+        <div className="text-center mb-8 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#112240] border border-[#1e3a5f] text-xs font-medium text-[#38bdf8] mb-5">
             Client results
           </div>
@@ -76,7 +76,7 @@ export default function SocialProof() {
         </div>
 
         {/* Stats bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[#1e3a5f] rounded-2xl overflow-hidden mb-14 sm:mb-20">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[#1e3a5f] rounded-2xl overflow-hidden mb-8 sm:mb-14">
           {stats.map((s) => (
             <div
               key={s.label}

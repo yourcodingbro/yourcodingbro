@@ -93,11 +93,11 @@ export default function Hero() {
 
       {/* Radial glow */}
       <div className="absolute inset-0 bg-radial-[ellipse_at_center] from-[#2563eb]/10 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#2563eb]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(600px,100vw)] h-[min(600px,100vw)] bg-[#2563eb]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
         {/* Left — copy */}
-        <div className="flex-1 text-center lg:text-left">
+        <div className="flex-1 min-w-0 w-full text-center lg:text-left">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#112240] border border-[#1e3a5f] text-xs font-medium text-[#38bdf8] mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] pulse-glow" />
@@ -116,7 +116,7 @@ export default function Hero() {
           </p>
 
           {/* Stats row */}
-          <div className="flex items-center justify-center lg:justify-start gap-6 sm:gap-8 mb-10">
+          <div className="flex items-center justify-center lg:justify-start gap-4 sm:gap-8 mb-10">
             {[
               { value: "50+", label: "Projects shipped" },
               { value: "100%", label: "On-time delivery" },
@@ -149,8 +149,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right — code card */}
-        <div className="flex-1 w-full max-w-md lg:max-w-none float-animation">
+        {/* Right — code card (hidden on mobile, shown lg+) */}
+        <div className="hidden lg:block flex-1 min-w-0 w-full max-w-lg float-animation">
           <div className="gradient-border rounded-2xl overflow-hidden glow-cyan">
             {/* Window chrome */}
             <div className="flex items-center gap-2 px-4 py-3 bg-[#0c1a2e] border-b border-[#1e3a5f]">
@@ -184,8 +184,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500">
+      {/* Scroll indicator — hidden on mobile to avoid overlapping buttons */}
+      <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-slate-500">
         <span className="text-xs tracking-widest uppercase">Scroll</span>
         <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />

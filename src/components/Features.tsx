@@ -71,12 +71,12 @@ const stack = ["Next.js", "TypeScript", "React", "Node.js", "PostgreSQL", "Tailw
 
 export default function Features() {
   return (
-    <section id="services" className="py-20 sm:py-28 relative">
+    <section id="services" className="py-12 sm:py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0c1a2e]/30 to-transparent pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-14 sm:mb-20">
+        <div className="text-center mb-8 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#112240] border border-[#1e3a5f] text-xs font-medium text-[#38bdf8] mb-5">
             What I bring to your project
           </div>
@@ -91,7 +91,7 @@ export default function Features() {
         </div>
 
         {/* Feature grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-16 sm:mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
           {features.map((f) => (
             <div
               key={f.title}
