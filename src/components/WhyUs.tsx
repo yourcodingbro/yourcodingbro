@@ -36,11 +36,11 @@ export default function WhyUs() {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-elevated border border-line text-xs font-medium text-accent mb-5">
               Why work with me
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-5 tracking-tight leading-tight">
               Not just another{" "}
               <span className="gradient-text">dev for hire.</span>
             </h2>
-            <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
+            <p className="text-fg-3 text-base sm:text-lg leading-relaxed">
               There are thousands of developers available. Here&apos;s why
               founders keep coming back — and referring their friends.
             </p>
@@ -53,10 +53,10 @@ export default function WhyUs() {
                   <span className="text-xs font-bold text-accent">{r.number}</span>
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-sm sm:text-base mb-1 group-hover:text-accent transition-colors">
+                  <h3 className="text-fg font-semibold text-sm sm:text-base mb-1 group-hover:text-accent transition-colors">
                     {r.title}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{r.description}</p>
+                  <p className="text-fg-3 text-sm leading-relaxed">{r.description}</p>
                 </div>
               </div>
             ))}

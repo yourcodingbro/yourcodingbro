@@ -52,7 +52,7 @@ export default function ContactForm() {
   };
 
   const fieldClass = (hasError: boolean) =>
-    `w-full px-4 py-3 rounded-xl bg-surface border text-white placeholder-slate-500 text-sm transition-all duration-200 outline-none focus:ring-2 focus:ring-brand/50 ${
+    `w-full px-4 py-3 rounded-xl bg-surface border text-fg placeholder-fg-4 text-sm transition-all duration-200 outline-none focus:ring-2 focus:ring-brand/50 ${
       hasError
         ? "border-red-500/60 focus:border-red-500"
         : "border-line focus:border-brand"
@@ -70,11 +70,11 @@ export default function ContactForm() {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-elevated border border-line text-xs font-medium text-accent mb-5">
               Let&apos;s build together
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-5 tracking-tight leading-tight">
               Got a project?{" "}
               <span className="gradient-text">Let&apos;s talk.</span>
             </h2>
-            <p className="text-slate-400 text-base sm:text-lg leading-relaxed mb-8">
+            <p className="text-fg-3 text-base sm:text-lg leading-relaxed mb-8">
               Tell me what you&apos;re building and I&apos;ll get back to you
               within 24 hours with a plan and estimate. No pushy sales calls.
             </p>
@@ -88,7 +88,7 @@ export default function ContactForm() {
               ].map((item) => (
                 <div key={item.text} className="flex items-center gap-3">
                   <span className="text-lg">{item.icon}</span>
-                  <span className="text-slate-300 text-sm">{item.text}</span>
+                  <span className="text-fg-2 text-sm">{item.text}</span>
                 </div>
               ))}
             </div>
@@ -103,8 +103,8 @@ export default function ContactForm() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white">Message sent!</h3>
-                <p className="text-slate-400 text-sm max-w-xs">
+                <h3 className="text-xl font-bold text-fg">Message sent!</h3>
+                <p className="text-fg-3 text-sm max-w-xs">
                   Thanks for reaching out. I&apos;ll get back to you within 24 hours with next steps.
                 </p>
                 <button
@@ -117,7 +117,7 @@ export default function ContactForm() {
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-5">
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wide">
+                  <label className="block text-xs font-medium text-fg-3 mb-1.5 uppercase tracking-wide">
                     Your Name
                   </label>
                   <input
@@ -130,7 +130,7 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wide">
+                  <label className="block text-xs font-medium text-fg-3 mb-1.5 uppercase tracking-wide">
                     Email Address
                   </label>
                   <input
@@ -143,7 +143,7 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wide">
+                  <label className="block text-xs font-medium text-fg-3 mb-1.5 uppercase tracking-wide">
                     Budget Range
                   </label>
                   <select
@@ -160,7 +160,7 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wide">
+                  <label className="block text-xs font-medium text-fg-3 mb-1.5 uppercase tracking-wide">
                     Tell me about your project
                   </label>
                   <textarea
@@ -201,7 +201,7 @@ export default function ContactForm() {
                   )}
                 </button>
 
-                <p className="text-center text-xs text-slate-500">
+                <p className="text-center text-xs text-fg-4">
                   No spam. No sales pressure. Just a conversation.
                 </p>
               </form>

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import Logo from "@/components/Logo";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -60,38 +60,24 @@ export default function Navbar() {
       >
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/logo-icon.png"
-                alt="YourCodingBro"
-                width={40}
-                height={40}
-                className="block md:hidden h-9 w-auto object-contain"
-                priority
-              />
-              <Image
-                src="/logo.png"
-                alt="YourCodingBro"
-                width={200}
-                height={40}
-                className="hidden md:block h-10 w-auto object-contain"
-                priority
-              />
-            </Link>
+            <Logo />
 
+            {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="px-4 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200"
+                  className="px-4 py-2 text-sm text-fg-3 hover:text-fg rounded-lg hover:bg-fg/5 transition-all duration-200"
                 >
                   {link.label}
                 </a>
               ))}
             </div>
 
-            <div className="hidden md:block">
+            {/* Desktop right — theme switcher + CTA */}
+            <div className="hidden md:flex items-center gap-2">
+              <ThemeSwitcher />
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-brand text-white hover:bg-brand-hover transition-all duration-200 glow-blue"
@@ -103,14 +89,18 @@ export default function Navbar() {
               </a>
             </div>
 
-            <button
-              className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={menuOpen}
-            >
-              <HamburgerIcon open={menuOpen} />
-            </button>
+            {/* Mobile right — theme switcher + hamburger */}
+            <div className="md:hidden flex items-center gap-1">
+              <ThemeSwitcher />
+              <button
+                className="p-2 rounded-lg text-fg-3 hover:text-fg hover:bg-fg/5 transition-colors"
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label="Toggle menu"
+                aria-expanded={menuOpen}
+              >
+                <HamburgerIcon open={menuOpen} />
+              </button>
+            </div>
           </div>
         </nav>
       </header>
@@ -137,15 +127,7 @@ export default function Navbar() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <div className="flex items-center px-5 h-16 border-b border-line shrink-0">
-                <Link href="/" onClick={() => setMenuOpen(false)}>
-                  <Image
-                    src="/logo-icon.png"
-                    alt="YourCodingBro"
-                    width={36}
-                    height={36}
-                    className="h-8 w-auto object-contain"
-                  />
-                </Link>
+                <Logo onClick={() => setMenuOpen(false)} />
               </div>
 
               <nav className="flex-1 px-4 py-6 flex flex-col gap-1 overflow-y-auto">
@@ -154,7 +136,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-white/5 text-sm font-medium transition-all"
+                    className="px-4 py-3 rounded-xl text-fg-2 hover:text-fg hover:bg-fg/5 text-sm font-medium transition-all"
                   >
                     {link.label}
                   </a>

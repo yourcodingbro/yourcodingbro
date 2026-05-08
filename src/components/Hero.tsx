@@ -50,7 +50,6 @@ export default function Hero() {
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
-
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(56, 189, 248, ${p.alpha})`; // --accent
@@ -86,7 +85,6 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden hero-grid noise-overlay pt-20">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
-
       <div className="absolute inset-0 bg-radial-[ellipse_at_center] from-brand/10 via-transparent to-transparent pointer-events-none" />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(600px,100vw)] h-[min(600px,100vw)] bg-brand/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -98,12 +96,12 @@ export default function Hero() {
             Available for new projects
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-fg mb-6">
             Your Vision,{" "}
             <span className="gradient-text">Built Fast.</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
+          <p className="text-base sm:text-lg text-fg-3 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
             Expert full-stack development that ships clean, scalable code —
             on time, every time. From MVP to production, I&apos;m your dedicated
             coding partner.
@@ -116,8 +114,8 @@ export default function Hero() {
               { value: "4.9★", label: "Client rating" },
             ].map((stat) => (
               <div key={stat.label} className="text-center lg:text-left">
-                <div className="text-xl sm:text-2xl font-bold text-white">{stat.value}</div>
-                <div className="text-xs text-slate-500">{stat.label}</div>
+                <div className="text-xl sm:text-2xl font-bold text-fg">{stat.value}</div>
+                <div className="text-xs text-fg-4">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -134,23 +132,23 @@ export default function Hero() {
             </a>
             <a
               href="#services"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-slate-300 border border-line hover:border-accent/40 hover:text-white transition-all duration-200 text-sm sm:text-base"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-fg-2 border border-line hover:border-accent/40 hover:text-fg transition-all duration-200 text-sm sm:text-base"
             >
               See My Services
             </a>
           </div>
         </div>
 
-        {/* Code card — desktop only */}
+        {/* Code card — always dark, desktop only */}
         <div className="hidden lg:block flex-1 min-w-0 w-full max-w-lg float-animation">
-          <div className="gradient-border rounded-2xl overflow-hidden glow-cyan">
-            <div className="flex items-center gap-2 px-4 py-3 bg-surface border-b border-line">
+          <div className="rounded-2xl overflow-hidden glow-cyan" style={{ border: "1px solid #1e3a5f" }}>
+            <div className="flex items-center gap-2 px-4 py-3 bg-code-bg border-b" style={{ borderColor: "#1e3a5f" }}>
               <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
               <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
               <span className="w-3 h-3 rounded-full bg-[#28c840]" />
               <span className="ml-auto text-xs text-slate-500 font-mono">project.ts</span>
             </div>
-            <div className="bg-surface p-5 sm:p-6">
+            <div className="bg-code-bg p-5 sm:p-6">
               <pre className="text-xs sm:text-sm font-mono text-slate-300 leading-relaxed overflow-x-auto">
                 <code>
                   {codeSnippet.split("\n").map((line, i) => (
@@ -159,10 +157,10 @@ export default function Hero() {
                       <span
                         dangerouslySetInnerHTML={{
                           __html: line
-                            .replace(/\/\/.*/g, (m) => `<span class="text-slate-500">${m}</span>`)
-                            .replace(/"([^"]+)"/g, `<span class="text-accent">"$1"</span>`)
-                            .replace(/\b(const|await|console\.log)\b/g, `<span class="text-violet">$1</span>`)
-                            .replace(/\b(yourCodingBro|project)\b/g, `<span class="text-accent">$1</span>`),
+                            .replace(/\/\/.*/g, (m) => `<span style="color:#64748b">${m}</span>`)
+                            .replace(/"([^"]+)"/g, `<span style="color:#38bdf8">"$1"</span>`)
+                            .replace(/\b(const|await|console\.log)\b/g, `<span style="color:#7c3aed">$1</span>`)
+                            .replace(/\b(yourCodingBro|project)\b/g, `<span style="color:#38bdf8">$1</span>`),
                         }}
                       />
                     </div>
@@ -174,7 +172,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-slate-500">
+      <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-fg-4">
         <span className="text-xs tracking-widest uppercase">Scroll</span>
         <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />

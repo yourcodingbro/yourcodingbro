@@ -39,27 +39,27 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-lg bg-navy border border-brand/40 flex items-center justify-center">
-                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-                  <path d="M12 2L4 7v10l8 5 8-5V7L12 2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" className="text-accent" />
-                  <path d="M12 2v15M4 7l8 5 8-5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" className="text-accent" />
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-accent">
+                  <path d="M12 2L4 7v10l8 5 8-5V7L12 2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                  <path d="M12 2v15M4 7l8 5 8-5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
                 </svg>
               </div>
-              <span className="font-bold text-white tracking-tight">
+              <span className="font-bold text-fg tracking-tight">
                 YourCoding<span className="text-accent">Bro</span>
               </span>
             </div>
-            <p className="text-slate-500 text-sm leading-relaxed max-w-xs">
+            <p className="text-fg-4 text-sm leading-relaxed max-w-xs">
               Your dedicated development partner. Clean code, fast delivery, real results.
             </p>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Services</h4>
+            <h4 className="text-fg font-semibold text-sm mb-4 uppercase tracking-widest">Services</h4>
             <ul className="flex flex-col gap-2.5">
               {["Web App Development", "MVP Building", "API Development", "Code Review", "Tech Consulting"].map((item) => (
                 <li key={item}>
-                  <span className="text-slate-500 text-sm hover:text-slate-300 transition-colors cursor-default">{item}</span>
+                  <span className="text-fg-4 text-sm hover:text-fg-2 transition-colors cursor-default">{item}</span>
                 </li>
               ))}
             </ul>
@@ -67,11 +67,11 @@ export default function Footer() {
 
           {/* Stack */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Stack</h4>
+            <h4 className="text-fg font-semibold text-sm mb-4 uppercase tracking-widest">Stack</h4>
             <ul className="flex flex-col gap-2.5">
               {["Next.js / React", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS"].map((item) => (
                 <li key={item}>
-                  <span className="text-slate-500 text-sm hover:text-slate-300 transition-colors cursor-default">{item}</span>
+                  <span className="text-fg-4 text-sm hover:text-fg-2 transition-colors cursor-default">{item}</span>
                 </li>
               ))}
             </ul>
@@ -79,15 +79,15 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Contact</h4>
+            <h4 className="text-fg font-semibold text-sm mb-4 uppercase tracking-widest">Contact</h4>
             <ul className="flex flex-col gap-2.5">
               <li>
-                <a href="#contact" className="text-slate-500 text-sm hover:text-accent transition-colors">
+                <a href="#contact" className="text-fg-4 text-sm hover:text-accent transition-colors">
                   Start a project
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@yourcodingbro.com" className="text-slate-500 text-sm hover:text-accent transition-colors">
+                <a href="mailto:hello@yourcodingbro.com" className="text-fg-4 text-sm hover:text-accent transition-colors">
                   hello@yourcodingbro.com
                 </a>
               </li>
@@ -100,7 +100,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-lg bg-elevated border border-line flex items-center justify-center text-slate-400 hover:text-accent hover:border-accent/40 transition-all duration-200"
+                  className="w-9 h-9 rounded-lg bg-elevated border border-line flex items-center justify-center text-fg-3 hover:text-accent hover:border-accent/40 transition-all duration-200"
                 >
                   {s.icon}
                 </a>
@@ -109,7 +109,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+        <div className="pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fg-4">
           <p>© {currentYear} YourCodingBro. All rights reserved.</p>
           <p>
             Built with{" "}

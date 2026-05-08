@@ -73,11 +73,11 @@ export default function Features() {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-elevated border border-line text-xs font-medium text-accent mb-5">
             What I bring to your project
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
             Everything you need,{" "}
             <span className="gradient-text">nothing you don&apos;t.</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="text-fg-3 max-w-2xl mx-auto text-base sm:text-lg">
             Full-stack development from idea to deployment. I handle the hard
             parts so you can focus on growing your business.
           </p>
@@ -92,23 +92,23 @@ export default function Features() {
               <div className={`inline-flex p-2.5 rounded-xl bg-gradient-to-br ${f.accent} mb-4`}>
                 <div className="text-white">{f.icon}</div>
               </div>
-              <h3 className="text-white font-semibold text-base sm:text-lg mb-2 group-hover:text-accent transition-colors">
+              <h3 className="text-fg font-semibold text-base sm:text-lg mb-2 group-hover:text-accent transition-colors">
                 {f.title}
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{f.description}</p>
+              <p className="text-fg-3 text-sm leading-relaxed">{f.description}</p>
             </div>
           ))}
         </div>
 
         <div className="text-center">
-          <p className="text-slate-500 text-xs uppercase tracking-widest mb-6">
+          <p className="text-fg-4 text-xs uppercase tracking-widest mb-6">
             Technologies I work with
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             {stack.map((tech) => (
               <span
                 key={tech}
-                className="px-4 py-2 rounded-full bg-elevated border border-line text-slate-300 text-sm hover:border-accent/40 hover:text-white transition-all duration-200"
+                className="px-4 py-2 rounded-full bg-elevated border border-line text-fg-2 text-sm hover:border-accent/40 hover:text-fg transition-all duration-200"
               >
                 {tech}
               </span>

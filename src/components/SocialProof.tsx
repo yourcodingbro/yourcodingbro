@@ -59,11 +59,11 @@ export default function SocialProof() {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-elevated border border-line text-xs font-medium text-accent mb-5">
             Client results
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
             Trusted by founders{" "}
             <span className="gradient-text">who ship.</span>
           </h2>
-          <p className="text-slate-400 max-w-xl mx-auto text-base sm:text-lg">
+          <p className="text-fg-3 max-w-xl mx-auto text-base sm:text-lg">
             Real projects. Real results. Here&apos;s what clients say after we&apos;ve shipped together.
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function SocialProof() {
               className="bg-surface px-6 py-6 sm:py-8 text-center hover:bg-elevated transition-colors"
             >
               <div className="text-2xl sm:text-3xl font-bold gradient-text mb-1">{s.value}</div>
-              <div className="text-xs sm:text-sm text-slate-500">{s.label}</div>
+              <div className="text-xs sm:text-sm text-fg-4">{s.label}</div>
             </div>
           ))}
         </div>
@@ -87,7 +87,7 @@ export default function SocialProof() {
               className="gradient-border rounded-2xl p-6 sm:p-7 hover:bg-elevated/40 transition-all duration-300"
             >
               <Stars count={t.stars} />
-              <blockquote className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+              <blockquote className="mt-4 text-fg-2 text-sm sm:text-base leading-relaxed">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
               <div className="mt-5 flex items-center gap-3">
@@ -95,8 +95,8 @@ export default function SocialProof() {
                   {t.avatar}
                 </div>
                 <div>
-                  <div className="text-white font-semibold text-sm">{t.author}</div>
-                  <div className="text-slate-500 text-xs">{t.role}</div>
+                  <div className="text-fg font-semibold text-sm">{t.author}</div>
+                  <div className="text-fg-4 text-xs">{t.role}</div>
                 </div>
               </div>
             </div>
