@@ -1,3 +1,5 @@
+import SectionBadge from "@/components/SectionBadge";
+
 const features = [
   {
     icon: (
@@ -70,9 +72,7 @@ export default function Features() {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-elevated border border-line text-xs font-medium text-accent mb-5">
-            What I bring to your project
-          </div>
+          <SectionBadge className="mb-5">What I bring to your project</SectionBadge>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
             Everything you need,{" "}
             <span className="gradient-text">nothing you don&apos;t.</span>

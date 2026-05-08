@@ -1,9 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import SectionBadge from "@/components/SectionBadge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -15,7 +27,6 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const budgetOptions = [
-  { value: "",         label: "Select budget range" },
   { value: "under-1k", label: "Under $1,000" },
   { value: "1k-5k",    label: "$1,000 – $5,000" },
   { value: "5k-15k",   label: "$5,000 – $15,000" },
@@ -25,6 +36,8 @@ const budgetOptions = [
 
 type SubmitState = "idle" | "loading" | "success" | "error";
 
+const fieldClass = "h-auto px-4 py-3 bg-surface border-line text-fg placeholder:text-fg-4 focus-visible:border-brand focus-visible:ring-brand/30 rounded-xl";
+
 export default function ContactForm() {
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
 
@@ -32,6 +45,7 @@ export default function ContactForm() {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
@@ -51,13 +65,6 @@ export default function ContactForm() {
     }
   };
 
-  const fieldClass = (hasError: boolean) =>
-    `w-full px-4 py-3 rounded-xl bg-surface border text-fg placeholder-fg-4 text-sm transition-all duration-200 outline-none focus:ring-2 focus:ring-brand/50 ${
-      hasError
-        ? "border-red-500/60 focus:border-red-500"
-        : "border-line focus:border-brand"
-    }`;
-
   return (
     <section id="contact" className="py-12 sm:py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/20 to-transparent pointer-events-none" />
@@ -67,9 +74,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — copy */}
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-elevated border border-line text-xs font-medium text-accent mb-5">
-              Let&apos;s build together
-            </div>
+            <SectionBadge className="mb-5">Let&apos;s build together</SectionBadge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-5 tracking-tight leading-tight">
               Got a project?{" "}
               <span className="gradient-text">Let&apos;s talk.</span>
@@ -107,69 +112,75 @@ export default function ContactForm() {
                 <p className="text-fg-3 text-sm max-w-xs">
                   Thanks for reaching out. I&apos;ll get back to you within 24 hours with next steps.
                 </p>
-                <button
-                  onClick={() => setSubmitState("idle")}
-                  className="mt-2 text-sm text-accent hover:underline"
-                >
+                <Button variant="link" className="text-accent" onClick={() => setSubmitState("idle")}>
                   Send another message
-                </button>
+                </Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-5">
-                <div>
-                  <label className="block text-xs font-medium text-fg-3 mb-1.5 uppercase tracking-wide">
-                    Your Name
-                  </label>
-                  <input
+                {/* Name */}
+                <div className="flex flex-col gap-1.5">
+                  <Label className="text-xs text-fg-3 uppercase tracking-wide">Your Name</Label>
+                  <Input
                     {...register("name")}
                     type="text"
                     placeholder="John Smith"
-                    className={fieldClass(!!errors.name)}
+                    aria-invalid={!!errors.name}
+                    className={fieldClass}
                   />
-                  {errors.name && <p className="mt-1.5 text-xs text-red-400">{errors.name.message}</p>}
+                  {errors.name && <p className="text-xs text-red-400">{errors.name.message}</p>}
                 </div>
 
-                <div>
-                  <label className="block text-xs font-medium text-fg-3 mb-1.5 uppercase tracking-wide">
-                    Email Address
-                  </label>
-                  <input
+                {/* Email */}
+                <div className="flex flex-col gap-1.5">
+                  <Label className="text-xs text-fg-3 uppercase tracking-wide">Email Address</Label>
+                  <Input
                     {...register("email")}
                     type="email"
                     placeholder="john@company.com"
-                    className={fieldClass(!!errors.email)}
+                    aria-invalid={!!errors.email}
+                    className={fieldClass}
                   />
-                  {errors.email && <p className="mt-1.5 text-xs text-red-400">{errors.email.message}</p>}
+                  {errors.email && <p className="text-xs text-red-400">{errors.email.message}</p>}
                 </div>
 
-                <div>
-                  <label className="block text-xs font-medium text-fg-3 mb-1.5 uppercase tracking-wide">
-                    Budget Range
-                  </label>
-                  <select
-                    {...register("budget")}
-                    className={`${fieldClass(!!errors.budget)} appearance-none`}
-                  >
-                    {budgetOptions.map((opt) => (
-                      <option key={opt.value} value={opt.value} disabled={opt.value === ""}>
-                        {opt.label}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.budget && <p className="mt-1.5 text-xs text-red-400">{errors.budget.message}</p>}
+                {/* Budget */}
+                <div className="flex flex-col gap-1.5">
+                  <Label className="text-xs text-fg-3 uppercase tracking-wide">Budget Range</Label>
+                  <Controller
+                    name="budget"
+                    control={control}
+                    render={({ field }) => (
+                      <Select value={field.value} onValueChange={field.onChange}>
+                        <SelectTrigger
+                          className={`w-full h-auto px-4 py-3 bg-surface border-line text-fg rounded-xl focus-visible:border-brand focus-visible:ring-brand/30 ${errors.budget ? "border-red-500/60" : ""}`}
+                        >
+                          <SelectValue placeholder="Select budget range" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {budgetOptions.map((opt) => (
+                            <SelectItem key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
+                  {errors.budget && <p className="text-xs text-red-400">{errors.budget.message}</p>}
                 </div>
 
-                <div>
-                  <label className="block text-xs font-medium text-fg-3 mb-1.5 uppercase tracking-wide">
-                    Tell me about your project
-                  </label>
-                  <textarea
+                {/* Message */}
+                <div className="flex flex-col gap-1.5">
+                  <Label className="text-xs text-fg-3 uppercase tracking-wide">Tell me about your project</Label>
+                  <Textarea
                     {...register("message")}
                     rows={4}
                     placeholder="I'm building a SaaS app that helps teams..."
-                    className={`${fieldClass(!!errors.message)} resize-none`}
+                    aria-invalid={!!errors.message}
+                    className={`${fieldClass} resize-none`}
                   />
-                  {errors.message && <p className="mt-1.5 text-xs text-red-400">{errors.message.message}</p>}
+                  {errors.message && <p className="text-xs text-red-400">{errors.message.message}</p>}
                 </div>
 
                 {submitState === "error" && (
@@ -178,10 +189,10 @@ export default function ContactForm() {
                   </p>
                 )}
 
-                <button
+                <Button
                   type="submit"
                   disabled={submitState === "loading"}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-white bg-brand hover:bg-brand-hover disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 glow-blue text-sm sm:text-base"
+                  className="w-full h-auto py-3.5 rounded-xl bg-brand hover:bg-brand-hover text-white font-semibold glow-blue text-sm sm:text-base gap-2"
                 >
                   {submitState === "loading" ? (
                     <>
@@ -199,7 +210,7 @@ export default function ContactForm() {
                       </svg>
                     </>
                   )}
-                </button>
+                </Button>
 
                 <p className="text-center text-xs text-fg-4">
                   No spam. No sales pressure. Just a conversation.

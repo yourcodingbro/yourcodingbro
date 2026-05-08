@@ -1,3 +1,5 @@
+import SectionBadge from "@/components/SectionBadge";
+
 const reasons = [
   {
     number: "01",
@@ -33,9 +35,7 @@ export default function WhyUs() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-elevated border border-line text-xs font-medium text-accent mb-5">
-              Why work with me
-            </div>
+            <SectionBadge className="mb-5">Why work with me</SectionBadge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-5 tracking-tight leading-tight">
               Not just another{" "}
               <span className="gradient-text">dev for hire.</span>

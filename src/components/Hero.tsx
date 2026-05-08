@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import SectionBadge from "@/components/SectionBadge";
 
 const codeSnippet = `// Your idea → production-ready code
 const project = await yourCodingBro.build({
@@ -28,7 +29,14 @@ export default function Hero() {
     resize();
     window.addEventListener("resize", resize);
 
-    const particles: { x: number; y: number; vx: number; vy: number; size: number; alpha: number }[] = [];
+    const particles: {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      alpha: number;
+    }[] = [];
     for (let i = 0; i < 50; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -84,26 +92,28 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden hero-grid noise-overlay pt-20">
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full pointer-events-none"
+      />
       <div className="absolute inset-0 bg-radial-[ellipse_at_center] from-brand/10 via-transparent to-transparent pointer-events-none" />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(600px,100vw)] h-[min(600px,100vw)] bg-brand/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
         {/* Copy */}
         <div className="flex-1 min-w-0 w-full text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-elevated border border-line text-xs font-medium text-accent mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent pulse-glow" />
+          <SectionBadge className="mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             Available for new projects
-          </div>
+          </SectionBadge>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-fg mb-6">
-            Your Vision,{" "}
-            <span className="gradient-text">Built Fast.</span>
+            Your Vision, <span className="gradient-text">Built Fast.</span>
           </h1>
 
           <p className="text-base sm:text-lg text-fg-3 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
-            Expert full-stack development that ships clean, scalable code —
-            on time, every time. From MVP to production, I&apos;m your dedicated
+            Expert full-stack development that ships clean, scalable code — on
+            time, every time. From MVP to production, I&apos;m your dedicated
             coding partner.
           </p>
 
@@ -114,7 +124,9 @@ export default function Hero() {
               { value: "4.9★", label: "Client rating" },
             ].map((stat) => (
               <div key={stat.label} className="text-center lg:text-left">
-                <div className="text-xl sm:text-2xl font-bold text-fg">{stat.value}</div>
+                <div className="text-xl sm:text-2xl font-bold text-fg">
+                  {stat.value}
+                </div>
                 <div className="text-xs text-fg-4">{stat.label}</div>
               </div>
             ))}
@@ -126,8 +138,18 @@ export default function Hero() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white bg-brand hover:bg-brand-hover transition-all duration-200 text-sm sm:text-base glow-blue"
             >
               Start Your Project
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </svg>
             </a>
             <a
@@ -141,26 +163,48 @@ export default function Hero() {
 
         {/* Code card — always dark, desktop only */}
         <div className="hidden lg:block flex-1 min-w-0 w-full max-w-lg float-animation">
-          <div className="rounded-2xl overflow-hidden glow-cyan" style={{ border: "1px solid #1e3a5f" }}>
-            <div className="flex items-center gap-2 px-4 py-3 bg-code-bg border-b" style={{ borderColor: "#1e3a5f" }}>
+          <div
+            className="rounded-2xl overflow-hidden glow-cyan"
+            style={{ border: "1px solid #1e3a5f" }}
+          >
+            <div
+              className="flex items-center gap-2 px-4 py-3 bg-code-bg border-b"
+              style={{ borderColor: "#1e3a5f" }}
+            >
               <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
               <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
               <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-              <span className="ml-auto text-xs text-slate-500 font-mono">project.ts</span>
+              <span className="ml-auto text-xs text-slate-500 font-mono">
+                project.ts
+              </span>
             </div>
             <div className="bg-code-bg p-5 sm:p-6">
               <pre className="text-xs sm:text-sm font-mono text-slate-300 leading-relaxed overflow-x-auto">
                 <code>
                   {codeSnippet.split("\n").map((line, i) => (
                     <div key={i} className="flex gap-4">
-                      <span className="select-none text-slate-600 w-4 shrink-0 text-right">{i + 1}</span>
+                      <span className="select-none text-slate-600 w-4 shrink-0 text-right">
+                        {i + 1}
+                      </span>
                       <span
                         dangerouslySetInnerHTML={{
                           __html: line
-                            .replace(/\/\/.*/g, (m) => `<span style="color:#64748b">${m}</span>`)
-                            .replace(/"([^"]+)"/g, `<span style="color:#38bdf8">"$1"</span>`)
-                            .replace(/\b(const|await|console\.log)\b/g, `<span style="color:#7c3aed">$1</span>`)
-                            .replace(/\b(yourCodingBro|project)\b/g, `<span style="color:#38bdf8">$1</span>`),
+                            .replace(
+                              /\/\/.*/g,
+                              (m) => `<span style="color:#64748b">${m}</span>`
+                            )
+                            .replace(
+                              /"([^"]+)"/g,
+                              `<span style="color:#38bdf8">"$1"</span>`
+                            )
+                            .replace(
+                              /\b(const|await|console\.log)\b/g,
+                              `<span style="color:#7c3aed">$1</span>`
+                            )
+                            .replace(
+                              /\b(yourCodingBro|project)\b/g,
+                              `<span style="color:#38bdf8">$1</span>`
+                            ),
                         }}
                       />
                     </div>
@@ -174,8 +218,18 @@ export default function Hero() {
 
       <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-fg-4">
         <span className="text-xs tracking-widest uppercase">Scroll</span>
-        <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        <svg
+          className="w-5 h-5 animate-bounce"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.5}
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </div>
     </section>

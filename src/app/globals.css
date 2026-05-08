@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Wire shadcn's dark: variant to our data-theme attribute */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ─── Design tokens ────────────────────────────────────────── */
 :root {
@@ -8,7 +13,7 @@
   --elevated:     #112240;
   --navy:         #1a3f6f;
   --line:         #1e3a5f;
-  --code-bg:      #0c1a2e; /* always dark — code editors don't flip */
+  --code-bg:      #0c1a2e;
 
   /* Brand */
   --brand:        #2563eb;
@@ -18,9 +23,30 @@
 
   /* Foreground */
   --fg:           #ffffff;
-  --fg-2:         #cbd5e1;  /* secondary text  */
-  --fg-3:         #94a3b8;  /* muted text      */
-  --fg-4:         #64748b;  /* subtle text     */
+  --fg-2:         #cbd5e1;
+  --fg-3:         #94a3b8;
+  --fg-4:         #64748b;
+
+  /* ── shadcn semantic tokens (mapped to our palette) ── */
+  --background:         var(--bg);
+  --foreground:         var(--fg);
+  --card:               var(--surface);
+  --card-foreground:    var(--fg);
+  --popover:            var(--surface);
+  --popover-foreground: var(--fg);
+  --primary:            var(--brand);
+  --primary-foreground: #ffffff;
+  --secondary:          var(--elevated);
+  --secondary-foreground: var(--fg-2);
+  --muted:              var(--elevated);
+  --muted-foreground:   var(--fg-3);
+  --accent-color:       var(--elevated);
+  --accent-foreground:  var(--fg-2);
+  --destructive:        oklch(0.577 0.245 27.325);
+  --border:             var(--line);
+  --input:              var(--line);
+  --ring:               var(--brand);
+  --radius:             0.625rem;
 }
 
 [data-theme="light"] {
@@ -28,9 +54,7 @@
   --surface:      #ffffff;
   --elevated:     #e2eaf4;
   --line:         #cbd5e1;
-
-  --accent:       #0284c7;  /* deeper for light-bg contrast */
-
+  --accent:       #0284c7;
   --fg:           #0f172a;
   --fg-2:         #334155;
   --fg-3:         #64748b;
@@ -39,6 +63,7 @@
 
 /* ─── Tailwind theme ───────────────────────────────────────── */
 @theme inline {
+  /* Our tokens */
   --color-bg:          var(--bg);
   --color-surface:     var(--surface);
   --color-elevated:    var(--elevated);
@@ -54,8 +79,33 @@
   --color-fg-3:        var(--fg-3);
   --color-fg-4:        var(--fg-4);
 
+  /* shadcn semantic tokens — required for bg-primary, border-input, etc. */
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-destructive:         var(--destructive);
+  --color-border:              var(--border);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* shadcn radius scale */
+  --radius-sm:  calc(var(--radius) * 0.6);
+  --radius-md:  calc(var(--radius) * 0.8);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
 }
 
 /* ─── Base ─────────────────────────────────────────────────── */
@@ -75,7 +125,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── Logo theme switching (FOUC-safe via data-theme on <html>) */
+/* ─── Logo theme switching ─────────────────────────────────── */
 .logo-light { display: none; }
 .logo-dark  { display: block; }
 
