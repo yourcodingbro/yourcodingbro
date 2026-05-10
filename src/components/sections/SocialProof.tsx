@@ -1,30 +1,34 @@
 import { Star } from "lucide-react";
-import SectionBadge from "@/components/SectionBadge";
+import SectionBadgeDivider from "@/components/SectionBadgeDivider";
 
 const testimonials = [
   {
-    quote: "Working with YourCodingBro was a game-changer. He delivered our MVP in 3 weeks — clean code, zero drama, and it just works.",
+    quote:
+      "Working with YourCodingBro was a game-changer. He delivered our MVP in 3 weeks — clean code, zero drama, and it just works.",
     author: "Sarah Chen",
     role: "Founder, LaunchPad AI",
     avatar: "SC",
     stars: 5,
   },
   {
-    quote: "I've hired 5 developers before. None came close to the speed and quality I got here. My app went from idea to App Store in 6 weeks.",
+    quote:
+      "I've hired 5 developers before. None came close to the speed and quality I got here. My app went from idea to App Store in 6 weeks.",
     author: "Marcus Williams",
     role: "CEO, FitTrackr",
     avatar: "MW",
     stars: 5,
   },
   {
-    quote: "The codebase is so clean I'm still surprised. Excellent TypeScript, great architecture. Our in-house team took it over with zero headaches.",
+    quote:
+      "The codebase is so clean I'm still surprised. Excellent TypeScript, great architecture. Our in-house team took it over with zero headaches.",
     author: "Elena Kowalski",
     role: "CTO, Finova",
     avatar: "EK",
     stars: 5,
   },
   {
-    quote: "Communication was top-tier. Daily updates, quick responses, honest estimates. Exactly what a startup needs. Will hire again without hesitation.",
+    quote:
+      "Communication was top-tier. Daily updates, quick responses, honest estimates. Exactly what a startup needs. Will hire again without hesitation.",
     author: "James Oduya",
     role: "Co-founder, Stackly",
     avatar: "JO",
@@ -33,9 +37,9 @@ const testimonials = [
 ];
 
 const stats = [
-  { value: "50+",     label: "Projects Shipped" },
-  { value: "30+",     label: "Happy Clients" },
-  { value: "4.9/5",   label: "Average Rating" },
+  { value: "50+", label: "Projects Shipped" },
+  { value: "30+", label: "Happy Clients" },
+  { value: "4.9/5", label: "Average Rating" },
   { value: "3 weeks", label: "Avg. MVP Time" },
 ];
 
@@ -51,19 +55,23 @@ function Stars({ count }: { count: number }) {
 
 export default function SocialProof() {
   return (
-    <section id="testimonials" className="py-12 sm:py-20 relative overflow-hidden w-full">
+    <section
+      id="testimonials"
+      className="py-12 sm:py-20 relative overflow-hidden w-full"
+    >
       <div className="absolute -left-32 top-1/4 w-64 h-64 bg-brand/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -right-32 bottom-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionBadgeDivider>Client results</SectionBadgeDivider>
+
         <div className="text-center mb-8 sm:mb-16">
-          <SectionBadge className="mb-5">Client results</SectionBadge>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
-            Trusted by founders{" "}
-            <span className="gradient-text">who ship.</span>
+            Trusted by founders <span className="gradient-text">who ship.</span>
           </h2>
           <p className="text-fg-3 max-w-xl mx-auto text-base sm:text-lg">
-            Real projects. Real results. Here&apos;s what clients say after we&apos;ve shipped together.
+            Real projects. Real results. Here&apos;s what clients say after
+            we&apos;ve shipped together.
           </p>
         </div>
 
@@ -73,7 +81,9 @@ export default function SocialProof() {
               key={s.label}
               className="bg-surface px-6 py-6 sm:py-8 text-center hover:bg-elevated transition-colors"
             >
-              <div className="text-2xl sm:text-3xl font-bold gradient-text mb-1">{s.value}</div>
+              <div className="text-2xl sm:text-3xl font-bold gradient-text mb-1">
+                {s.value}
+              </div>
               <div className="text-xs sm:text-sm text-fg-4">{s.label}</div>
             </div>
           ))}
@@ -94,7 +104,9 @@ export default function SocialProof() {
                   {t.avatar}
                 </div>
                 <div>
-                  <div className="text-fg font-semibold text-sm">{t.author}</div>
+                  <div className="text-fg font-semibold text-sm">
+                    {t.author}
+                  </div>
                   <div className="text-fg-4 text-xs">{t.role}</div>
                 </div>
               </div>

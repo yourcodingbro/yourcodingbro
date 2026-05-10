@@ -7,8 +7,8 @@ import Logo from "@/components/Logo";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
   { label: "Why Us", href: "#why-us" },
+  { label: "Services", href: "#services" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
