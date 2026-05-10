@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Button, ButtonLink } from "@/components/ui/button";
 import Logo from "@/components/Logo";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
@@ -79,25 +80,29 @@ export default function Navbar() {
 
             <div className="hidden md:flex items-center gap-4">
               <ThemeSwitcher />
-              <a
+              <ButtonLink
                 href="#contact"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-brand text-white hover:bg-brand-hover transition-all duration-200 glow-blue"
+                size="lg"
+                style="pill"
+                icon={<ArrowRight className="w-4 h-4" />}
+                iconPosition="after"
+                className="bg-brand text-white hover:bg-brand-hover glow-blue"
               >
                 Start a Project
-                <ArrowRight className="w-4 h-4" />
-              </a>
+              </ButtonLink>
             </div>
 
             <div className="md:hidden flex items-center gap-1">
               <ThemeSwitcher />
-              <button
-                className="p-2 rounded-lg text-fg-3 hover:text-fg hover:bg-fg/5 transition-colors"
+              <Button
+                variant="ghost"
+                size="icon"
+                icon={<HamburgerIcon open={menuOpen} />}
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle menu"
                 aria-expanded={menuOpen}
-              >
-                <HamburgerIcon open={menuOpen} />
-              </button>
+                className="text-fg-3 hover:text-fg hover:bg-fg/5"
+              />
             </div>
           </div>
         </nav>
@@ -142,14 +147,17 @@ export default function Navbar() {
               </nav>
 
               <div className="px-4 pb-8 shrink-0">
-                <a
+                <ButtonLink
                   href="#contact"
+                  size="lg"
+                  style="pill"
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full text-sm font-semibold bg-brand text-white hover:bg-brand-hover transition-all glow-blue"
+                  icon={<ArrowRight className="w-4 h-4" />}
+                  iconPosition="after"
+                  className="w-full bg-brand text-white hover:bg-brand-hover glow-blue"
                 >
                   Start a Project
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                </ButtonLink>
               </div>
             </motion.div>
           </>

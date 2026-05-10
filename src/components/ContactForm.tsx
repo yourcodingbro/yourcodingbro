@@ -191,19 +191,14 @@ export default function ContactForm() {
                 <Button
                   type="submit"
                   disabled={submitState === "loading"}
+                  icon={submitState === "loading"
+                    ? <Loader2 className="w-4 h-4 animate-spin" />
+                    : <Send className="w-4 h-4" />
+                  }
+                  iconPosition={submitState === "loading" ? "before" : "after"}
                   className="w-full h-auto py-3.5 rounded-xl bg-brand hover:bg-brand-hover text-white font-semibold glow-blue text-sm sm:text-base gap-2"
                 >
-                  {submitState === "loading" ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      Send Message
-                      <Send className="w-4 h-4" />
-                    </>
-                  )}
+                  {submitState === "loading" ? "Sending..." : "Send Message"}
                 </Button>
 
                 <p className="text-center text-xs text-fg-4">

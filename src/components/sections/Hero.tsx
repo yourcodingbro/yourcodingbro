@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
+import { ButtonLink } from "@/components/ui/button";
 import SectionBadge from "@/components/badges/SectionBadge";
 
 const codeSnippet = `// Your idea → production-ready code
@@ -134,19 +135,25 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <a
+            <ButtonLink
               href="#contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white bg-brand hover:bg-brand-hover transition-all duration-200 text-sm sm:text-base glow-blue"
+              size="xl"
+              style="pill"
+              icon={<ArrowRight className="w-4 h-4" />}
+              iconPosition="after"
+              className="w-full sm:w-auto text-white bg-brand hover:bg-brand-hover glow-blue"
             >
               Start Your Project
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
+            </ButtonLink>
+            <ButtonLink
               href="#services"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-fg-2 border border-line hover:border-accent/40 hover:text-fg transition-all duration-200 text-sm sm:text-base"
+              size="xl"
+              style="pill"
+              variant="outline"
+              className="w-full sm:w-auto text-fg-2 border border-line hover:border-accent/40 hover:text-fg"
             >
               See My Services
-            </a>
+            </ButtonLink>
           </div>
         </div>
 
