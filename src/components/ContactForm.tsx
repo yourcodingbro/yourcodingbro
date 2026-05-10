@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import cn from "classnames";
 import { Check, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -152,7 +153,10 @@ export default function ContactForm() {
                     render={({ field }) => (
                       <Select value={field.value} onValueChange={field.onChange}>
                         <SelectTrigger
-                          className={`w-full h-auto px-4 py-3 bg-surface border-line text-fg rounded-xl focus-visible:border-brand focus-visible:ring-brand/30 ${errors.budget ? "border-red-500/60" : ""}`}
+                          className={cn(
+                            "w-full h-auto px-4 py-3 bg-surface border-line text-fg rounded-xl focus-visible:border-brand focus-visible:ring-brand/30",
+                            { "border-red-500/60": !!errors.budget }
+                          )}
                         >
                           <SelectValue placeholder="Select budget range" />
                         </SelectTrigger>
@@ -177,7 +181,7 @@ export default function ContactForm() {
                     rows={4}
                     placeholder="I'm building a SaaS app that helps teams..."
                     aria-invalid={!!errors.message}
-                    className={`${fieldClass} resize-none`}
+                    className={cn(fieldClass, "resize-none")}
                   />
                   {errors.message && <p className="text-xs text-red-400">{errors.message.message}</p>}
                 </div>

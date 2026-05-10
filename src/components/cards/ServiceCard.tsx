@@ -1,3 +1,4 @@
+import cn from "classnames";
 import { CheckCircle2 } from "lucide-react";
 
 interface ServiceCardProps {
@@ -20,7 +21,7 @@ export default function ServiceCard({
   return (
     <div className="gradient-border rounded-2xl p-7 flex flex-col hover:bg-elevated/50 transition-all duration-300">
       <div
-        className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${accent} mb-5 self-start`}
+        className={cn("inline-flex p-3 rounded-xl bg-gradient-to-br mb-5 self-start", accent)}
       >
         <div className="text-white">{icon}</div>
       </div>
