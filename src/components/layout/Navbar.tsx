@@ -11,6 +11,7 @@ import ThemeSwitcher from "@/components/ThemeSwitcher";
 const navLinks = [
   { label: "Why Us", href: "#why-us" },
   { label: "Services", href: "#services" },
+  { label: "Work", href: "#portfolio" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
