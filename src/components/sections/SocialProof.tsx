@@ -53,8 +53,6 @@ export default function SocialProof() {
       <div className="absolute -right-32 bottom-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionBadgeDivider>Client results</SectionBadgeDivider>
-
         <div className="text-center mb-8 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
             Trusted by founders <span className="gradient-text">who ship.</span>
