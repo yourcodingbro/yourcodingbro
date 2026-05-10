@@ -1,50 +1,8 @@
-import { Workflow, Globe, GraduationCap } from "lucide-react";
-import ServiceCard from "@/components/cards/ServiceCard";
+"use client";
 
-const services = [
-  {
-    icon: <Workflow className="w-7 h-7" />,
-    title: "Automation",
-    tagline: "Save hours every week",
-    description:
-      "I design and build automated workflows that eliminate repetitive work, connect your tools, and let your team focus on what actually matters.",
-    bullets: [
-      "Internal process automation",
-      "API & webhook integrations",
-      "Scheduled jobs & triggers",
-      "Custom internal dashboards",
-    ],
-    accent: "from-brand to-violet",
-  },
-  {
-    icon: <Globe className="w-7 h-7" />,
-    title: "Web Development",
-    tagline: "From idea to production",
-    description:
-      "Full-stack web applications built to scale — from polished landing pages to complex SaaS products, pixel-perfect and production-ready.",
-    bullets: [
-      "Frontend — React, Next.js, Tailwind CSS",
-      "Backend — Node.js, REST & GraphQL APIs",
-      "Database design & optimisation",
-      "Deployment, CI/CD & monitoring",
-    ],
-    accent: "from-brand to-accent",
-  },
-  {
-    icon: <GraduationCap className="w-7 h-7" />,
-    title: "Tutoring",
-    tagline: "Learn at your pace",
-    description:
-      "1-on-1 coding sessions tailored to your level and goals — whether you're just starting out or levelling up to land your next role.",
-    bullets: [
-      "Web development fundamentals",
-      "React, TypeScript & modern JavaScript",
-      "Code reviews & best practices",
-      "Interview prep & career coaching",
-    ],
-    accent: "from-violet to-accent",
-  },
-];
+import { useState } from "react";
+import ServiceCard from "@/components/cards/ServiceCard";
+import { services } from "@/lib/constants/services";
 
 const stack = [
   "Next.js",
@@ -60,6 +18,11 @@ const stack = [
 ];
 
 export default function Services() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const handleToggle = (index: number) =>
+    setExpandedIndex((prev) => (prev === index ? null : index));
+
   return (
     <section id="services" className="py-12 sm:py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/30 to-transparent pointer-events-none" />
@@ -78,9 +41,14 @@ export default function Services() {
         </div>
 
         {/* Service cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-14 sm:mb-20">
-          {services.map((serviceProps) => (
-            <ServiceCard key={serviceProps.title} {...serviceProps} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-14 sm:mb-20 items-start">
+          {services.map((serviceProps, i) => (
+            <ServiceCard
+              key={serviceProps.title}
+              {...serviceProps}
+              expanded={expandedIndex === i}
+              onToggle={() => handleToggle(i)}
+            />
           ))}
         </div>
 

@@ -1,5 +1,6 @@
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa6";
 import { Box } from "lucide-react";
+import { serviceNames } from "@/lib/constants/services";
 
 const currentYear = new Date().getFullYear();
 
@@ -48,13 +49,7 @@ export default function Footer() {
               Services
             </h4>
             <ul className="flex flex-col gap-2.5">
-              {[
-                "Web App Development",
-                "MVP Building",
-                "API Development",
-                "Code Review",
-                "Tech Consulting",
-              ].map((item) => (
+              {serviceNames.map((item) => (
                 <li key={item}>
                   <span className="text-fg-4 text-sm hover:text-fg-2 transition-colors cursor-default">
                     {item}
