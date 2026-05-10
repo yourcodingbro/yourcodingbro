@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import cn from "classnames";
 import {
   Carousel,
   CarouselContent,
@@ -18,26 +19,17 @@ import type { PortfolioItem } from "@/lib/constants/portfolio";
 export default function Portfolio() {
   const [api, setApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
 
   useEffect(() => {
     if (!api) return;
 
     const handleSelect = () => setSelectedIndex(api.selectedScrollSnap());
-    const handleReInit = () => {
-      setScrollSnaps(api.scrollSnapList());
-      setSelectedIndex(api.selectedScrollSnap());
-    };
 
-    setScrollSnaps(api.scrollSnapList());
-    setSelectedIndex(api.selectedScrollSnap());
     api.on("select", handleSelect);
-    api.on("reInit", handleReInit);
 
     return () => {
       api.off("select", handleSelect);
-      api.off("reInit", handleReInit);
     };
   }, [api]);
 
@@ -84,16 +76,17 @@ export default function Portfolio() {
 
           {/* Dots */}
           <div className="flex items-center justify-center gap-2 mt-5">
-            {scrollSnaps.map((_, i) => (
+            {(api?.scrollSnapList() ?? []).map((_, i) => (
               <button
                 key={i}
                 onClick={() => api?.scrollTo(i)}
                 aria-label={`Go to slide ${i + 1}`}
-                className={`rounded-full transition-all duration-200 ${
+                className={cn(
+                  "rounded-full transition-all duration-200",
                   i === selectedIndex
                     ? "w-5 h-1.5 bg-accent"
                     : "w-1.5 h-1.5 bg-line hover:bg-fg-4"
-                }`}
+                )}
               />
             ))}
           </div>

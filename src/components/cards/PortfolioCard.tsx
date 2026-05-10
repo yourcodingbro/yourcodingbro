@@ -2,7 +2,11 @@
 
 import { ExternalLink } from "lucide-react";
 import cn from "classnames";
-import type { PortfolioItem, ProjectType, ProjectStatus } from "@/lib/constants/portfolio";
+import type {
+  PortfolioItem,
+  ProjectType,
+  ProjectStatus,
+} from "@/lib/constants/portfolio";
 
 export const typeStyle: Record<ProjectType, string> = {
   "App Development": "bg-brand/10 text-brand border-brand/25",
@@ -30,7 +34,7 @@ export default function PortfolioCard({ item, onClick }: Props) {
     <button
       data-card
       onClick={onClick}
-      className="gradient-border rounded-2xl overflow-hidden flex flex-col text-left group cursor-pointer w-full transition-all duration-300 hover:scale-[1.02] hover:bg-elevated/50"
+      className="gradient-border rounded-2xl overflow-hidden flex flex-col text-left group cursor-pointer w-full transition-all duration-300 hover:bg-elevated/50"
     >
       <div
         className={cn(
@@ -42,7 +46,9 @@ export default function PortfolioCard({ item, onClick }: Props) {
       </div>
 
       <div className="p-5 flex flex-col gap-3">
-        <h3 className="text-fg font-semibold text-base leading-snug">{item.title}</h3>
+        <h3 className="text-fg font-semibold text-base leading-snug">
+          {item.title}
+        </h3>
 
         <div className="flex flex-wrap gap-1.5">
           <span
