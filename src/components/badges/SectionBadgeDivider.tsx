@@ -1,4 +1,4 @@
-import SectionBadge from "@/components/SectionBadge";
+import SectionBadge from "@/components/badges/SectionBadge";
 
 type SectionBadgeDividerProps = {
   children: React.ReactNode;

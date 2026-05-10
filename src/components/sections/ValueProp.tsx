@@ -6,10 +6,10 @@ import {
   BarChart3,
   MessageCircle,
 } from "lucide-react";
-import SectionBadge from "@/components/SectionBadge";
-import SectionBadgeDivider from "@/components/SectionBadgeDivider";
+import SectionBadgeDivider from "@/components/badges/SectionBadgeDivider";
+import ValueCard from "@/components/cards/ValueCard";
 
-const features = [
+const values = [
   {
     icon: <Zap className="w-6 h-6" />,
     title: "Fast Delivery",
@@ -100,23 +100,8 @@ export default function ValueProp() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-14 sm:mb-20">
-          {features.map((f) => (
-            <div
-              key={f.title}
-              className="group gradient-border rounded-2xl p-6 hover:bg-elevated/50 transition-all duration-300 cursor-default"
-            >
-              <div
-                className={`inline-flex p-2.5 rounded-xl bg-gradient-to-br ${f.accent} mb-4`}
-              >
-                <div className="text-white">{f.icon}</div>
-              </div>
-              <h3 className="text-fg font-semibold text-base sm:text-lg mb-2 group-hover:text-accent transition-colors">
-                {f.title}
-              </h3>
-              <p className="text-fg-3 text-sm leading-relaxed">
-                {f.description}
-              </p>
-            </div>
+          {values.map((valueProps) => (
+            <ValueCard key={valueProps.title} {...valueProps} />
           ))}
         </div>
 
@@ -137,14 +122,14 @@ export default function ValueProp() {
 
           <div className="flex flex-col gap-6">
             {reasons.map((r) => (
-              <div key={r.number} className="flex gap-5 group">
+              <div key={r.number} className="flex gap-5">
                 <div className="shrink-0 w-10 h-10 rounded-xl bg-elevated border border-line flex items-center justify-center group-hover:border-brand/50 transition-colors">
                   <span className="text-xs font-bold text-accent">
                     {r.number}
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-fg font-semibold text-sm sm:text-base mb-1 group-hover:text-accent transition-colors">
+                  <h3 className="text-fg font-semibold text-sm sm:text-base mb-1">
                     {r.title}
                   </h3>
                   <p className="text-fg-3 text-sm leading-relaxed">

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
-import SectionBadge from "@/components/SectionBadge";
+import SectionBadge from "@/components/badges/SectionBadge";
 
 const codeSnippet = `// Your idea → production-ready code
 const project = await yourCodingBro.build({

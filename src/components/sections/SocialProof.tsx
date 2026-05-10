@@ -1,5 +1,5 @@
-import { Star } from "lucide-react";
-import SectionBadgeDivider from "@/components/SectionBadgeDivider";
+import SectionBadgeDivider from "@/components/badges/SectionBadgeDivider";
+import TestimonialCard from "@/components/cards/TestimonialCard";
 
 const testimonials = [
   {
@@ -43,16 +43,6 @@ const stats = [
   { value: "3 weeks", label: "Avg. MVP Time" },
 ];
 
-function Stars({ count }: { count: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="w-4 h-4 text-accent fill-current" />
-      ))}
-    </div>
-  );
-}
-
 export default function SocialProof() {
   return (
     <section
@@ -90,27 +80,11 @@ export default function SocialProof() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-          {testimonials.map((t) => (
-            <div
-              key={t.author}
-              className="gradient-border rounded-2xl p-6 sm:p-7 hover:bg-elevated/40 transition-all duration-300"
-            >
-              <Stars count={t.stars} />
-              <blockquote className="mt-4 text-fg-2 text-sm sm:text-base leading-relaxed">
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
-              <div className="mt-5 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-accent flex items-center justify-center text-white text-sm font-bold shrink-0">
-                  {t.avatar}
-                </div>
-                <div>
-                  <div className="text-fg font-semibold text-sm">
-                    {t.author}
-                  </div>
-                  <div className="text-fg-4 text-xs">{t.role}</div>
-                </div>
-              </div>
-            </div>
+          {testimonials.map((testimonialProps) => (
+            <TestimonialCard
+              key={testimonialProps.author}
+              {...testimonialProps}
+            />
           ))}
         </div>
       </div>

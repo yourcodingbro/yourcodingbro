@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import SectionBadge from "@/components/SectionBadge";
+import SectionBadge from "@/components/badges/SectionBadge";
 import {
   Select,
   SelectContent,

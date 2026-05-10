@@ -1,5 +1,5 @@
-import { Workflow, Globe, GraduationCap, CheckCircle2 } from "lucide-react";
-import SectionBadge from "@/components/SectionBadge";
+import { Workflow, Globe, GraduationCap } from "lucide-react";
+import ServiceCard from "@/components/cards/ServiceCard";
 
 const services = [
   {
@@ -79,41 +79,8 @@ export default function Services() {
 
         {/* Service cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-14 sm:mb-20">
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className="group gradient-border rounded-2xl p-7 flex flex-col hover:bg-elevated/50 transition-all duration-300"
-            >
-              {/* Icon */}
-              <div
-                className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${s.accent} mb-5 self-start`}
-              >
-                <div className="text-white">{s.icon}</div>
-              </div>
-
-              {/* Title & tagline */}
-              <h3 className="text-fg font-bold text-xl mb-1 group-hover:text-accent transition-colors">
-                {s.title}
-              </h3>
-              <p className="text-accent text-xs font-semibold uppercase tracking-widest mb-4">
-                {s.tagline}
-              </p>
-
-              {/* Description */}
-              <p className="text-fg-3 text-sm leading-relaxed mb-6">
-                {s.description}
-              </p>
-
-              {/* Bullets */}
-              <ul className="flex flex-col gap-2.5 mt-auto">
-                {s.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                    <span className="text-fg-2 text-sm">{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {services.map((serviceProps) => (
+            <ServiceCard key={serviceProps.title} {...serviceProps} />
           ))}
         </div>
 
