@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 const VISIBLE_COUNT = 4;
 
-interface ServiceCardProps {
+type ServiceCardProps = {
   icon: React.ReactNode;
   title: string;
   tagline: string;

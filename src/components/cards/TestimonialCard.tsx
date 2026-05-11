@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 
-interface TestimonialCardProps {
+type TestimonialCardProps = {
   quote: string;
   author: string;
   role: string;

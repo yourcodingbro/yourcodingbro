@@ -8,7 +8,7 @@ export type ProjectType =
 
 export type ProjectStatus = "Live" | "Offline" | "In Progress" | "Case Study";
 
-export interface PortfolioItem {
+export type PortfolioItem = {
   id: string;
   title: string;
   gradient: string;

@@ -21,7 +21,7 @@ export const statusStyle: Record<ProjectStatus, string> = {
   "Case Study": "bg-brand/10 text-brand border-brand/25",
 };
 
-interface Props {
+type Props = {
   item: PortfolioItem;
   onClick: () => void;
 }

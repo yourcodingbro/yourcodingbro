@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { typeStyle, statusStyle } from "@/components/cards/PortfolioCard";
 import type { PortfolioItem } from "@/types/portfolio";
 
-interface Props {
+type Props = {
   item: PortfolioItem | null;
   onClose: () => void;
 }

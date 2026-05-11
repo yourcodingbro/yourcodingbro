@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 import cn from "classnames";
 import { Button } from "@/components/ui/button";
 
-interface ModalProps {
+type ModalProps = {
   open: boolean;
   onClose: () => void;
   children: React.ReactNode;

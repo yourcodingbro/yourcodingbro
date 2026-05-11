@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
-interface SectionBadgeProps {
+type SectionBadgeProps = {
   children: React.ReactNode;
   className?: string;
 }

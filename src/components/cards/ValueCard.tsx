@@ -1,6 +1,6 @@
 import cn from "classnames";
 
-interface ValueCardProps {
+type ValueCardProps = {
   icon: React.ReactNode;
   title: string;
   description: string;

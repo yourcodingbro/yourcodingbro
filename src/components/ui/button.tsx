@@ -41,12 +41,11 @@ const buttonVariants = cva(
   }
 );
 
-interface ButtonProps
-  extends Omit<ButtonPrimitive.Props, "style">,
-    VariantProps<typeof buttonVariants> {
-  icon?: React.ReactNode;
-  iconPosition?: "before" | "after";
-}
+type ButtonProps = Omit<ButtonPrimitive.Props, "style"> &
+  VariantProps<typeof buttonVariants> & {
+    icon?: React.ReactNode;
+    iconPosition?: "before" | "after";
+  };
 
 function Button({
   className,
@@ -71,12 +70,11 @@ function Button({
   );
 }
 
-interface ButtonLinkProps
-  extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "style">,
-    VariantProps<typeof buttonVariants> {
-  icon?: React.ReactNode;
-  iconPosition?: "before" | "after";
-}
+type ButtonLinkProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "style"> &
+  VariantProps<typeof buttonVariants> & {
+    icon?: React.ReactNode;
+    iconPosition?: "before" | "after";
+  };
 
 function ButtonLink({
   className,
