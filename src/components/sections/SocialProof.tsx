@@ -1,47 +1,5 @@
-import SectionBadgeDivider from "@/components/badges/SectionBadgeDivider";
 import TestimonialCard from "@/components/cards/TestimonialCard";
-
-const testimonials = [
-  {
-    quote:
-      "Working with YourCodingBro was a game-changer. He delivered our MVP in 3 weeks — clean code, zero drama, and it just works.",
-    author: "Sarah Chen",
-    role: "Founder, LaunchPad AI",
-    avatar: "SC",
-    stars: 5,
-  },
-  {
-    quote:
-      "I've hired 5 developers before. None came close to the speed and quality I got here. My app went from idea to App Store in 6 weeks.",
-    author: "Marcus Williams",
-    role: "CEO, FitTrackr",
-    avatar: "MW",
-    stars: 5,
-  },
-  {
-    quote:
-      "The codebase is so clean I'm still surprised. Excellent TypeScript, great architecture. Our in-house team took it over with zero headaches.",
-    author: "Elena Kowalski",
-    role: "CTO, Finova",
-    avatar: "EK",
-    stars: 5,
-  },
-  {
-    quote:
-      "Communication was top-tier. Daily updates, quick responses, honest estimates. Exactly what a startup needs. Will hire again without hesitation.",
-    author: "James Oduya",
-    role: "Co-founder, Stackly",
-    avatar: "JO",
-    stars: 5,
-  },
-];
-
-const stats = [
-  { value: "50+", label: "Projects Shipped" },
-  { value: "30+", label: "Happy Clients" },
-  { value: "4.9/5", label: "Average Rating" },
-  { value: "3 weeks", label: "Avg. MVP Time" },
-];
+import { stats, testimonials } from "@/lib/constants/social-proof";
 
 export default function SocialProof() {
   return (
@@ -67,7 +25,7 @@ export default function SocialProof() {
           {stats.map((s) => (
             <div
               key={s.label}
-              className="bg-surface px-6 py-6 sm:py-8 text-center hover:bg-elevated transition-colors"
+              className="bg-surface px-6 py-6 sm:py-8 text-center"
             >
               <div className="text-2xl sm:text-3xl font-bold gradient-text mb-1">
                 {s.value}

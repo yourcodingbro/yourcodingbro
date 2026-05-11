@@ -1,77 +1,111 @@
-export type { ProjectType, ProjectStatus, PortfolioItem } from "@/types/portfolio";
+export type {
+  ProjectType,
+  ProjectStatus,
+  PortfolioItem,
+} from "@/types/portfolio";
 import type { PortfolioItem } from "@/types/portfolio";
 
 export const portfolio: PortfolioItem[] = [
   {
-    id: "saas-dashboard",
-    title: "Analytics SaaS Dashboard",
-    gradient: "from-brand to-violet",
-    type: "SaaS",
+    id: "reelu",
+    title: "Swipe-Based Job Searching Platform",
+    hasImage: false,
+    thumbnail: "from-violet to-brand",
+    type: ["App Development"],
     status: "Live",
     shortDescription:
-      "Real-time analytics dashboard for a B2B SaaS platform with role-based access and custom reporting.",
+      "Fullstack role on a greenfield job platform — built registration, onboarding, a digital CV builder, swipe-based matching, and chat using Next.js and Supabase.",
     description:
-      "Built a full-stack analytics platform for a B2B SaaS company. Features include real-time charts, user management, role-based access control, and a custom report builder. Reduced manual reporting overhead by 80% and gave the team live visibility into key metrics.",
-    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Recharts", "Tailwind CSS"],
+      'Reelu is a greenfield job-searching platform built around a digital CV ("storyboard"), swipe-based job matching, and integrated chat. As one of three developers, I owned the entire user-facing layer: registration and onboarding, the interactive CV builder, swipe matching interactions, match-triggered chat, and the Supabase backend integration. The result is a scalable foundation with clear flows for both candidates and companies.',
+    tags: [
+      "Next.js",
+      "Supabase",
+      "ShadCN",
+      "Tailwind CSS",
+      "Swiper",
+      "Framer Motion",
+    ],
+    link: "https://reelu.io",
   },
   {
-    id: "ecommerce-automation",
-    title: "E-commerce Automation Suite",
-    gradient: "from-violet to-accent",
-    type: "Automation",
+    id: "barkdate",
+    title: "System Rebuild of a Dog Adoption & Event Platform",
+    hasImage: false,
+    thumbnail: "from-emerald-500 to-accent",
+    type: ["App Development", "Web Design"],
     status: "Live",
     shortDescription:
-      "End-to-end order processing and inventory sync across Shopify, Airtable, and Slack.",
+      "Full system rebuild of a dog adoption event platform — redesigned the UI and rebuilt the stack with Next.js and Hasura as system architect and full-stack developer.",
     description:
-      "Designed and built an automation suite that synchronises orders from Shopify into Airtable, triggers Slack notifications for fulfilment teams, and auto-generates weekly inventory reports. Eliminated ~15 hours of manual work per week for the operations team.",
-    tags: ["Node.js", "Shopify API", "Airtable API", "Slack Webhooks", "Cron"],
+      "A dog adoption event platform for animal shelters was in need of a complete technical overhaul. Taking on the role of system architect and full-stack developer, I defined the overall architecture and data flow, rebuilt the frontend in Next.js, and implemented the backend layer with Hasura. The redesigned interface makes it easy for shelters to list dogs and manage events, and for visitors to browse and engage — resulting in a modern, scalable platform ready for future growth. The admin interface was later built on top of this architecture by another developer using Retool.",
+    tags: ["Next.js", "GraphQL", "Hasura", "Resend", "ShadCN", "Tailwind CSS"],
+    link: "https://barkdate.com",
   },
   {
-    id: "agency-website",
-    title: "Creative Agency Website",
-    gradient: "from-accent to-brand",
-    type: "Web Design",
-    status: "Live",
-    shortDescription:
-      "High-performance marketing site for a creative agency with headless CMS and contact integrations.",
-    description:
-      "Designed and developed a bespoke marketing website for a creative agency. Built on Next.js with a headless CMS (Sanity), custom animations, and a contact pipeline backed by Resend. Achieved a 98 Lighthouse score at launch.",
-    tags: ["Next.js", "Sanity CMS", "Framer Motion", "Tailwind CSS", "Resend"],
-  },
-  {
-    id: "api-optimisation",
-    title: "API Performance Overhaul",
-    gradient: "from-brand to-accent",
-    type: "Optimisation",
-    status: "Case Study",
-    shortDescription:
-      "Reduced API response times by 70% through query optimisation, caching, and CDN offloading.",
-    description:
-      "Audited and refactored a Node.js REST API returning 4-second average response times under load. Identified N+1 queries, introduced Redis caching for hot paths, and moved static assets to a CDN. Outcome: p95 latency dropped from 4 s to under 300 ms.",
-    tags: ["Node.js", "PostgreSQL", "Redis", "AWS CloudFront", "Datadog"],
-  },
-  {
-    id: "lms",
-    title: "Learning Management System",
-    gradient: "from-violet to-brand",
-    type: "App Development",
+    id: "pdu-sbc",
+    title: "Embedded Software for Smart Power Distribution Unit",
+    hasImage: false,
+    thumbnail: "from-slate-500 to-brand",
+    type: ["App Development", "Automation"],
     status: "In Progress",
     shortDescription:
-      "Custom LMS with live code environments, progress tracking, and instructor dashboards.",
+      "Built the software layer for a smart PDU — backend telemetry service, PostgreSQL data layer, gRPC client, and a real-time monitoring frontend.",
     description:
-      "Building a tailored LMS for a coding bootcamp. Students get in-browser code sandboxes, auto-graded challenges, and progress dashboards. Instructors have a content authoring tool and cohort analytics. Launching Q3 2026.",
-    tags: ["Next.js", "TypeScript", "Supabase", "Monaco Editor", "Prisma"],
+      "A smart Power Distribution Unit (PDU-SBC) required a dedicated software layer for monitoring electrical parameters and device telemetry. Working alongside a hardware engineer who handled CAN bus communication and the gRPC server, I built the backend telemetry service, the PostgreSQL data layer, the gRPC client for inter-service communication, and the frontend monitoring interface. The result is a modular, maintainable system providing near real-time monitoring with reliable inter-service communication and scheduled data updates.",
+    tags: [
+      "Node.js",
+      "Next.js",
+      "PostgreSQL",
+      "gRPC",
+      "Modbus",
+      "SNMP",
+      "Recharts",
+      "ShadCN",
+      "Tailwind CSS",
+    ],
   },
   {
-    id: "crm-integration",
-    title: "CRM Integration Pipeline",
-    gradient: "from-accent to-violet",
-    type: "Integration",
-    status: "Case Study",
+    id: "sugarmozi",
+    title: "System Rebuild of a Legacy Cinema Platform",
+    hasImage: false,
+    thumbnail: "from-orange-500 to-violet",
+    type: ["App Development", "Web Design"],
+    status: "Live",
     shortDescription:
-      "Bidirectional sync between HubSpot and a legacy internal CRM with conflict resolution.",
+      "Lead frontend rebuild of a legacy cinema platform from scratch — defined the architecture, component system, and implemented auth and ordering flows for Sugár Mozi.",
     description:
-      "A mid-size sales team ran two CRMs simultaneously — HubSpot for new leads and a legacy in-house system for accounts. Built a bidirectional sync pipeline with conflict detection, field mapping, and an admin UI for resolving edge cases. Reduced duplicate data entry to zero.",
-    tags: ["Node.js", "HubSpot API", "PostgreSQL", "BullMQ", "React"],
+      "Sugár Mozi was a legacy cinema platform running on outdated technology that needed a full frontend rebuild to support loyalty cards, barcode scanning, and modern user flows. As lead frontend developer in a team of three, I rebuilt the entire frontend from scratch following Figma designs, defined the project structure, linting rules, and component conventions, and implemented the authentication and ordering flows. The rewrite made the codebase significantly easier to maintain, enabled the new business features, and handled the increased traffic after launch.",
+    tags: ["Next.js", "Tailwind CSS", "Material UI", "Google Maps"],
+    link: "https://sugarmozi.hu",
+  },
+
+  {
+    id: "mentortools",
+    title: "E-Learning Platform UI Modernisation",
+    hasImage: false,
+    thumbnail: "from-brand to-orange-500",
+    type: ["App Development", "SaaS", "Web Design"],
+    status: "Live",
+    shortDescription:
+      "Ongoing UI overhaul of an active SaaS e-learning platform — rolling out a modern, user-friendly interface with zero downtime alongside a live backend team.",
+    description:
+      "Mentortools is an active SaaS e-learning platform that needed a comprehensive UI overhaul without disrupting live operations. Working as the frontend team, I am modernising the entire interface — making it fresher, cleaner, and more user-friendly — while staying in lockstep with the backend team and their custom API framework to ensure synchronised deployments with zero downtime. Updates roll out continuously as the product remains in active use by its existing user base.",
+    tags: ["Next.js", "Material UI", "Vuexy Template", "Tailwind CSS"],
+    link: "https://mentortools.com",
+  },
+
+  {
+    id: "chocoflow",
+    title: "WooCommerce Webshop Speed Optimisation",
+    hasImage: false,
+    thumbnail: "from-amber-500 to-violet",
+    type: ["Optimisation"],
+    status: "Live",
+    shortDescription:
+      "Cut a WooCommerce store's load time from 15–20 seconds down to ~3 seconds — analysed bottlenecks, implemented caching, and eliminated render-blocking resources.",
+    description:
+      "A WooCommerce webshop was taking 15–20 seconds to load, making it nearly unusable for browsing or completing purchases. I analysed the performance bottlenecks, implemented proper caching, optimised front-end asset delivery, and eliminated render-blocking resources. The result: load time dropped to around 3 seconds and the Lighthouse performance score reached 90+, significantly improving usability and overall responsiveness.",
+    tags: ["WordPress", "WooCommerce", "WP Rocket"],
+    link: "https://chocoflow.com",
   },
 ];

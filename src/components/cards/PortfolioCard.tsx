@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import cn from "classnames";
 import { Button } from "@/components/ui/button";
@@ -24,7 +25,7 @@ export const statusStyle: Record<ProjectStatus, string> = {
 type Props = {
   item: PortfolioItem;
   onClick: () => void;
-}
+};
 
 export default function PortfolioCard({ item, onClick }: Props) {
   return (
@@ -34,13 +35,24 @@ export default function PortfolioCard({ item, onClick }: Props) {
       onClick={onClick}
       className="gradient-border rounded-2xl overflow-hidden flex flex-col items-start justify-start text-left w-full h-auto p-0 gap-0 whitespace-normal [background-clip:border-box] active:not-aria-[haspopup]:translate-y-0 group hover:bg-elevated/50 transition-all duration-300"
     >
-      <div
-        className={cn(
-          "w-full aspect-video bg-gradient-to-br flex items-center justify-center shrink-0",
-          item.gradient
+      <div className="relative w-full aspect-video shrink-0">
+        {item.hasImage ? (
+          <Image
+            src={item.thumbnail}
+            alt={item.title}
+            fill
+            className="object-cover"
+          />
+        ) : (
+          <div
+            className={cn(
+              "absolute inset-0 bg-gradient-to-br flex items-center justify-center",
+              item.thumbnail
+            )}
+          >
+            <ExternalLink className="w-8 h-8 text-white/30 group-hover:text-white/60 transition-colors duration-300" />
+          </div>
         )}
-      >
-        <ExternalLink className="w-8 h-8 text-white/30 group-hover:text-white/60 transition-colors duration-300" />
       </div>
 
       <div className="p-5 flex flex-col gap-3">
@@ -49,14 +61,17 @@ export default function PortfolioCard({ item, onClick }: Props) {
         </h3>
 
         <div className="flex flex-wrap gap-1.5">
-          <span
-            className={cn(
-              "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border",
-              typeStyle[item.type]
-            )}
-          >
-            {item.type}
-          </span>
+          {item.type.map((t) => (
+            <span
+              key={t}
+              className={cn(
+                "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border",
+                typeStyle[t]
+              )}
+            >
+              {t}
+            </span>
+          ))}
           <span
             className={cn(
               "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border",

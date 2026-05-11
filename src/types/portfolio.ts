@@ -11,8 +11,9 @@ export type ProjectStatus = "Live" | "Offline" | "In Progress" | "Case Study";
 export type PortfolioItem = {
   id: string;
   title: string;
-  gradient: string;
-  type: ProjectType;
+  thumbnail: string;
+  hasImage: boolean;
+  type: ProjectType[];
   status: ProjectStatus;
   shortDescription: string;
   description: string;

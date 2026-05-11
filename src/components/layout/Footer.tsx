@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa6";
 import { Box } from "lucide-react";
 import { serviceNames } from "@/lib/constants/services";
 
@@ -16,9 +16,9 @@ const socialLinks = [
     icon: <FaLinkedin className="w-5 h-5" />,
   },
   {
-    label: "Twitter / X",
-    href: "https://x.com",
-    icon: <FaTwitter className="w-5 h-5" />,
+    label: "Facebook",
+    href: "https://facebook.com",
+    icon: <FaFacebook className="w-5 h-5" />,
   },
 ];
 
@@ -26,9 +26,9 @@ export default function Footer() {
   return (
     <footer className="border-t border-line bg-bg">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-lg bg-navy border border-brand/40 flex items-center justify-center">
                 <Box className="w-5 h-5 text-accent" />
@@ -50,28 +50,6 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-2.5">
               {serviceNames.map((item) => (
-                <li key={item}>
-                  <span className="text-fg-4 text-sm hover:text-fg-2 transition-colors cursor-default">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Stack */}
-          <div>
-            <h4 className="text-fg font-semibold text-sm mb-4 uppercase tracking-widest">
-              Stack
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              {[
-                "Next.js / React",
-                "TypeScript",
-                "Node.js",
-                "PostgreSQL",
-                "Tailwind CSS",
-              ].map((item) => (
                 <li key={item}>
                   <span className="text-fg-4 text-sm hover:text-fg-2 transition-colors cursor-default">
                     {item}
