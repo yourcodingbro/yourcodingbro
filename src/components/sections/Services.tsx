@@ -51,23 +51,6 @@ export default function Services() {
             />
           ))}
         </div>
-
-        {/* Tech stack */}
-        <div className="text-center">
-          <p className="text-fg-4 text-xs uppercase tracking-widest mb-6">
-            Technologies I work with
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {stack.map((tech) => (
-              <span
-                key={tech}
-                className="px-4 py-2 rounded-full bg-elevated border border-line text-fg-2 text-sm hover:border-accent/40 hover:text-fg transition-all duration-200"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

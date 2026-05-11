@@ -1,5 +1,6 @@
 "use client";
 
+import sanitizeHtml from "sanitize-html";
 import Image from "next/image";
 import cn from "classnames";
 import { ExternalLink } from "lucide-react";
@@ -62,7 +63,18 @@ export default function PortfolioModal({ item, onClose }: Props) {
               </div>
             </div>
 
-            <p className="text-fg-2 text-sm leading-relaxed">{item.description}</p>
+            <div
+              className="text-fg-2 text-sm leading-relaxed"
+              dangerouslySetInnerHTML={{
+                __html: sanitizeHtml(item.description, {
+                  allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img", "span"]),
+                  allowedAttributes: {
+                    ...sanitizeHtml.defaults.allowedAttributes,
+                    "*": ["style", "class"],
+                  },
+                }),
+              }}
+            />
 
             <div className="flex flex-wrap gap-1.5">
               {item.tags.map((tag) => (

@@ -84,7 +84,7 @@ export const portfolio: PortfolioItem[] = [
     title: "E-Learning Platform UI Modernisation",
     hasImage: false,
     thumbnail: "from-brand to-orange-500",
-    type: ["App Development", "SaaS", "Web Design"],
+    type: ["App Development", "SaaS"],
     status: "Live",
     shortDescription:
       "Ongoing UI overhaul of an active SaaS e-learning platform — rolling out a modern, user-friendly interface with zero downtime alongside a live backend team.",
