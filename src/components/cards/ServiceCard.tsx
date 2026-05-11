@@ -57,24 +57,28 @@ export default function ServiceCard({
             <span className="text-fg-2 text-sm">{b}</span>
           </li>
         ))}
-
-        <AnimatePresence initial={false}>
-          {expanded &&
-            extra.map((b, i) => (
-              <motion.li
-                key={b}
-                initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                animate={{ opacity: 1, height: "auto", marginTop: 10 }}
-                exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                transition={{ duration: 0.2, delay: i * 0.04, ease: "easeOut" }}
-                className="flex items-start gap-2.5 overflow-hidden"
-              >
-                <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <span className="text-fg-2 text-sm">{b}</span>
-              </motion.li>
-            ))}
-        </AnimatePresence>
       </ul>
+
+      <AnimatePresence initial={false}>
+        {expanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            style={{ overflow: "hidden" }}
+          >
+            <ul className="flex flex-col gap-2.5 pt-2.5">
+              {extra.map((b) => (
+                <li key={b} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                  <span className="text-fg-2 text-sm">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {hasMore && (
         <div className="pt-8">
