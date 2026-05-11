@@ -2,6 +2,7 @@
 
 import { ExternalLink } from "lucide-react";
 import cn from "classnames";
+import { Button } from "@/components/ui/button";
 import type {
   PortfolioItem,
   ProjectType,
@@ -31,10 +32,11 @@ interface Props {
 
 export default function PortfolioCard({ item, onClick }: Props) {
   return (
-    <button
+    <Button
       data-card
+      variant="ghost"
       onClick={onClick}
-      className="gradient-border rounded-2xl overflow-hidden flex flex-col text-left group cursor-pointer w-full transition-all duration-300 hover:bg-elevated/50"
+      className="gradient-border rounded-2xl overflow-hidden flex flex-col items-start justify-start text-left w-full h-auto p-0 gap-0 whitespace-normal [background-clip:border-box] active:not-aria-[haspopup]:translate-y-0 group hover:bg-elevated/50 transition-all duration-300"
     >
       <div
         className={cn(
@@ -73,6 +75,6 @@ export default function PortfolioCard({ item, onClick }: Props) {
           {item.shortDescription}
         </p>
       </div>
-    </button>
+    </Button>
   );
 }
