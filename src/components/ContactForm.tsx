@@ -5,7 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import cn from "classnames";
-import { Check, Send, Loader2 } from "lucide-react";
+import { Check, Send, Loader2, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -36,12 +36,13 @@ const budgetOptions = [
   { value: "not-sure", label: "Not sure yet" },
 ];
 
-type SubmitState = "idle" | "loading" | "success" | "error";
+type SubmitState = "idle" | "loading" | "success" | "error" | "rate_limited";
 
 const fieldClass = "h-auto px-4 py-3 bg-surface border-line text-fg placeholder:text-fg-4 focus-visible:border-brand focus-visible:ring-brand/30 rounded-xl";
 
 export default function ContactForm() {
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [rateLimitMessage, setRateLimitMessage] = useState("");
 
   const {
     register,
@@ -59,6 +60,12 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      if (res.status === 429) {
+        const data = await res.json();
+        setRateLimitMessage(data.message ?? "Too many messages. Please try again later.");
+        setSubmitState("rate_limited");
+        return;
+      }
       if (!res.ok) throw new Error("Failed to send");
       setSubmitState("success");
       reset();
@@ -114,6 +121,17 @@ export default function ContactForm() {
                 </p>
                 <Button variant="link" className="text-accent" onClick={() => setSubmitState("idle")}>
                   Send another message
+                </Button>
+              </div>
+            ) : submitState === "rate_limited" ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
+                <div className="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/25 flex items-center justify-center">
+                  <Clock className="w-8 h-8 text-amber-400" />
+                </div>
+                <h3 className="text-xl font-bold text-fg">Slow down a bit</h3>
+                <p className="text-fg-3 text-sm max-w-xs">{rateLimitMessage}</p>
+                <Button variant="link" className="text-accent" onClick={() => setSubmitState("idle")}>
+                  Back to form
                 </Button>
               </div>
             ) : (
