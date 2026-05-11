@@ -5,7 +5,7 @@ import { ExternalLink } from "lucide-react";
 import Modal from "@/components/modals/Modal";
 import { ButtonLink } from "@/components/ui/button";
 import { typeStyle, statusStyle } from "@/components/cards/PortfolioCard";
-import type { PortfolioItem } from "@/lib/constants/portfolio";
+import type { PortfolioItem } from "@/types/portfolio";
 
 interface Props {
   item: PortfolioItem | null;

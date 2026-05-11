@@ -14,7 +14,7 @@ import SectionBadgeDivider from "@/components/badges/SectionBadgeDivider";
 import PortfolioCard from "@/components/cards/PortfolioCard";
 import PortfolioModal from "@/components/modals/PortfolioModal";
 import { portfolio } from "@/lib/constants/portfolio";
-import type { PortfolioItem } from "@/lib/constants/portfolio";
+import type { PortfolioItem } from "@/types/portfolio";
 
 export default function Portfolio() {
   const [api, setApi] = useState<CarouselApi>();

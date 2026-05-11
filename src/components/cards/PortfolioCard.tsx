@@ -3,11 +3,7 @@
 import { ExternalLink } from "lucide-react";
 import cn from "classnames";
 import { Button } from "@/components/ui/button";
-import type {
-  PortfolioItem,
-  ProjectType,
-  ProjectStatus,
-} from "@/lib/constants/portfolio";
+import type { PortfolioItem, ProjectType, ProjectStatus } from "@/types/portfolio";
 
 export const typeStyle: Record<ProjectType, string> = {
   "App Development": "bg-brand/10 text-brand border-brand/25",

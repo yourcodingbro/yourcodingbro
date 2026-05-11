@@ -1,24 +1,9 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { contactSchema, budgetOptions } from "@/lib/constants/contact";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
-const schema = z.object({
-  name: z.string().min(2),
-  email: z.email(),
-  budget: z.string().min(1),
-  message: z.string().min(20),
-});
-
-const budgetLabels: Record<string, string> = {
-  "under-1k": "Under $1,000",
-  "1k-5k": "$1,000 – $5,000",
-  "5k-15k": "$5,000 – $15,000",
-  "15k-plus": "$15,000+",
-  "not-sure": "Not sure yet",
-};
 
 export async function POST(req: NextRequest) {
   try {
@@ -36,7 +21,7 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const parsed = schema.safeParse(body);
+    const parsed = contactSchema.safeParse(body);
 
     if (!parsed.success) {
       return NextResponse.json(
@@ -46,7 +31,7 @@ export async function POST(req: NextRequest) {
     }
 
     const { name, email, budget, message } = parsed.data;
-    const budgetLabel = budgetLabels[budget] ?? budget;
+    const budgetLabel = budgetOptions.find((o) => o.value === budget)?.label ?? budget;
 
     await resend.emails.send({
       from: "YourCodingBro Contact <onboarding@resend.dev>",

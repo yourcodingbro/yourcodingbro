@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import cn from "classnames";
 import { Check, Send, Loader2, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import SectionBadge from "@/components/badges/SectionBadge";
+import { budgetOptions, contactSchema, type ContactFormData } from "@/lib/constants/contact";
+import type { SubmitState } from "@/types/contact";
 import {
   Select,
   SelectContent,
@@ -19,26 +20,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const schema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  budget: z.string().min(1, "Please select a budget range"),
-  message: z.string().min(20, "Tell me a bit more — at least 20 characters"),
-});
 
-type FormData = z.infer<typeof schema>;
-
-const budgetOptions = [
-  { value: "under-1k", label: "Under $1,000" },
-  { value: "1k-5k",    label: "$1,000 – $5,000" },
-  { value: "5k-15k",   label: "$5,000 – $15,000" },
-  { value: "15k-plus", label: "$15,000+" },
-  { value: "not-sure", label: "Not sure yet" },
-];
-
-type SubmitState = "idle" | "loading" | "success" | "error" | "rate_limited";
-
-const fieldClass = "h-auto px-4 py-3 bg-surface border-line text-fg placeholder:text-fg-4 focus-visible:border-brand focus-visible:ring-brand/30 rounded-xl";
+const fieldClass =
+  "h-auto px-4 py-3 bg-surface border-line text-fg placeholder:text-fg-4 focus-visible:border-brand focus-visible:ring-brand/30 rounded-lg";
 
 export default function ContactForm() {
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
@@ -50,9 +34,9 @@ export default function ContactForm() {
     reset,
     control,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+  } = useForm<ContactFormData>({ resolver: zodResolver(contactSchema) });
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: ContactFormData) => {
     setSubmitState("loading");
     try {
       const res = await fetch("/api/contact", {
@@ -62,7 +46,9 @@ export default function ContactForm() {
       });
       if (res.status === 429) {
         const data = await res.json();
-        setRateLimitMessage(data.message ?? "Too many messages. Please try again later.");
+        setRateLimitMessage(
+          data.message ?? "Too many messages. Please try again later."
+        );
         setSubmitState("rate_limited");
         return;
       }
@@ -83,7 +69,9 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — copy */}
           <div>
-            <SectionBadge className="mb-5">Let&apos;s build together</SectionBadge>
+            <SectionBadge className="mb-5">
+              Let&apos;s build together
+            </SectionBadge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-5 tracking-tight leading-tight">
               Got a project?{" "}
               <span className="gradient-text">Let&apos;s talk.</span>
@@ -117,9 +105,14 @@ export default function ContactForm() {
                 </div>
                 <h3 className="text-xl font-bold text-fg">Message sent!</h3>
                 <p className="text-fg-3 text-sm max-w-xs">
-                  Thanks for reaching out. I&apos;ll get back to you within 24 hours with next steps.
+                  Thanks for reaching out. I&apos;ll get back to you within 24
+                  hours with next steps.
                 </p>
-                <Button variant="link" className="text-accent" onClick={() => setSubmitState("idle")}>
+                <Button
+                  variant="link"
+                  className="text-accent"
+                  onClick={() => setSubmitState("idle")}
+                >
                   Send another message
                 </Button>
               </div>
@@ -130,15 +123,25 @@ export default function ContactForm() {
                 </div>
                 <h3 className="text-xl font-bold text-fg">Slow down a bit</h3>
                 <p className="text-fg-3 text-sm max-w-xs">{rateLimitMessage}</p>
-                <Button variant="link" className="text-accent" onClick={() => setSubmitState("idle")}>
+                <Button
+                  variant="link"
+                  className="text-accent"
+                  onClick={() => setSubmitState("idle")}
+                >
                   Back to form
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-5">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                noValidate
+                className="flex flex-col gap-5"
+              >
                 {/* Name */}
                 <div className="flex flex-col gap-1.5">
-                  <Label className="text-xs text-fg-3 uppercase tracking-wide">Your Name</Label>
+                  <Label className="text-xs text-fg-3 uppercase tracking-wide">
+                    Your Name
+                  </Label>
                   <Input
                     {...register("name")}
                     type="text"
@@ -146,12 +149,18 @@ export default function ContactForm() {
                     aria-invalid={!!errors.name}
                     className={fieldClass}
                   />
-                  {errors.name && <p className="text-xs text-red-400">{errors.name.message}</p>}
+                  {errors.name && (
+                    <p className="text-xs text-red-400">
+                      {errors.name.message}
+                    </p>
+                  )}
                 </div>
 
                 {/* Email */}
                 <div className="flex flex-col gap-1.5">
-                  <Label className="text-xs text-fg-3 uppercase tracking-wide">Email Address</Label>
+                  <Label className="text-xs text-fg-3 uppercase tracking-wide">
+                    Email Address
+                  </Label>
                   <Input
                     {...register("email")}
                     type="email"
@@ -159,24 +168,34 @@ export default function ContactForm() {
                     aria-invalid={!!errors.email}
                     className={fieldClass}
                   />
-                  {errors.email && <p className="text-xs text-red-400">{errors.email.message}</p>}
+                  {errors.email && (
+                    <p className="text-xs text-red-400">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
 
                 {/* Budget */}
                 <div className="flex flex-col gap-1.5">
-                  <Label className="text-xs text-fg-3 uppercase tracking-wide">Budget Range</Label>
+                  <Label className="text-xs text-fg-3 uppercase tracking-wide">
+                    Budget Range
+                  </Label>
                   <Controller
                     name="budget"
                     control={control}
                     render={({ field }) => (
-                      <Select value={field.value} onValueChange={field.onChange}>
+                      <Select
+                        value={field.value}
+                        onValueChange={field.onChange}
+                      >
                         <SelectTrigger
-                          className={cn(
-                            "w-full h-auto px-4 py-3 bg-surface border-line text-fg rounded-xl focus-visible:border-brand focus-visible:ring-brand/30",
-                            { "border-red-500/60": !!errors.budget }
-                          )}
+                          className={cn(fieldClass, "w-full", {
+                            "border-red-500/60": !!errors.budget,
+                          })}
                         >
-                          <SelectValue placeholder="Select budget range" />
+                          <SelectValue placeholder="Select budget range">
+                            {budgetOptions.find((o) => o.value === field.value)?.label}
+                          </SelectValue>
                         </SelectTrigger>
                         <SelectContent>
                           {budgetOptions.map((opt) => (
@@ -188,20 +207,30 @@ export default function ContactForm() {
                       </Select>
                     )}
                   />
-                  {errors.budget && <p className="text-xs text-red-400">{errors.budget.message}</p>}
+                  {errors.budget && (
+                    <p className="text-xs text-red-400">
+                      {errors.budget.message}
+                    </p>
+                  )}
                 </div>
 
                 {/* Message */}
                 <div className="flex flex-col gap-1.5">
-                  <Label className="text-xs text-fg-3 uppercase tracking-wide">Tell me about your project</Label>
+                  <Label className="text-xs text-fg-3 uppercase tracking-wide">
+                    Tell me about your project
+                  </Label>
                   <Textarea
                     {...register("message")}
                     rows={4}
-                    placeholder="I'm building a SaaS app that helps teams..."
+                    placeholder="I'm building a SaaS app..."
                     aria-invalid={!!errors.message}
                     className={cn(fieldClass, "resize-none")}
                   />
-                  {errors.message && <p className="text-xs text-red-400">{errors.message.message}</p>}
+                  {errors.message && (
+                    <p className="text-xs text-red-400">
+                      {errors.message.message}
+                    </p>
+                  )}
                 </div>
 
                 {submitState === "error" && (
@@ -213,9 +242,12 @@ export default function ContactForm() {
                 <Button
                   type="submit"
                   disabled={submitState === "loading"}
-                  icon={submitState === "loading"
-                    ? <Loader2 className="w-4 h-4 animate-spin" />
-                    : <Send className="w-4 h-4" />
+                  icon={
+                    submitState === "loading" ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )
                   }
                   iconPosition={submitState === "loading" ? "before" : "after"}
                   className="w-full h-auto py-3.5 rounded-xl bg-brand hover:bg-brand-hover text-white font-semibold glow-blue text-sm sm:text-base gap-2"
