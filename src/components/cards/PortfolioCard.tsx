@@ -4,13 +4,17 @@ import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import cn from "classnames";
 import { Button } from "@/components/ui/button";
-import type { PortfolioItem, ProjectType, ProjectStatus } from "@/types/portfolio";
+import type {
+  PortfolioItem,
+  ProjectType,
+  ProjectStatus,
+} from "@/types/project";
 
 export const typeStyle: Record<ProjectType, string> = {
   "App Development": "bg-brand/10 text-brand border-brand/25",
   Automation: "bg-violet/10 text-violet border-violet/25",
-  "Web Design": "bg-accent/10 text-accent border-accent/25",
-  Optimisation: "bg-emerald-500/10 text-emerald-400 border-emerald-500/25",
+  "UI/UX Design": "bg-accent/10 text-accent border-accent/25",
+  Optimization: "bg-emerald-500/10 text-emerald-400 border-emerald-500/25",
   SaaS: "bg-orange-400/10 text-orange-400 border-orange-400/25",
   Integration: "bg-pink-500/10 text-pink-400 border-pink-500/25",
 };
@@ -19,7 +23,6 @@ export const statusStyle: Record<ProjectStatus, string> = {
   Live: "bg-emerald-500/10 text-emerald-400 border-emerald-500/25",
   Offline: "bg-fg-4/10 text-fg-4 border-line",
   "In Progress": "bg-amber-400/10 text-amber-400 border-amber-400/25",
-  "Case Study": "bg-brand/10 text-brand border-brand/25",
 };
 
 type Props = {
@@ -36,7 +39,7 @@ export default function PortfolioCard({ item, onClick }: Props) {
       className="gradient-border rounded-2xl overflow-hidden flex flex-col items-start justify-start text-left w-full h-auto p-0 gap-0 whitespace-normal [background-clip:border-box] active:not-aria-[haspopup]:translate-y-0 group hover:bg-elevated/50 transition-all duration-300"
     >
       <div className="relative w-full aspect-video shrink-0">
-        {item.hasImage ? (
+        {item.has_image ? (
           <Image
             src={item.thumbnail}
             alt={item.title}
@@ -66,7 +69,7 @@ export default function PortfolioCard({ item, onClick }: Props) {
               key={t}
               className={cn(
                 "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border",
-                typeStyle[t]
+                typeStyle[t as ProjectType]
               )}
             >
               {t}
@@ -75,7 +78,7 @@ export default function PortfolioCard({ item, onClick }: Props) {
           <span
             className={cn(
               "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border",
-              statusStyle[item.status]
+              statusStyle[item.status as ProjectStatus]
             )}
           >
             {item.status}
@@ -83,7 +86,7 @@ export default function PortfolioCard({ item, onClick }: Props) {
         </div>
 
         <p className="text-fg-3 text-sm leading-relaxed line-clamp-2">
-          {item.shortDescription}
+          {item.short_desc}
         </p>
       </div>
     </Button>

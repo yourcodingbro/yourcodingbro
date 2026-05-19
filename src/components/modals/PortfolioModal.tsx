@@ -7,7 +7,11 @@ import { ExternalLink } from "lucide-react";
 import Modal from "@/components/modals/Modal";
 import { ButtonLink } from "@/components/ui/button";
 import { typeStyle, statusStyle } from "@/components/cards/PortfolioCard";
-import type { PortfolioItem } from "@/types/portfolio";
+import type {
+  PortfolioItem,
+  ProjectType,
+  ProjectStatus,
+} from "@/types/project";
 
 type Props = {
   item: PortfolioItem | null;
@@ -20,7 +24,7 @@ export default function PortfolioModal({ item, onClose }: Props) {
       {item && (
         <>
           <div className="relative w-full aspect-video shrink-0">
-            {item.hasImage ? (
+            {item.has_image ? (
               <Image
                 src={item.thumbnail}
                 alt={item.title}
@@ -46,7 +50,7 @@ export default function PortfolioModal({ item, onClose }: Props) {
                     key={t}
                     className={cn(
                       "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border",
-                      typeStyle[t]
+                      typeStyle[t as ProjectType]
                     )}
                   >
                     {t}
@@ -55,7 +59,7 @@ export default function PortfolioModal({ item, onClose }: Props) {
                 <span
                   className={cn(
                     "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border",
-                    statusStyle[item.status]
+                    statusStyle[item.status as ProjectStatus]
                   )}
                 >
                   {item.status}
@@ -66,8 +70,11 @@ export default function PortfolioModal({ item, onClose }: Props) {
             <div
               className="text-fg-2 text-sm leading-relaxed"
               dangerouslySetInnerHTML={{
-                __html: sanitizeHtml(item.description, {
-                  allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img", "span"]),
+                __html: sanitizeHtml(item.short_desc, {
+                  allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+                    "img",
+                    "span",
+                  ]),
                   allowedAttributes: {
                     ...sanitizeHtml.defaults.allowedAttributes,
                     "*": ["style", "class"],
@@ -75,6 +82,31 @@ export default function PortfolioModal({ item, onClose }: Props) {
                 }),
               }}
             />
+
+            {[
+              { label: "Problems", items: item.problems },
+              { label: "Challenges", items: item.challanges },
+              { label: "Responsibilities", items: item.responsibilities },
+              { label: "Results", items: item.results },
+            ]
+              .filter((s) => s.items?.length > 0)
+              .map((section) => (
+                <div key={section.label} className="flex flex-col gap-2">
+                  <p className="text-fg-4 text-xs font-semibold uppercase tracking-widest">
+                    {section.label}
+                  </p>
+                  <ul className="flex flex-col gap-1.5">
+                    {section.items!.map((point) => (
+                      <li key={point} className="flex items-start gap-2">
+                        <span className="text-accent shrink-0 mt-px">›</span>
+                        <span className="text-fg-2 text-sm leading-relaxed">
+                          {point}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
 
             <div className="flex flex-wrap gap-1.5">
               {item.tags.map((tag) => (

@@ -13,13 +13,14 @@ import {
 import SectionBadgeDivider from "@/components/badges/SectionBadgeDivider";
 import PortfolioCard from "@/components/cards/PortfolioCard";
 import PortfolioModal from "@/components/modals/PortfolioModal";
-import { portfolio } from "@/lib/constants/portfolio";
-import type { PortfolioItem } from "@/types/portfolio";
+import { useProjects } from "@/hooks/useProjects";
+import type { PortfolioItem } from "@/types/project";
 
 export default function Portfolio() {
   const [api, setApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
+  const { data: projects = [], isLoading, isError } = useProjects();
 
   useEffect(() => {
     if (!api) return;
@@ -49,7 +50,6 @@ export default function Portfolio() {
               </h2>
             </div>
 
-            {/* Desktop arrows — pulled out of the default absolute positioning */}
             <div className="hidden sm:flex items-center gap-2 shrink-0 ml-6 mb-1">
               <CarouselPrevious
                 size="icon"
@@ -62,46 +62,67 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Slides */}
-          <CarouselContent className="-ml-5">
-            {portfolio.map((item) => (
-              <CarouselItem
-                key={item.id}
-                className="pl-5 basis-[85%] sm:basis-1/2 lg:basis-1/3"
-              >
-                <PortfolioCard item={item} onClick={() => setSelected(item)} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
+          {isError ? (
+            <p className="text-fg-4 text-sm text-center py-12">
+              Could not load projects. Please try again later.
+            </p>
+          ) : isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="gradient-border rounded-2xl overflow-hidden animate-pulse"
+                >
+                  <div className="aspect-video bg-elevated" />
+                  <div className="p-5 flex flex-col gap-3">
+                    <div className="h-4 bg-elevated rounded w-3/4" />
+                    <div className="h-3 bg-elevated rounded w-1/2" />
+                    <div className="h-3 bg-elevated rounded w-full" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              <CarouselContent className="-ml-5">
+                {projects.map((item) => (
+                  <CarouselItem
+                    key={item.id}
+                    className="pl-5 basis-[85%] sm:basis-1/2 lg:basis-1/3"
+                  >
+                    <PortfolioCard item={item} onClick={() => setSelected(item)} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
 
-          {/* Dots */}
-          <div className="flex items-center justify-center gap-2 mt-5">
-            {(api?.scrollSnapList() ?? []).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => api?.scrollTo(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                className={cn(
-                  "rounded-full transition-all duration-200",
-                  i === selectedIndex
-                    ? "w-5 h-1.5 bg-accent"
-                    : "w-1.5 h-1.5 bg-line hover:bg-fg-4"
-                )}
-              />
-            ))}
-          </div>
+              <div className="flex items-center justify-center gap-2 mt-5">
+                {(api?.scrollSnapList() ?? []).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => api?.scrollTo(i)}
+                    aria-label={`Go to slide ${i + 1}`}
+                    className={cn(
+                      "rounded-full transition-all duration-200",
+                      i === selectedIndex
+                        ? "w-5 h-1.5 bg-accent"
+                        : "w-1.5 h-1.5 bg-line hover:bg-fg-4"
+                    )}
+                  />
+                ))}
+              </div>
 
-          {/* Mobile arrows */}
-          <div className="flex sm:hidden items-center justify-center gap-3 mt-4">
-            <CarouselPrevious
-              size="icon"
-              className="static translate-y-0 translate-x-0"
-            />
-            <CarouselNext
-              size="icon"
-              className="static translate-y-0 translate-x-0"
-            />
-          </div>
+              <div className="flex sm:hidden items-center justify-center gap-3 mt-4">
+                <CarouselPrevious
+                  size="icon"
+                  className="static translate-y-0 translate-x-0"
+                />
+                <CarouselNext
+                  size="icon"
+                  className="static translate-y-0 translate-x-0"
+                />
+              </div>
+            </>
+          )}
         </Carousel>
       </div>
 
