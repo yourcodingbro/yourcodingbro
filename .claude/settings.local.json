@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i 's/typeStyle\\\\[t as ProjectType\\\\]/typeStyle[t]/' \"C:\\\\Work\\\\projects\\\\yourcodingbro\\\\ycb\\\\src\\\\components\\\\cards\\\\PortfolioCard.tsx\")",
+      "Bash(sed -i 's/statusStyle\\\\[item\\\\.status as ProjectStatus\\\\]/statusStyle[item.status]/' \"C:\\\\Work\\\\projects\\\\yourcodingbro\\\\ycb\\\\src\\\\components\\\\cards\\\\PortfolioCard.tsx\")"
+    ]
+  }
+}

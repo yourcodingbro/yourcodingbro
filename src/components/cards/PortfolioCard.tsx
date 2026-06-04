@@ -69,7 +69,7 @@ export default function PortfolioCard({ item, onClick }: Props) {
               key={t}
               className={cn(
                 "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border",
-                typeStyle[t as ProjectType]
+                typeStyle[t]
               )}
             >
               {t}
@@ -78,7 +78,7 @@ export default function PortfolioCard({ item, onClick }: Props) {
           <span
             className={cn(
               "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border",
-              statusStyle[item.status as ProjectStatus]
+              statusStyle[item.status]
             )}
           >
             {item.status}

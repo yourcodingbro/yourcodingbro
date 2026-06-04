@@ -20,17 +20,19 @@ export type Database = {
           created_at: string
           has_image: boolean
           id: string
+          images: string[]
           link: string | null
           name: string
           problems: string[]
           responsibilities: string[]
           results: string[]
           short_desc: string
-          status: string
+          showcase_order: number | null
+          status: Database["public"]["Enums"]["Project Status"]
           tags: string[]
           thumbnail: string
           title: string
-          type: string[]
+          type: Database["public"]["Enums"]["Project Type"][]
           updated_at: string
         }
         Insert: {
@@ -38,17 +40,19 @@ export type Database = {
           created_at?: string
           has_image?: boolean
           id?: string
+          images?: string[]
           link?: string | null
           name: string
           problems?: string[]
           responsibilities?: string[]
           results?: string[]
           short_desc: string
-          status: string
+          showcase_order?: number | null
+          status?: Database["public"]["Enums"]["Project Status"]
           tags: string[]
           thumbnail: string
           title: string
-          type?: string[]
+          type?: Database["public"]["Enums"]["Project Type"][]
           updated_at?: string
         }
         Update: {
@@ -56,17 +60,19 @@ export type Database = {
           created_at?: string
           has_image?: boolean
           id?: string
+          images?: string[]
           link?: string | null
           name?: string
           problems?: string[]
           responsibilities?: string[]
           results?: string[]
           short_desc?: string
-          status?: string
+          showcase_order?: number | null
+          status?: Database["public"]["Enums"]["Project Status"]
           tags?: string[]
           thumbnail?: string
           title?: string
-          type?: string[]
+          type?: Database["public"]["Enums"]["Project Type"][]
           updated_at?: string
         }
         Relationships: []

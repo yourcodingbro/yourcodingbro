@@ -1,11 +1,11 @@
 "use client";
 
 import sanitizeHtml from "sanitize-html";
-import Image from "next/image";
 import cn from "classnames";
 import { ExternalLink } from "lucide-react";
 import Modal from "@/components/modals/Modal";
 import { ButtonLink } from "@/components/ui/button";
+import ProjectImageCarousel from "@/components/carousels/ProjectImageCarousel";
 import { typeStyle, statusStyle } from "@/components/cards/PortfolioCard";
 import type {
   PortfolioItem,
@@ -13,33 +13,22 @@ import type {
   ProjectStatus,
 } from "@/types/project";
 
-type Props = {
+export type PortfolioModalProps = {
   item: PortfolioItem | null;
   onClose: () => void;
 };
 
-export default function PortfolioModal({ item, onClose }: Props) {
+export default function PortfolioModal({ item, onClose }: PortfolioModalProps) {
   return (
     <Modal open={item !== null} onClose={onClose}>
       {item && (
         <>
-          <div className="relative w-full aspect-video shrink-0">
-            {item.has_image ? (
-              <Image
-                src={item.thumbnail}
-                alt={item.title}
-                fill
-                className="object-cover"
-              />
-            ) : (
-              <div
-                className={cn(
-                  "absolute inset-0 bg-gradient-to-br",
-                  item.thumbnail
-                )}
-              />
-            )}
-          </div>
+          <ProjectImageCarousel
+            thumbnail={item.thumbnail}
+            hasImage={item.has_image}
+            images={item.images}
+            title={item.title}
+          />
 
           <div className="p-6 overflow-y-auto flex flex-col gap-5">
             <div>
