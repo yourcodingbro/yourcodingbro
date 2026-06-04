@@ -11,7 +11,7 @@ type ModalProps = {
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
-}
+};
 
 export default function Modal({
   open,
@@ -64,7 +64,7 @@ export default function Modal({
               )}
             >
               <Button
-                variant="secondary"
+                variant="outline"
                 size="icon"
                 icon={<X className="w-4 h-4" />}
                 onClick={onClose}

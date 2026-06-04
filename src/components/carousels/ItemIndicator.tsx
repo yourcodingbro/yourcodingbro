@@ -15,7 +15,7 @@ export function ItemIndicator({
   selectedIndex,
 }: ItemIndicatorType) {
   return (
-    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 rounded-full bg-black/60 p-1.5">
+    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 rounded-full bg-elevated/80 p-1.5">
       {images.map((_, i) => (
         <button
           key={i}

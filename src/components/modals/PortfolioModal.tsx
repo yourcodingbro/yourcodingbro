@@ -7,11 +7,7 @@ import Modal from "@/components/modals/Modal";
 import { ButtonLink } from "@/components/ui/button";
 import ProjectImageCarousel from "@/components/carousels/ProjectImageCarousel";
 import { typeStyle, statusStyle } from "@/components/cards/PortfolioCard";
-import type {
-  PortfolioItem,
-  ProjectType,
-  ProjectStatus,
-} from "@/types/project";
+import type { PortfolioItem } from "@/types/project";
 
 export type PortfolioModalProps = {
   item: PortfolioItem | null;
@@ -39,7 +35,7 @@ export default function PortfolioModal({ item, onClose }: PortfolioModalProps) {
                     key={t}
                     className={cn(
                       "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border",
-                      typeStyle[t as ProjectType]
+                      typeStyle[t]
                     )}
                   >
                     {t}
@@ -48,7 +44,7 @@ export default function PortfolioModal({ item, onClose }: PortfolioModalProps) {
                 <span
                   className={cn(
                     "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border",
-                    statusStyle[item.status as ProjectStatus]
+                    statusStyle[item.status]
                   )}
                 >
                   {item.status}

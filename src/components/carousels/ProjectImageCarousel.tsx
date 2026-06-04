@@ -45,7 +45,7 @@ export default function ProjectImageCarousel({
   }, [api]);
 
   return (
-    <div className="relative w-full aspect-video shrink-0 overflow-hidden">
+    <div className="relative w-full shrink-0 overflow-hidden">
       <Carousel
         setApi={setApi}
         opts={{ align: "start", loop: true }}
@@ -54,9 +54,10 @@ export default function ProjectImageCarousel({
         <CarouselContent className="ml-0 h-full">
           {allImages.map((src, i) => (
             <CarouselItem key={i} className="pl-0">
-              <div className="relative aspect-video">
+              <div className="relative bg-elevated aspect-video">
                 <ImageOrGradient
                   src={src}
+                  isThumbnail={i === 0}
                   gradient={thumbnail}
                   alt={i === 0 ? title : `${title} screenshot ${i}`}
                 />
@@ -67,12 +68,8 @@ export default function ProjectImageCarousel({
 
         {total > 1 && (
           <>
-            <CarouselPrevious
-              size="lg"
-              variant="secondary"
-              className="left-2"
-            />
-            <CarouselNext size="lg" variant="secondary" className="right-2" />
+            <CarouselPrevious size="lg" variant="outline" className="left-2" />
+            <CarouselNext size="lg" variant="outline" className="right-2" />
             <ItemIndicator
               api={api}
               images={allImages}
@@ -87,13 +84,25 @@ export default function ProjectImageCarousel({
 
 function ImageOrGradient({
   src,
+  isThumbnail,
   gradient,
   alt,
 }: {
   src: string | null;
+  isThumbnail: boolean;
   gradient: string;
   alt: string;
 }) {
-  if (src) return <Image src={src} alt={alt} fill className="object-cover" />;
+  if (src)
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className={cn(
+          isThumbnail ? "object-cover" : "object-contain max-w-[80%] m-auto"
+        )}
+      />
+    );
   return <div className={cn("absolute inset-0 bg-gradient-to-br", gradient)} />;
 }
