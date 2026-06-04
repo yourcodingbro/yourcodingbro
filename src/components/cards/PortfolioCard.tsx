@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import { Boxes } from "lucide-react";
 import cn from "classnames";
 import { Button } from "@/components/ui/button";
 import type {
@@ -36,9 +36,10 @@ export default function PortfolioCard({ item, onClick }: Props) {
       data-card
       variant="ghost"
       onClick={onClick}
-      className="gradient-border rounded-2xl overflow-hidden flex flex-col items-start justify-start text-left w-full h-auto p-0 gap-0 whitespace-normal [background-clip:border-box] active:not-aria-[haspopup]:translate-y-0 group hover:bg-elevated/50 transition-all duration-300"
+      className="border border-elevated rounded-2xl overflow-hidden flex flex-col items-start justify-start text-left w-full h-auto p-0 gap-0 whitespace-normal active:not-aria-[haspopup]:translate-y-0 group transition-all duration-300"
     >
       <div className="relative w-full aspect-video shrink-0">
+        <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-transparent transition-colors duration-300" />
         {item.has_image ? (
           <Image
             src={item.thumbnail}
@@ -53,12 +54,12 @@ export default function PortfolioCard({ item, onClick }: Props) {
               item.thumbnail
             )}
           >
-            <ExternalLink className="w-8 h-8 text-white/30 group-hover:text-white/60 transition-colors duration-300" />
+            <Boxes className="w-8 h-8 text-white/30 group-hover:text-white/60 transition-colors duration-300" />
           </div>
         )}
       </div>
 
-      <div className="p-5 flex flex-col gap-3">
+      <div className="rounded-b-2xl w-full p-5 flex flex-col gap-3 hover:bg-elevated/50 transition-colors duration-300">
         <h3 className="text-fg font-semibold text-base leading-snug">
           {item.title}
         </h3>

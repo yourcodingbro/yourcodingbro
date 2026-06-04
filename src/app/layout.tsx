@@ -15,14 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "YourCodingBro — Expert Dev, Fast Delivery",
-  description:
-    "Clean code, on-time delivery, and real results. YourCodingBro is your dedicated development partner for web apps, MVPs, and custom software.",
-  openGraph: {
-    title: "YourCodingBro — Expert Dev, Fast Delivery",
-    description:
-      "Your dedicated development partner for web apps, MVPs, and custom software.",
-    type: "website",
+  title: {
+    default: "YourCodingBro",
+    template: "%s | YourCodingBro",
   },
 };
 

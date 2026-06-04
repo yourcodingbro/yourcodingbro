@@ -6,13 +6,8 @@ const currentYear = new Date().getFullYear();
 
 const socialLinks = [
   {
-    label: "GitHub",
-    href: "https://github.com",
-    icon: <FaGithub className="w-5 h-5" />,
-  },
-  {
-    label: "Bluesky",
-    href: "https://bsky.app",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/viktornagy97",
     icon: <FaLinkedin className="w-5 h-5" />,
   },
   {
@@ -99,13 +94,9 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Copyright */}
         <div className="pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fg-4">
           <p>© {currentYear} YourCodingBro. All rights reserved.</p>
-          <p>
-            Built with <span className="text-accent">Next.js</span> ·{" "}
-            <span className="text-accent">TypeScript</span> ·{" "}
-            <span className="text-accent">Tailwind CSS</span>
-          </p>
         </div>
       </div>
     </footer>
