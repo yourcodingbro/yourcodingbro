@@ -25,7 +25,10 @@ export default function Image() {
         <div
           style={{
             position: "absolute",
-            inset: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
             backgroundImage:
               "linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px)",
             backgroundSize: "60px 60px",

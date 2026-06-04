@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { GoogleTagManager } from "@next/third-parties/google";
 import QueryProvider from "@/lib/providers/QueryProvider";
 import "./globals.css";
 
@@ -18,6 +19,13 @@ export const metadata: Metadata = {
   title: {
     default: "YourCodingBro",
     template: "%s | YourCodingBro",
+  },
+  verification: {
+    google: "jusdYBeTS06nLfNCmnSVcuhKuFiUlGW-v_DR8YUFqjA",
+    other: {
+      bing: "D5A4A1C69BEC76A744FD07456B68507D",
+      pinterest: "d5cdbfd7f2334b2d023429fd232b4b9f",
+    },
   },
 };
 
@@ -37,6 +45,9 @@ export default function RootLayout({
           <QueryProvider>{children}</QueryProvider>
         </ThemeProvider>
       </body>
+      {process.env.NEXT_PUBLIC_GTM_ID && (
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+      )}
     </html>
   );
 }
