@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import cn from "classnames";
+import Section, { SectionProps } from "@/components/atoms/Section";
+import Container from "@/components/atoms/Container";
 import {
   Carousel,
   CarouselContent,
@@ -10,13 +12,14 @@ import {
   CarouselNext,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import SectionBadgeDivider from "@/components/badges/SectionBadgeDivider";
 import PortfolioCard from "@/components/cards/PortfolioCard";
 import PortfolioModal from "@/components/modals/PortfolioModal";
 import { useProjects } from "@/hooks/useProjects";
 import type { PortfolioItem } from "@/types/project";
 
-export default function Portfolio() {
+export type PortfolioProps = SectionProps;
+
+export default function Portfolio({ ...props }: PortfolioProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
@@ -35,13 +38,9 @@ export default function Portfolio() {
   }, [api]);
 
   return (
-    <section id="portfolio" className="py-12 sm:py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/30 to-transparent pointer-events-none" />
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Section id="portfolio" {...props}>
+      <Container>
         <Carousel setApi={setApi} opts={{ align: "start", loop: false }}>
-          <SectionBadgeDivider>Results</SectionBadgeDivider>
-
           {/* Header */}
           <div className="flex items-end justify-between mb-8 sm:mb-12">
             <div>
@@ -90,7 +89,10 @@ export default function Portfolio() {
                     key={item.id}
                     className="pl-5 basis-[85%] sm:basis-1/2 lg:basis-1/3"
                   >
-                    <PortfolioCard item={item} onClick={() => setSelected(item)} />
+                    <PortfolioCard
+                      item={item}
+                      onClick={() => setSelected(item)}
+                    />
                   </CarouselItem>
                 ))}
               </CarouselContent>
@@ -124,9 +126,9 @@ export default function Portfolio() {
             </>
           )}
         </Carousel>
-      </div>
+      </Container>
 
       <PortfolioModal item={selected} onClose={() => setSelected(null)} />
-    </section>
+    </Section>
   );
 }

@@ -1,16 +1,19 @@
+import Section, { SectionProps } from "@/components/atoms/Section";
+import Container from "@/components/atoms/Container";
 import TestimonialCard from "@/components/cards/TestimonialCard";
 import { stats, testimonials } from "@/lib/constants/social-proof";
+import { cn } from "@/lib/utils";
 
-export default function SocialProof() {
+export type SocialProofProps = SectionProps;
+
+export default function SocialProof({ className, ...props }: SocialProofProps) {
   return (
-    <section
+    <Section
       id="testimonials"
-      className="py-12 sm:py-20 relative overflow-hidden w-full"
+      className={cn("overflow-hidden w-full", className)}
+      {...props}
     >
-      <div className="absolute -left-32 top-1/4 w-64 h-64 bg-brand/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -right-32 bottom-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Container>
         <div className="text-center mb-8 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
             Trusted by founders <span className="gradient-text">who ship.</span>
@@ -43,7 +46,7 @@ export default function SocialProof() {
             />
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

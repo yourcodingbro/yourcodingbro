@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Section, { SectionProps } from "@/components/atoms/Section";
+import Container from "@/components/atoms/Container";
 import ServiceCard from "@/components/cards/ServiceCard";
 import { services } from "@/lib/constants/services";
 
@@ -17,17 +19,17 @@ const stack = [
   "Docker",
 ];
 
-export default function Services() {
+export type ServicesProps = SectionProps;
+
+export default function Services({ ...props }: ServicesProps) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) =>
     setExpandedIndex((prev) => (prev === index ? null : index));
 
   return (
-    <section id="services" className="py-12 sm:py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/30 to-transparent pointer-events-none" />
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Section id="services" {...props}>
+      <Container>
         {/* Header */}
         <div className="text-center mb-8 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
@@ -41,7 +43,7 @@ export default function Services() {
         </div>
 
         {/* Service cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-14 sm:mb-20 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 items-start">
           {services.map((serviceProps, i) => (
             <ServiceCard
               key={serviceProps.title}
@@ -51,7 +53,7 @@ export default function Services() {
             />
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

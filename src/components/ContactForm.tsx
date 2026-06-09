@@ -10,7 +10,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import SectionBadge from "@/components/badges/SectionBadge";
-import { budgetOptions, contactSchema, type ContactFormData } from "@/lib/constants/contact";
+import {
+  budgetOptions,
+  contactSchema,
+  type ContactFormData,
+} from "@/lib/constants/contact";
 import type { SubmitState } from "@/types/contact";
 import {
   Select,
@@ -19,7 +23,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 
 const fieldClass =
   "h-auto px-4 py-3 bg-surface border-line text-fg placeholder:text-fg-4 focus-visible:border-brand focus-visible:ring-brand/30 rounded-lg";
@@ -62,8 +65,7 @@ export default function ContactForm() {
 
   return (
     <section id="contact" className="py-12 sm:py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/20 to-transparent pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -194,7 +196,10 @@ export default function ContactForm() {
                           })}
                         >
                           <SelectValue placeholder="Select budget range">
-                            {budgetOptions.find((o) => o.value === field.value)?.label}
+                            {
+                              budgetOptions.find((o) => o.value === field.value)
+                                ?.label
+                            }
                           </SelectValue>
                         </SelectTrigger>
                         <SelectContent>

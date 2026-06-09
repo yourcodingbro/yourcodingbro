@@ -4,10 +4,12 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import ValueProp from "@/components/sections/ValueProp";
+import WhyUs from "@/components/sections/WhyUs";
 import Services from "@/components/sections/Services";
 import Portfolio from "@/components/sections/Portfolio";
 import SocialProof from "@/components/sections/SocialProof";
 import ContactForm from "@/components/ContactForm";
+import SectionBadgeDivider from "@/components/badges/SectionBadgeDivider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yourcodingbro.com"),
@@ -93,10 +95,13 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <ValueProp />
-        <Services />
-        <Portfolio />
-        <SocialProof />
+        <ValueProp depth="row" depthColor="via-violet/10" />
+        <SectionBadgeDivider>Why work with me</SectionBadgeDivider>
+        <WhyUs depth="circles" depthColor="bg-brand/10" />
+        <Services depth="row" depthColor="via-accent/5" />
+        <SectionBadgeDivider>Results</SectionBadgeDivider>
+        <Portfolio depth="circles" depthColor="bg-violet/15" />
+        <SocialProof depth="row" depthColor="via-brand/15" />
         <ContactForm />
       </main>
       {process.env.CONTACT_EMAIL && (
