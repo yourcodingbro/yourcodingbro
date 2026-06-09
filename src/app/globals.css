@@ -145,6 +145,10 @@ body {
 }
 
 /* ─── Logo theme switching ─────────────────────────────────── */
+.logo {
+  @apply h-9 w-auto object-contain;
+}
+
 .logo-light {
   display: none;
 }

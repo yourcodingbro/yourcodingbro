@@ -1,6 +1,6 @@
 import { FaLinkedin, FaFacebook } from "react-icons/fa6";
-import { Box } from "lucide-react";
 import { serviceNames } from "@/lib/constants/services";
+import Logo from "@/components/Logo";
 
 const currentYear = new Date().getFullYear();
 
@@ -29,12 +29,7 @@ export default function Footer({ contactEmail }: FooterProps) {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-navy border border-brand/40 flex items-center justify-center">
-                <Box className="w-5 h-5 text-accent" />
-              </div>
-              <span className="font-bold text-fg tracking-tight">
-                YourCoding<span className="text-accent">Bro</span>
-              </span>
+              <Logo full />
             </div>
             <p className="text-fg-4 text-sm leading-relaxed max-w-xs">
               Your dedicated development partner. Clean code, fast delivery,

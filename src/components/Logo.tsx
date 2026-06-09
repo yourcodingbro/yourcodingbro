@@ -1,9 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type LogoProps = {
+const altText = "YourCodingBro";
+const fullWidth = 200;
+const iconSize = 40;
+
+export type LogoProps = {
+  full?: boolean;
   onClick?: () => void;
-}
+};
 
 /*
  * Renders both logo variants simultaneously.
@@ -13,48 +18,72 @@ type LogoProps = {
  * Dark mode  → logo-white.png / logo-icon-white.png
  * Light mode → logo.png       / logo-icon.png
  */
-export default function Logo({ onClick }: LogoProps) {
+export default function Logo({ full, onClick }: LogoProps) {
+  if (full) {
+    return (
+      <Link href="/" onClick={onClick} className="flex items-center">
+        <FullLogo />
+      </Link>
+    );
+  }
+
   return (
     <Link href="/" onClick={onClick} className="flex items-center">
       {/* ── Mobile: icon only ── */}
       <span className="md:hidden">
-        <Image
-          src="/logo-icon-white.png"
-          alt="YourCodingBro"
-          width={40}
-          height={40}
-          className="logo-dark h-9 w-auto object-contain"
-          priority
-        />
-        <Image
-          src="/logo-icon.png"
-          alt="YourCodingBro"
-          width={40}
-          height={40}
-          className="logo-light h-9 w-auto object-contain"
-          priority
-        />
+        <IconLogo />
       </span>
 
       {/* ── Desktop: full horizontal logo ── */}
       <span className="hidden md:flex">
-        <Image
-          src="/logo-white.png"
-          alt="YourCodingBro"
-          width={200}
-          height={40}
-          className="logo-dark h-10 w-auto object-contain"
-          priority
-        />
-        <Image
-          src="/logo.png"
-          alt="YourCodingBro"
-          width={200}
-          height={40}
-          className="logo-light h-10 w-auto object-contain"
-          priority
-        />
+        <FullLogo />
       </span>
     </Link>
+  );
+}
+
+function FullLogo() {
+  return (
+    <>
+      <Image
+        src="/logo-white.png"
+        alt={altText}
+        width={fullWidth}
+        height={iconSize}
+        className="logo logo-dark"
+        priority
+      />
+      <Image
+        src="/logo.png"
+        alt={altText}
+        width={fullWidth}
+        height={iconSize}
+        className="logo logo-light"
+        priority
+      />
+    </>
+  );
+}
+
+function IconLogo() {
+  return (
+    <>
+      <Image
+        src="/logo-icon-white.png"
+        alt={altText}
+        width={iconSize}
+        height={iconSize}
+        className="logo logo-dark"
+        priority
+      />
+      <Image
+        src="/logo-icon.png"
+        alt={altText}
+        width={iconSize}
+        height={iconSize}
+        className="logo logo-light"
+        priority
+      />
+    </>
   );
 }
