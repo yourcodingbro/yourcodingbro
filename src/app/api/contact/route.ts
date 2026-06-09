@@ -31,11 +31,23 @@ export async function POST(req: NextRequest) {
     }
 
     const { name, email, budget, message } = parsed.data;
-    const budgetLabel = budgetOptions.find((o) => o.value === budget)?.label ?? budget;
+    const budgetLabel =
+      budgetOptions.find((o) => o.value === budget)?.label ?? budget;
 
-    await resend.emails.send({
-      from: "YourCodingBro Contact <onboarding@resend.dev>",
-      to: process.env.CONTACT_EMAIL ?? "hello@yourcodingbro.com",
+    if (!process.env.CONTACT_EMAIL) {
+      console.error(
+        "[ERROR /api/contact] CONTACT_EMAIL environment variable not set"
+      );
+
+      return NextResponse.json(
+        { error: "Internal server error" },
+        { status: 500 }
+      );
+    }
+
+    const { error } = await resend.emails.send({
+      from: `YourCodingBro Contact <${process.env.CONTACT_EMAIL}>`,
+      to: process.env.CONTACT_EMAIL,
       replyTo: email,
       subject: `New project inquiry from ${name}`,
       html: `
@@ -75,6 +87,13 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+
+    if (error) {
+      const errorText = "Failed to send email";
+      console.error(`[ERROR /api/contact] ${errorText}:`, error.message);
+
+      return NextResponse.json({ error: errorText }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true });
   } catch {
