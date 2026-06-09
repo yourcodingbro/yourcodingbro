@@ -99,7 +99,9 @@ export default function Home() {
         <SocialProof />
         <ContactForm />
       </main>
-      <Footer />
+      {process.env.CONTACT_EMAIL && (
+        <Footer contactEmail={process.env.CONTACT_EMAIL} />
+      )}
     </>
   );
 }

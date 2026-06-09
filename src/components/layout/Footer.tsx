@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa6";
+import { FaLinkedin, FaFacebook } from "react-icons/fa6";
 import { Box } from "lucide-react";
 import { serviceNames } from "@/lib/constants/services";
 
@@ -17,7 +17,11 @@ const socialLinks = [
   },
 ];
 
-export default function Footer() {
+export type FooterProps = {
+  contactEmail: string;
+};
+
+export default function Footer({ contactEmail }: FooterProps) {
   return (
     <footer className="border-t border-line bg-bg">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -70,10 +74,10 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:hello@yourcodingbro.com"
+                  href={`mailto:${contactEmail}`}
                   className="text-fg-4 text-sm hover:text-accent transition-colors"
                 >
-                  hello@yourcodingbro.com
+                  {contactEmail}
                 </a>
               </li>
             </ul>
