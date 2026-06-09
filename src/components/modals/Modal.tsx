@@ -69,7 +69,7 @@ export default function Modal({
                 icon={<X className="w-4 h-4" />}
                 onClick={onClose}
                 aria-label="Close"
-                className="absolute top-3 right-3 z-10"
+                className="absolute top-3 right-3 z-10 border-0"
               />
 
               {children}

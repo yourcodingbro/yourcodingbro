@@ -68,8 +68,16 @@ export default function ProjectImageCarousel({
 
         {total > 1 && (
           <>
-            <CarouselPrevious size="lg" variant="outline" className="left-2" />
-            <CarouselNext size="lg" variant="outline" className="right-2" />
+            <CarouselPrevious
+              size="lg"
+              variant="outline"
+              className="left-2 border-0"
+            />
+            <CarouselNext
+              size="lg"
+              variant="outline"
+              className="right-2 border-0"
+            />
             <ItemIndicator
               api={api}
               images={allImages}
