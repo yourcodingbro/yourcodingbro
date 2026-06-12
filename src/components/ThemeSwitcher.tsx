@@ -22,7 +22,7 @@ export default function ThemeSwitcher() {
       aria-label={`Switch to ${
         resolvedTheme === "dark" ? "light" : "dark"
       } mode`}
-      className="cursor-pointer rounded-full text-fg-3 hover:text-accent transition-all duration-150"
+      className="p-0 rounded-lg transition-all duration-150 cursor-pointer text-fg-3 hover:text-fg dark:hover:bg-muted hover:bg-muted"
     />
   );
 }

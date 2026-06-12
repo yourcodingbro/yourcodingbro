@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import cn from "classnames";
+import { useTranslations } from "next-intl";
 import { Check, Send, Loader2, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,8 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import SectionBadge from "@/components/badges/SectionBadge";
 import {
-  budgetOptions,
-  contactSchema,
+  getContactSchema,
   type ContactFormData,
 } from "@/lib/constants/contact";
 import type { SubmitState } from "@/types/contact";
@@ -28,8 +28,22 @@ const fieldClass =
   "h-auto px-4 py-3 bg-surface border-line text-fg placeholder:text-fg-4 focus-visible:border-brand focus-visible:ring-brand/30 rounded-lg";
 
 export default function ContactForm() {
+  const t = useTranslations("pages.homepage.contactForm");
+  const perks = t.raw("perks") as { icon: string; text: string }[];
+  const budgetOptions = t.raw("form.budget.options") as {
+    value: string;
+    label: string;
+  }[];
+
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [rateLimitMessage, setRateLimitMessage] = useState("");
+
+  const contactSchema = getContactSchema({
+    nameMin: t("form.errors.nameMin"),
+    emailInvalid: t("form.errors.emailInvalid"),
+    budgetRequired: t("form.errors.budgetRequired"),
+    messageMin: t("form.errors.messageMin"),
+  });
 
   const {
     register,
@@ -49,9 +63,7 @@ export default function ContactForm() {
       });
       if (res.status === 429) {
         const data = await res.json();
-        setRateLimitMessage(
-          data.message ?? "Too many messages. Please try again later."
-        );
+        setRateLimitMessage(data.message ?? t("rateLimited.defaultMessage"));
         setSubmitState("rate_limited");
         return;
       }
@@ -71,25 +83,17 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — copy */}
           <div>
-            <SectionBadge className="mb-5">
-              Let&apos;s build together
-            </SectionBadge>
+            <SectionBadge className="mb-5">{t("badge")}</SectionBadge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-5 tracking-tight leading-tight">
-              Got a project?{" "}
-              <span className="gradient-text">Let&apos;s talk.</span>
+              {t("title")}
+              <span className="gradient-text">{t("titleHighlight")}</span>
             </h2>
             <p className="text-fg-3 text-base sm:text-lg leading-relaxed mb-8">
-              Tell me what you&apos;re building and I&apos;ll get back to you
-              within 24 hours with a plan and estimate. No pushy sales calls.
+              {t("description")}
             </p>
 
             <div className="flex flex-col gap-4">
-              {[
-                { icon: "⚡", text: "Response within 24 hours" },
-                { icon: "📋", text: "Free project scoping call" },
-                { icon: "🔒", text: "NDA available on request" },
-                { icon: "🚀", text: "Ready to start immediately" },
-              ].map((item) => (
+              {perks.map((item) => (
                 <div key={item.text} className="flex items-center gap-3">
                   <span className="text-lg">{item.icon}</span>
                   <span className="text-fg-2 text-sm">{item.text}</span>
@@ -105,17 +109,18 @@ export default function ContactForm() {
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand to-accent flex items-center justify-center glow-blue">
                   <Check className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-fg">Message sent!</h3>
+                <h3 className="text-xl font-bold text-fg">
+                  {t("success.title")}
+                </h3>
                 <p className="text-fg-3 text-sm max-w-xs">
-                  Thanks for reaching out. I&apos;ll get back to you within 24
-                  hours with next steps.
+                  {t("success.description")}
                 </p>
                 <Button
                   variant="link"
                   className="text-accent"
                   onClick={() => setSubmitState("idle")}
                 >
-                  Send another message
+                  {t("success.sendAnother")}
                 </Button>
               </div>
             ) : submitState === "rate_limited" ? (
@@ -123,14 +128,16 @@ export default function ContactForm() {
                 <div className="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/25 flex items-center justify-center">
                   <Clock className="w-8 h-8 text-amber-400" />
                 </div>
-                <h3 className="text-xl font-bold text-fg">Slow down a bit</h3>
+                <h3 className="text-xl font-bold text-fg">
+                  {t("rateLimited.title")}
+                </h3>
                 <p className="text-fg-3 text-sm max-w-xs">{rateLimitMessage}</p>
                 <Button
                   variant="link"
                   className="text-accent"
                   onClick={() => setSubmitState("idle")}
                 >
-                  Back to form
+                  {t("rateLimited.backToForm")}
                 </Button>
               </div>
             ) : (
@@ -142,12 +149,12 @@ export default function ContactForm() {
                 {/* Name */}
                 <div className="flex flex-col gap-1.5">
                   <Label className="text-xs text-fg-3 uppercase tracking-wide">
-                    Your Name
+                    {t("form.name.label")}
                   </Label>
                   <Input
                     {...register("name")}
                     type="text"
-                    placeholder="John Smith"
+                    placeholder={t("form.name.placeholder")}
                     aria-invalid={!!errors.name}
                     className={fieldClass}
                   />
@@ -161,12 +168,12 @@ export default function ContactForm() {
                 {/* Email */}
                 <div className="flex flex-col gap-1.5">
                   <Label className="text-xs text-fg-3 uppercase tracking-wide">
-                    Email Address
+                    {t("form.email.label")}
                   </Label>
                   <Input
                     {...register("email")}
                     type="email"
-                    placeholder="john@company.com"
+                    placeholder={t("form.email.placeholder")}
                     aria-invalid={!!errors.email}
                     className={fieldClass}
                   />
@@ -180,7 +187,7 @@ export default function ContactForm() {
                 {/* Budget */}
                 <div className="flex flex-col gap-1.5">
                   <Label className="text-xs text-fg-3 uppercase tracking-wide">
-                    Budget Range
+                    {t("form.budget.label")}
                   </Label>
                   <Controller
                     name="budget"
@@ -195,7 +202,9 @@ export default function ContactForm() {
                             "border-red-500/60": !!errors.budget,
                           })}
                         >
-                          <SelectValue placeholder="Select budget range">
+                          <SelectValue
+                            placeholder={t("form.budget.placeholder")}
+                          >
                             {
                               budgetOptions.find((o) => o.value === field.value)
                                 ?.label
@@ -222,12 +231,12 @@ export default function ContactForm() {
                 {/* Message */}
                 <div className="flex flex-col gap-1.5">
                   <Label className="text-xs text-fg-3 uppercase tracking-wide">
-                    Tell me about your project
+                    {t("form.message.label")}
                   </Label>
                   <Textarea
                     {...register("message")}
                     rows={4}
-                    placeholder="I'm building a SaaS app..."
+                    placeholder={t("form.message.placeholder")}
                     aria-invalid={!!errors.message}
                     className={cn(fieldClass, "resize-none")}
                   />
@@ -240,7 +249,7 @@ export default function ContactForm() {
 
                 {submitState === "error" && (
                   <p className="text-sm text-red-400 text-center">
-                    Something went wrong. Please try again or email me directly.
+                    {t("form.errors.generic")}
                   </p>
                 )}
 
@@ -257,11 +266,13 @@ export default function ContactForm() {
                   iconPosition={submitState === "loading" ? "before" : "after"}
                   className="w-full h-auto py-3.5 rounded-xl bg-brand hover:bg-brand-hover text-white font-semibold glow-blue text-sm sm:text-base gap-2"
                 >
-                  {submitState === "loading" ? "Sending..." : "Send Message"}
+                  {submitState === "loading"
+                    ? t("form.sending")
+                    : t("form.submit")}
                 </Button>
 
                 <p className="text-center text-xs text-fg-4">
-                  No spam. No sales pressure. Just a conversation.
+                  {t("form.privacyNote")}
                 </p>
               </form>
             )}

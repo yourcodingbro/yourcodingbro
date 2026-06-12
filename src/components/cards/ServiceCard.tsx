@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import cn from "classnames";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -28,6 +29,7 @@ export default function ServiceCard({
   expanded,
   onToggle,
 }: ServiceCardProps) {
+  const t = useTranslations("pages.homepage.services");
   const initial = bullets.slice(0, VISIBLE_COUNT);
   const extra = bullets.slice(VISIBLE_COUNT);
   const hasMore = extra.length > 0;
@@ -95,7 +97,7 @@ export default function ServiceCard({
             className="w-full"
             onClick={onToggle}
           >
-            {expanded ? "Show less" : "See more"}
+            {expanded ? t("showLess") : t("seeMore")}
           </Button>
         </div>
       )}

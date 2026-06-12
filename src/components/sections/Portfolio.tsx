@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import cn from "classnames";
+import { useTranslations } from "next-intl";
 import Section, { SectionProps } from "@/components/atoms/Section";
 import Container from "@/components/atoms/Container";
 import {
@@ -20,6 +21,7 @@ import type { PortfolioItem } from "@/types/project";
 export type PortfolioProps = SectionProps;
 
 export default function Portfolio({ ...props }: PortfolioProps) {
+  const t = useTranslations("pages.homepage.portfolio");
   const [api, setApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
@@ -45,7 +47,8 @@ export default function Portfolio({ ...props }: PortfolioProps) {
           <div className="flex items-end justify-between mb-8 sm:mb-12">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg tracking-tight">
-                Projects that <span className="gradient-text">shipped.</span>
+                {t("title")}
+                <span className="gradient-text">{t("titleHighlight")}</span>
               </h2>
             </div>
 
@@ -63,7 +66,7 @@ export default function Portfolio({ ...props }: PortfolioProps) {
 
           {isError ? (
             <p className="text-fg-4 text-sm text-center py-12">
-              Could not load projects. Please try again later.
+              {t("error")}
             </p>
           ) : isLoading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -102,7 +105,7 @@ export default function Portfolio({ ...props }: PortfolioProps) {
                   <button
                     key={i}
                     onClick={() => api?.scrollTo(i)}
-                    aria-label={`Go to slide ${i + 1}`}
+                    aria-label={t("goToSlide", { number: i + 1 })}
                     className={cn(
                       "rounded-full transition-all duration-200",
                       i === selectedIndex

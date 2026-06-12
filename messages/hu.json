@@ -1,0 +1,257 @@
+{
+  "globals": {
+    "header": {
+      "navLinks": {
+        "whyUs": "Miért mi",
+        "services": "Szolgáltatások",
+        "work": "Munkáim",
+        "testimonials": "Vélemények",
+        "contact": "Kapcsolat"
+      },
+      "startProject": "Indítsunk projektet",
+      "toggleMenu": "Menü megnyitása",
+      "languageLabel": "Nyelv"
+    },
+    "footer": {
+      "description": "Az Ön elkötelezett fejlesztői partnere. Tiszta kód, gyors szállítás, valós eredmények.",
+      "servicesTitle": "Szolgáltatások",
+      "contactTitle": "Kapcsolat",
+      "startProject": "Indítsunk projektet",
+      "copyright": "© {year} YourCodingBro. Minden jog fenntartva."
+    }
+  },
+  "pages": {
+    "homepage": {
+      "sectionDividers": {
+        "whyUs": "Miért dolgozz velem",
+        "results": "Eredmények"
+      },
+      "hero": {
+        "badge": "Új projektekre nyitott vagyok",
+        "title": "Az ötleted, ",
+        "titleHighlight": "gyorsan megépítve.",
+        "description": "Profi full-stack fejlesztés, amely tiszta, skálázható kódot szállít — időben, minden alkalommal. Az MVP-től a production-ig az Ön elkötelezett fejlesztő partnere vagyok.",
+        "stats": [
+          { "value": "50+", "label": "Leszállított projekt" },
+          { "value": "100%", "label": "Időben szállítva" },
+          { "value": "4.9★", "label": "Ügyfél értékelés" }
+        ],
+        "ctaPrimary": "Indítsd el a projektet",
+        "ctaSecondary": "Nézd meg a szolgáltatásaimat",
+        "scroll": "Görgess"
+      },
+      "valueProp": {
+        "title": "Minden, amire szükséged van, ",
+        "titleHighlight": "semmi felesleges.",
+        "description": "Az ötlettől a megvalósításig — én intézem a nehéz részeket, hogy te a vállalkozásod növelésére fókuszálhass.",
+        "values": [
+          {
+            "title": "Gyors szállítás",
+            "description": "Nincs végtelen megbeszélés vagy scope creep. Gyorsan dolgozom, érthetően kommunikálok, és leszállítom a terméket."
+          },
+          {
+            "title": "Tiszta kód",
+            "description": "TypeScript-first, jól tesztelt és dokumentált. Olyan kód, amit magabiztosan tudsz karbantartani és skálázni."
+          },
+          {
+            "title": "Mobile-first",
+            "description": "Minden pixel mobilra optimalizált először, majd asztali nézetre finomítva. Pixel-pontos minden képernyőméreten."
+          },
+          {
+            "title": "Alapból biztonságos",
+            "description": "Hitelesítés, input validáció, OWASP best practice-ek és biztonságos deploy az első naptól."
+          },
+          {
+            "title": "Skálázható architektúra",
+            "description": "Úgy építve, hogy veled együtt nőjön. Egy side projecttől a Series A forgalomig — felkészülve mindenre."
+          },
+          {
+            "title": "Tiszta kommunikáció",
+            "description": "Napi frissítések, aszinkron-barát, időzóna-tudatos. Mindig pontosan tudod, mi történik a projektedben."
+          }
+        ]
+      },
+      "whyUs": {
+        "title": "Nem csak egy ",
+        "titleHighlight": "újabb bérelhető fejlesztő.",
+        "description": "Több ezer fejlesztő közül választhatsz. Íme, miért térnek vissza hozzám az alapítók — és miért ajánlanak tovább a barátaiknak.",
+        "reasons": [
+          {
+            "number": "01",
+            "title": "Nincs freelancer-roulette",
+            "description": "Egy elkötelezett fejlesztőt kapsz, aki az elejétől a végéig felelős a projektedért — nem egy folyton változó alvállalkozói csapatot vagy egy account managert, aki továbbítja a kéréseidet."
+          },
+          {
+            "number": "02",
+            "title": "Aszinkron-first, mindig elérhető",
+            "description": "Több időzónában dolgozom és írásban, érthetően kommunikálok. Nincs egyeztetési pokol — csak gyors, megbízható válaszok és napi haladásjelentések."
+          },
+          {
+            "number": "03",
+            "title": "Minden a tiéd",
+            "description": "Teljes szellemi tulajdon átadás, tiszta git history, dokumentált kód. Ha végeztünk, bármelyik fejlesztőnek átadhatod, és azonnal érteni fogja."
+          },
+          {
+            "number": "04",
+            "title": "Őszinte tervezés, nincs meglepetés",
+            "description": "Előre megmondom, mi reális a költségvetésedhez és határidődhöz. Nincs alulárazott ajánlat az üzlet megnyeréséért, és nincs utólagos scope creep számla."
+          }
+        ]
+      },
+      "services": {
+        "title": "Szolgáltatások valós ",
+        "titleHighlight": "eredményekért.",
+        "description": "Három fókuszált ajánlat — mindegyik úgy kialakítva, hogy valódi értéket nyújtson egy nagyobb ügynökség terhei nélkül.",
+        "items": [
+          {
+            "title": "Munkafolyamat-automatizálás",
+            "tagline": "Spórolj órákat hetente",
+            "description": "Automatizált munkafolyamatokat tervezek és építek, amelyek megszüntetik az ismétlődő feladatokat, összekapcsolják az eszközeidet, és lehetővé teszik, hogy a csapatod a lényegre fókuszáljon.",
+            "bullets": [
+              "Belső folyamatok automatizálása",
+              "API és webhook integrációk",
+              "Időzített feladatok és triggerek",
+              "Egyedi belső dashboardok",
+              "Értesítési és riasztási folyamatok",
+              "Adatszinkronizálás és ETL folyamatok",
+              "Legacy eszközök modernizálása"
+            ]
+          },
+          {
+            "title": "Full-stack fejlesztés",
+            "tagline": "Az ötlettől a production-ig",
+            "description": "Skálázható full-stack alkalmazások — igényes landing page-ektől komplex SaaS termékekig, pixel-pontosan és production-ready módon.",
+            "bullets": [
+              "MVP építés és gyors prototípuskészítés",
+              "UI/UX fejlesztés",
+              "API fejlesztés és külső integrációk",
+              "Adatbázis-tervezés",
+              "Deployment (CI/CD)",
+              "Teljesítmény audit és optimalizálás",
+              "Technikai konzultáció"
+            ]
+          },
+          {
+            "title": "Mentorálás",
+            "tagline": "Tanulj a saját tempódban",
+            "description": "Személyre szabott, 1-on-1 kódolási foglalkozások a szintednek és céljaidnak megfelelően — akár most kezdesz, akár a következő szintre szeretnél lépni.",
+            "bullets": [
+              "Fejlesztési alapok",
+              "React, TypeScript és modern JavaScript",
+              "Rendszertervezési és architektúra alapok",
+              "Az első projekted megépítése elejétől a végéig",
+              "Code review-k és best practice-ek",
+              "Interjú-felkészítés és karrier coaching"
+            ]
+          }
+        ],
+        "seeMore": "Mutasd többet",
+        "showLess": "Mutasd kevesebb"
+      },
+      "portfolio": {
+        "title": "Projektek, amik ",
+        "titleHighlight": "elkészültek.",
+        "error": "A projektek betöltése sikertelen. Kérlek, próbáld újra később.",
+        "goToSlide": "Ugrás a {number}. diára"
+      },
+      "socialProof": {
+        "title": "Olyan alapítók bíznak bennem, ",
+        "titleHighlight": "akik szállítanak.",
+        "description": "Valós projektek. Valós eredmények. Íme, mit mondanak az ügyfelek a közös munka után.",
+        "stats": [
+          { "value": "50+", "label": "Leszállított projekt" },
+          { "value": "30+", "label": "Elégedett ügyfél" },
+          { "value": "10+", "label": "Év tapasztalat" },
+          { "value": "4 hét", "label": "Átlagos MVP idő" }
+        ],
+        "testimonials": [
+          {
+            "quote": "4,5 évig dolgoztunk együtt. Ezalatt az idő alatt hihetetlen elhivatottságot mutatott a feladatai iránt és nyitottságot a fejlődésre. A munkamorálja és pozitív hozzáállása értékes tagjává teszi bármely projektnek. Csak ajánlani tudom.",
+            "author": "Ferenc",
+            "role": "CIO, Magyar Közút",
+            "avatar": "F",
+            "stars": 5
+          },
+          {
+            "quote": "Briliáns — a legtöbb jelentkezővel ellentétben Viktor pontosan megértette az igényt, és nagyon gyorsan meg tudta oldani… túlteljesítette az elvárásokat, és további megoldási javaslatokat is adott!",
+            "author": "Mike",
+            "role": "Alapító, DBCode",
+            "avatar": "M",
+            "stars": 5
+          },
+          {
+            "quote": "Viktor egy kiváló frontend, backend és grafikai szakember, nagy terhelhetőséggel, megbízhatósággal és magas szintű webes programozási szakértelemmel. Nagy önállósággal és kreativitással hajtja végre a kijelölt feladatokat időben, vagy akár előbb.",
+            "author": "András",
+            "role": "CEO, Etheron Systems",
+            "avatar": "A",
+            "stars": 5
+          },
+          {
+            "quote": "Viktor kivételes mentor volt, aki megtanította nekem a frontend fejlesztés legjobb gyakorlatait. A reszponzív felhasználói felületek tervezésében és megvalósításában szerzett tapasztalata felbecsülhetetlen volt. Páros programozáson és code review-kon keresztül is végigvezetett, hogy elérjük a magas minőségi színvonalat. Csak ajánlani tudom, mint hozzáértő és elhivatott szakembert!",
+            "author": "Enikő",
+            "role": "Frontend fejlesztő",
+            "avatar": "E",
+            "stars": 5
+          }
+        ]
+      },
+      "contactForm": {
+        "badge": "Dolgozzunk együtt",
+        "title": "Van egy projekted? ",
+        "titleHighlight": "Beszéljünk róla.",
+        "description": "Mondd el, mit szeretnél építeni, és 24 órán belül válaszolok egy tervvel és árajánlattal. Nincs erőszakos sales hívás.",
+        "perks": [
+          { "icon": "⚡", "text": "Válasz 24 órán belül" },
+          { "icon": "📋", "text": "Ingyenes projekt felmérő hívás" },
+          { "icon": "🔒", "text": "NDA kérésre elérhető" },
+          { "icon": "🚀", "text": "Azonnal kezdésre kész" }
+        ],
+        "success": {
+          "title": "Üzenet elküldve!",
+          "description": "Köszönöm, hogy felvetted velem a kapcsolatot. 24 órán belül válaszolok a következő lépésekkel.",
+          "sendAnother": "Új üzenet küldése"
+        },
+        "rateLimited": {
+          "title": "Lassíts egy kicsit",
+          "defaultMessage": "Túl sok üzenet. Kérlek, próbáld újra később.",
+          "backToForm": "Vissza az űrlaphoz"
+        },
+        "form": {
+          "name": {
+            "label": "Neved",
+            "placeholder": "Kovács János"
+          },
+          "email": {
+            "label": "Email cím",
+            "placeholder": "janos@ceg.hu"
+          },
+          "budget": {
+            "label": "Költségkeret",
+            "placeholder": "Válassz költségkeretet",
+            "options": [
+              { "value": "under-1k", "label": "1 000 $ alatt" },
+              { "value": "1k-5k", "label": "1 000 – 5 000 $" },
+              { "value": "5k-15k", "label": "5 000 – 15 000 $" },
+              { "value": "15k-plus", "label": "15 000 $+" },
+              { "value": "not-sure", "label": "Még nem tudom" }
+            ]
+          },
+          "message": {
+            "label": "Mesélj a projektedről",
+            "placeholder": "Egy SaaS appot építek..."
+          },
+          "errors": {
+            "nameMin": "A névnek legalább 2 karakter hosszúnak kell lennie",
+            "emailInvalid": "Adj meg egy érvényes email címet",
+            "budgetRequired": "Válassz egy költségkeretet",
+            "messageMin": "Mesélj egy kicsit többet — legalább 100 karakter",
+            "generic": "Valami hiba történt. Próbáld újra, vagy írj emailt közvetlenül."
+          },
+          "submit": "Üzenet küldése",
+          "sending": "Küldés...",
+          "privacyNote": "Nincs spam. Nincs sales nyomás. Csak egy beszélgetés."
+        }
+      }
+    }
+  }
+}

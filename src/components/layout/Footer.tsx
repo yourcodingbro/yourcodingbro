@@ -1,5 +1,5 @@
 import { FaLinkedin, FaFacebook } from "react-icons/fa6";
-import { serviceNames } from "@/lib/constants/services";
+import { getTranslations } from "next-intl/server";
 import Logo from "@/components/Logo";
 
 const currentYear = new Date().getFullYear();
@@ -21,7 +21,12 @@ export type FooterProps = {
   contactEmail: string;
 };
 
-export default function Footer({ contactEmail }: FooterProps) {
+export default async function Footer({ contactEmail }: FooterProps) {
+  const t = await getTranslations("globals.footer");
+  const serviceItems = (await getTranslations("pages.homepage.services"))
+    .raw("items") as { title: string }[];
+  const serviceNames = serviceItems.map((item) => item.title);
+
   return (
     <footer className="border-t border-line bg-bg">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -32,15 +37,14 @@ export default function Footer({ contactEmail }: FooterProps) {
               <Logo full />
             </div>
             <p className="text-fg-4 text-sm leading-relaxed max-w-xs">
-              Your dedicated development partner. Clean code, fast delivery,
-              real results.
+              {t("description")}
             </p>
           </div>
 
           {/* Services */}
           <div>
             <h4 className="text-fg font-semibold text-sm mb-4 uppercase tracking-widest">
-              Services
+              {t("servicesTitle")}
             </h4>
             <ul className="flex flex-col gap-2.5">
               {serviceNames.map((item) => (
@@ -56,7 +60,7 @@ export default function Footer({ contactEmail }: FooterProps) {
           {/* Contact */}
           <div>
             <h4 className="text-fg font-semibold text-sm mb-4 uppercase tracking-widest">
-              Contact
+              {t("contactTitle")}
             </h4>
             <ul className="flex flex-col gap-2.5">
               <li>
@@ -64,7 +68,7 @@ export default function Footer({ contactEmail }: FooterProps) {
                   href="#contact"
                   className="text-fg-4 text-sm hover:text-accent transition-colors"
                 >
-                  Start a project
+                  {t("startProject")}
                 </a>
               </li>
               <li>
@@ -95,7 +99,7 @@ export default function Footer({ contactEmail }: FooterProps) {
 
         {/* Copyright */}
         <div className="pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fg-4">
-          <p>© {currentYear} YourCodingBro. All rights reserved.</p>
+          <p>{t("copyright", { year: currentYear })}</p>
         </div>
       </div>
     </footer>

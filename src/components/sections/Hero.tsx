@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import SectionBadge from "@/components/badges/SectionBadge";
@@ -16,6 +17,8 @@ const project = await yourCodingBro.build({
 console.log(project.status); // "shipped 🚀"`;
 
 export default function Hero() {
+  const t = useTranslations("pages.homepage.hero");
+  const stats = t.raw("stats") as { value: string; label: string }[];
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -106,25 +109,20 @@ export default function Hero() {
         <div className="flex-1 min-w-0 w-full text-center lg:text-left">
           <SectionBadge className="mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            Available for new projects
+            {t("badge")}
           </SectionBadge>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-fg mb-6">
-            Your Vision, <span className="gradient-text">Built Fast.</span>
+            {t("title")}
+            <span className="gradient-text">{t("titleHighlight")}</span>
           </h1>
 
           <p className="text-base sm:text-lg text-fg-3 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
-            Expert full-stack development that ships clean, scalable code — on
-            time, every time. From MVP to production, I&apos;m your dedicated
-            coding partner.
+            {t("description")}
           </p>
 
           <div className="flex items-center justify-center lg:justify-start gap-4 sm:gap-8 mb-10">
-            {[
-              { value: "50+", label: "Projects shipped" },
-              { value: "100%", label: "On-time delivery" },
-              { value: "4.9★", label: "Client rating" },
-            ].map((stat) => (
+            {stats.map((stat) => (
               <div key={stat.label} className="text-center lg:text-left">
                 <div className="text-xl sm:text-2xl font-bold text-fg">
                   {stat.value}
@@ -143,7 +141,7 @@ export default function Hero() {
               iconPosition="after"
               className="w-full sm:w-auto text-white bg-brand hover:bg-brand-hover glow-blue"
             >
-              Start Your Project
+              {t("ctaPrimary")}
             </ButtonLink>
             <ButtonLink
               href="#services"
@@ -152,7 +150,7 @@ export default function Hero() {
               variant="outline"
               className="w-full sm:w-auto text-fg-2 border border-line hover:border-accent/40 hover:text-fg"
             >
-              See My Services
+              {t("ctaSecondary")}
             </ButtonLink>
           </div>
         </div>
@@ -213,7 +211,9 @@ export default function Hero() {
       </div>
 
       <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-fg-4">
-        <span className="text-xs tracking-widest uppercase">Scroll</span>
+        <span className="text-xs tracking-widest uppercase">
+          {t("scroll")}
+        </span>
         <svg
           className="w-5 h-5 animate-bounce"
           fill="none"

@@ -1,12 +1,20 @@
+import { getTranslations } from "next-intl/server";
 import Section, { SectionProps } from "@/components/atoms/Section";
 import Container from "@/components/atoms/Container";
 import TestimonialCard from "@/components/cards/TestimonialCard";
-import { stats, testimonials } from "@/lib/constants/social-proof";
+import type { Testimonial } from "@/types/testimonial";
 import { cn } from "@/lib/utils";
 
 export type SocialProofProps = SectionProps;
 
-export default function SocialProof({ className, ...props }: SocialProofProps) {
+export default async function SocialProof({
+  className,
+  ...props
+}: SocialProofProps) {
+  const t = await getTranslations("pages.homepage.socialProof");
+  const stats = t.raw("stats") as { value: string; label: string }[];
+  const testimonials = t.raw("testimonials") as Testimonial[];
+
   return (
     <Section
       id="testimonials"
@@ -16,11 +24,11 @@ export default function SocialProof({ className, ...props }: SocialProofProps) {
       <Container>
         <div className="text-center mb-8 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
-            Trusted by founders <span className="gradient-text">who ship.</span>
+            {t("title")}
+            <span className="gradient-text">{t("titleHighlight")}</span>
           </h2>
           <p className="text-fg-3 max-w-xl mx-auto text-base sm:text-lg">
-            Real projects. Real results. Here&apos;s what clients say after
-            we&apos;ve shipped together.
+            {t("description")}
           </p>
         </div>
 

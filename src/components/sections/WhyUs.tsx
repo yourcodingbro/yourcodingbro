@@ -1,48 +1,28 @@
+import { getTranslations } from "next-intl/server";
 import Section, { SectionProps } from "@/components/atoms/Section";
 import Container from "@/components/atoms/Container";
 
-const reasons = [
-  {
-    number: "01",
-    title: "No freelancer roulette",
-    description:
-      "You get one dedicated developer who owns your project start to finish — not a rotating cast of contractors or an account manager forwarding your requests.",
-  },
-  {
-    number: "02",
-    title: "Async-first, always available",
-    description:
-      "I work across timezones and communicate clearly in writing. No scheduling hell — just fast, reliable responses and daily progress updates.",
-  },
-  {
-    number: "03",
-    title: "You own everything",
-    description:
-      "Full IP transfer, clean git history, documented code. When we're done you can hand it to any developer and they'll understand it immediately.",
-  },
-  {
-    number: "04",
-    title: "Honest scoping, no surprises",
-    description:
-      "I'll tell you upfront what's realistic in your budget and timeline. No lowball estimates to win the deal, no scope creep invoices later.",
-  },
-];
-
 export type WhyUsProps = SectionProps;
 
-export default function WhyUs({ ...props }: WhyUsProps) {
+export default async function WhyUs({ ...props }: WhyUsProps) {
+  const t = await getTranslations("pages.homepage.whyUs");
+  const reasons = t.raw("reasons") as {
+    number: string;
+    title: string;
+    description: string;
+  }[];
+
   return (
     <Section id="why-us" {...props}>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-5 tracking-tight leading-tight">
-              Not just another{" "}
-              <span className="gradient-text">dev for hire.</span>
+              {t("title")}
+              <span className="gradient-text">{t("titleHighlight")}</span>
             </h2>
             <p className="text-fg-3 text-base sm:text-lg leading-relaxed">
-              There are thousands of developers available. Here&apos;s why
-              founders keep coming back — and referring their friends.
+              {t("description")}
             </p>
           </div>
 

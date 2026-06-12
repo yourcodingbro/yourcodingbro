@@ -16,3 +16,19 @@ export const contactSchema = z.object({
 });
 
 export type ContactFormData = z.infer<typeof contactSchema>;
+
+export type ContactErrorMessages = {
+  nameMin: string;
+  emailInvalid: string;
+  budgetRequired: string;
+  messageMin: string;
+};
+
+export function getContactSchema(messages: ContactErrorMessages) {
+  return z.object({
+    name: z.string().min(2, messages.nameMin),
+    email: z.email(messages.emailInvalid),
+    budget: z.string().min(1, messages.budgetRequired),
+    message: z.string().min(100, messages.messageMin),
+  });
+}

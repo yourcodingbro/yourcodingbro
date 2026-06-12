@@ -1,0 +1,257 @@
+{
+  "globals": {
+    "header": {
+      "navLinks": {
+        "whyUs": "Why Us",
+        "services": "Services",
+        "work": "Work",
+        "testimonials": "Testimonials",
+        "contact": "Contact"
+      },
+      "startProject": "Start a Project",
+      "toggleMenu": "Toggle menu",
+      "languageLabel": "Language"
+    },
+    "footer": {
+      "description": "Your dedicated development partner. Clean code, fast delivery, real results.",
+      "servicesTitle": "Services",
+      "contactTitle": "Contact",
+      "startProject": "Start a project",
+      "copyright": "© {year} YourCodingBro. All rights reserved."
+    }
+  },
+  "pages": {
+    "homepage": {
+      "sectionDividers": {
+        "whyUs": "Why work with me",
+        "results": "Results"
+      },
+      "hero": {
+        "badge": "Available for new projects",
+        "title": "Your Vision, ",
+        "titleHighlight": "Built Fast.",
+        "description": "Expert full-stack development that ships clean, scalable code — on time, every time. From MVP to production, I'm your dedicated coding partner.",
+        "stats": [
+          { "value": "50+", "label": "Projects shipped" },
+          { "value": "100%", "label": "On-time delivery" },
+          { "value": "4.9★", "label": "Client rating" }
+        ],
+        "ctaPrimary": "Start Your Project",
+        "ctaSecondary": "See My Services",
+        "scroll": "Scroll"
+      },
+      "valueProp": {
+        "title": "Everything you need, ",
+        "titleHighlight": "nothing you don't.",
+        "description": "From idea to deployment — I handle the hard parts so you can focus on growing your business.",
+        "values": [
+          {
+            "title": "Fast Delivery",
+            "description": "No endless meetings or scope creep. I move fast, communicate clearly, and get your product shipped."
+          },
+          {
+            "title": "Clean Code",
+            "description": "TypeScript-first, well-tested, and documented. Code you can maintain and scale confidently."
+          },
+          {
+            "title": "Mobile-First",
+            "description": "Every pixel is designed for mobile first, then refined for desktop. Pixel-perfect across all screen sizes."
+          },
+          {
+            "title": "Secure by Default",
+            "description": "Auth, input validation, OWASP best practices, and secure deployments baked in from day one."
+          },
+          {
+            "title": "Scalable Architecture",
+            "description": "Designed to grow with you. From side project to Series A traffic — built to handle it."
+          },
+          {
+            "title": "Clear Communication",
+            "description": "Daily updates, async-friendly, timezone-aware. You always know what's happening with your project."
+          }
+        ]
+      },
+      "whyUs": {
+        "title": "Not just another ",
+        "titleHighlight": "dev for hire.",
+        "description": "There are thousands of developers available. Here's why founders keep coming back — and referring their friends.",
+        "reasons": [
+          {
+            "number": "01",
+            "title": "No freelancer roulette",
+            "description": "You get one dedicated developer who owns your project start to finish — not a rotating cast of contractors or an account manager forwarding your requests."
+          },
+          {
+            "number": "02",
+            "title": "Async-first, always available",
+            "description": "I work across timezones and communicate clearly in writing. No scheduling hell — just fast, reliable responses and daily progress updates."
+          },
+          {
+            "number": "03",
+            "title": "You own everything",
+            "description": "Full IP transfer, clean git history, documented code. When we're done you can hand it to any developer and they'll understand it immediately."
+          },
+          {
+            "number": "04",
+            "title": "Honest scoping, no surprises",
+            "description": "I'll tell you upfront what's realistic in your budget and timeline. No lowball estimates to win the deal, no scope creep invoices later."
+          }
+        ]
+      },
+      "services": {
+        "title": "Services built for ",
+        "titleHighlight": "real outcomes.",
+        "description": "Three focused offerings — each designed to deliver tangible value without the overhead of a larger agency.",
+        "items": [
+          {
+            "title": "Workflow Automation",
+            "tagline": "Save hours every week",
+            "description": "I design and build automated workflows that eliminate repetitive work, connect your tools, and let your team focus on what actually matters.",
+            "bullets": [
+              "Internal process automation",
+              "API & webhook integrations",
+              "Scheduled jobs & triggers",
+              "Custom internal dashboards",
+              "Notification & alert pipelines",
+              "Data sync & ETL workflows",
+              "Legacy tool modernisation"
+            ]
+          },
+          {
+            "title": "Full-Stack Development",
+            "tagline": "From idea to production",
+            "description": "Full-stack applications built to scale — from polished landing pages to complex SaaS products, pixel-perfect and production-ready.",
+            "bullets": [
+              "MVP building & rapid prototyping",
+              "UI/UX development",
+              "API development & third-party integrations",
+              "Database design",
+              "Deployment (CI/CD)",
+              "Performance audits & optimisation",
+              "Technical consultation"
+            ]
+          },
+          {
+            "title": "Tutoring",
+            "tagline": "Learn at your pace",
+            "description": "1-on-1 coding sessions tailored to your level and goals — whether you're just starting out or levelling up to land your next role.",
+            "bullets": [
+              "Development fundamentals",
+              "React, TypeScript & modern JavaScript",
+              "System design & architecture basics",
+              "Building your first project end-to-end",
+              "Code reviews & best practices",
+              "Interview prep & career coaching"
+            ]
+          }
+        ],
+        "seeMore": "See more",
+        "showLess": "Show less"
+      },
+      "portfolio": {
+        "title": "Projects that ",
+        "titleHighlight": "shipped.",
+        "error": "Could not load projects. Please try again later.",
+        "goToSlide": "Go to slide {number}"
+      },
+      "socialProof": {
+        "title": "Trusted by founders ",
+        "titleHighlight": "who ship.",
+        "description": "Real projects. Real results. Here's what clients say after we've shipped together.",
+        "stats": [
+          { "value": "50+", "label": "Projects Shipped" },
+          { "value": "30+", "label": "Happy Clients" },
+          { "value": "10+", "label": "Years of Experience" },
+          { "value": "4 weeks", "label": "Avg. MVP Time" }
+        ],
+        "testimonials": [
+          {
+            "quote": "We worked together for 4,5 years. During this time, he showcased incredible dedication to his tasks and willingness to grow as a developer. His work ethic and positive attitude make him a valuable asset to any project. I'd highly recommend him.",
+            "author": "Ferenc",
+            "role": "CIO, Magyar Közút",
+            "avatar": "F",
+            "stars": 5
+          },
+          {
+            "quote": "Brilliant, unlike most of the responses to this job, Viktor understood the need and was able to get it done very quickly… went above and beyond and provided additional options as well!",
+            "author": "Mike",
+            "role": "Founder, DBCode",
+            "avatar": "M",
+            "stars": 5
+          },
+          {
+            "quote": "Viktor is an excellent professional frontend, backend and graphic designer with high resilience, reliability and great expertise in high level web based programming. He has huge autonomy and creativity carrying out the defined tasks in time or even before.",
+            "author": "András",
+            "role": "CEO, Etheron Systems",
+            "avatar": "A",
+            "stars": 5
+          },
+          {
+            "quote": "Viktor has been an exceptional mentor, teaching me best practices in front-end development. His expertise in designing and implementing responsive interfaces was invaluable. He also guided me through peer programming and code reviews to meet high quality standards. I highly recommend him as a knowledgeable and dedicated professional!",
+            "author": "Enikő",
+            "role": "Frontend Developer",
+            "avatar": "E",
+            "stars": 5
+          }
+        ]
+      },
+      "contactForm": {
+        "badge": "Let's build together",
+        "title": "Got a project? ",
+        "titleHighlight": "Let's talk.",
+        "description": "Tell me what you're building and I'll get back to you within 24 hours with a plan and estimate. No pushy sales calls.",
+        "perks": [
+          { "icon": "⚡", "text": "Response within 24 hours" },
+          { "icon": "📋", "text": "Free project scoping call" },
+          { "icon": "🔒", "text": "NDA available on request" },
+          { "icon": "🚀", "text": "Ready to start immediately" }
+        ],
+        "success": {
+          "title": "Message sent!",
+          "description": "Thanks for reaching out. I'll get back to you within 24 hours with next steps.",
+          "sendAnother": "Send another message"
+        },
+        "rateLimited": {
+          "title": "Slow down a bit",
+          "defaultMessage": "Too many messages. Please try again later.",
+          "backToForm": "Back to form"
+        },
+        "form": {
+          "name": {
+            "label": "Your Name",
+            "placeholder": "John Smith"
+          },
+          "email": {
+            "label": "Email Address",
+            "placeholder": "john@company.com"
+          },
+          "budget": {
+            "label": "Budget Range",
+            "placeholder": "Select budget range",
+            "options": [
+              { "value": "under-1k", "label": "Under $1,000" },
+              { "value": "1k-5k", "label": "$1,000 – $5,000" },
+              { "value": "5k-15k", "label": "$5,000 – $15,000" },
+              { "value": "15k-plus", "label": "$15,000+" },
+              { "value": "not-sure", "label": "Not sure yet" }
+            ]
+          },
+          "message": {
+            "label": "Tell me about your project",
+            "placeholder": "I'm building a SaaS app..."
+          },
+          "errors": {
+            "nameMin": "Name must be at least 2 characters",
+            "emailInvalid": "Please enter a valid email address",
+            "budgetRequired": "Please select a budget range",
+            "messageMin": "Tell me a bit more — at least 100 characters",
+            "generic": "Something went wrong. Please try again or email me directly."
+          },
+          "submit": "Send Message",
+          "sending": "Sending...",
+          "privacyNote": "No spam. No sales pressure. Just a conversation."
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { Person, WebSite, WithContext } from "schema-dts";
+import { getTranslations } from "next-intl/server";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
@@ -81,7 +82,9 @@ const websiteSchema: WithContext<WebSite> = {
     "YourCodingBro — Expert freelance development. Web apps, automation, and MVPs delivered fast.",
 };
 
-export default function Home() {
+export default async function Home() {
+  const t = await getTranslations("pages.homepage.sectionDividers");
+
   return (
     <>
       <script
@@ -96,10 +99,10 @@ export default function Home() {
       <main>
         <Hero />
         <ValueProp depth="row" depthColor="via-violet/10" />
-        <SectionBadgeDivider>Why work with me</SectionBadgeDivider>
+        <SectionBadgeDivider>{t("whyUs")}</SectionBadgeDivider>
         <WhyUs depth="circles" depthColor="bg-brand/10" />
         <Services depth="row" depthColor="via-accent/5" />
-        <SectionBadgeDivider>Results</SectionBadgeDivider>
+        <SectionBadgeDivider>{t("results")}</SectionBadgeDivider>
         <Portfolio depth="circles" depthColor="bg-violet/15" />
         <SocialProof depth="row" depthColor="via-brand/15" />
         <ContactForm />
