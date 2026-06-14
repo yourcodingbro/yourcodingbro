@@ -77,7 +77,11 @@
 
   --cc-cookie-category-block-bg: var(--elevated);
   --cc-cookie-category-block-border: var(--line);
-  --cc-cookie-category-block-hover-bg: color-mix(in srgb, var(--elevated) 70%, var(--brand) 10%);
+  --cc-cookie-category-block-hover-bg: color-mix(
+    in srgb,
+    var(--elevated) 70%,
+    var(--brand) 10%
+  );
   --cc-cookie-category-block-hover-border: var(--brand);
   --cc-cookie-category-expanded-block-bg: transparent;
   --cc-cookie-category-expanded-block-hover-bg: var(--elevated);
@@ -125,7 +129,12 @@
 #cc-main .cm__btn,
 #cc-main .pm__btn {
   font-weight: 600;
-  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+  transition: background-color 150ms ease, border-color 150ms ease,
+    color 150ms ease;
+}
+
+#cc-main .pm__badge {
+  @apply inline-flex items-center justify-center border border-border bg-background text-xs py-1 px-2 size-auto leading-3 font-medium rounded-full dark:border-input dark:bg-input/60;
 }
 
 /* ─── Tailwind theme ───────────────────────────────────────── */

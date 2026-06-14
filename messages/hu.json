@@ -35,8 +35,13 @@
         "savePreferencesBtn": "Beállítások mentése",
         "closeIconLabel": "Bezárás",
         "sections": {
+          "usage": {
+            "title": "Hogyan használjuk a sütiket",
+            "description": "A sütik kis szöveges fájlok, amelyeket az eszközén tárolunk, amikor meglátogatja weboldalunkat. Ezekkel biztosítjuk a weboldal működését, megjegyezzük a beállításait, és – ha engedélyezi – megérthetjük, hogyan használják a látogatók az oldalt, hogy javíthassuk azt. A választásait bármikor módosíthatja az alábbi kapcsolókkal."
+          },
           "necessary": {
             "title": "Feltétlenül szükséges sütik",
+            "badge": "Mindig engedélyezve",
             "description": "Ezek a sütik elengedhetetlenek a weboldal megfelelő működéséhez, és nem kapcsolhatók ki."
           },
           "analytics": {

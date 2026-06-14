@@ -35,8 +35,13 @@
         "savePreferencesBtn": "Save preferences",
         "closeIconLabel": "Close",
         "sections": {
+          "usage": {
+            "title": "How we use cookies",
+            "description": "Cookies are small text files stored on your device when you visit our website. We use them to keep the site working, remember your preferences, and — if you allow it — to understand how visitors use the site so we can improve it. You can change your choices at any time using the toggles below."
+          },
           "necessary": {
             "title": "Strictly necessary cookies",
+            "badge": "Always enabled",
             "description": "These cookies are essential for the website to function properly and cannot be switched off."
           },
           "analytics": {

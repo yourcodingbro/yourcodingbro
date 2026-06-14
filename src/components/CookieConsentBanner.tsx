@@ -33,7 +33,15 @@ export default function CookieConsentBanner() {
           closeIconLabel: t("preferencesModal.closeIconLabel"),
           sections: [
             {
-              title: t("preferencesModal.sections.necessary.title"),
+              title: t("preferencesModal.sections.usage.title"),
+              description: t("preferencesModal.sections.usage.description"),
+            },
+            {
+              title: `${t(
+                "preferencesModal.sections.necessary.title"
+              )} <span class="pm__badge">${t(
+                "preferencesModal.sections.necessary.badge"
+              )}</span>`,
               description: t("preferencesModal.sections.necessary.description"),
               linkedCategory: "necessary",
             },
@@ -57,6 +65,7 @@ export default function CookieConsentBanner() {
           },
           preferencesModal: {
             layout: "box",
+            equalWeightButtons: false,
           },
         },
         categories: {
