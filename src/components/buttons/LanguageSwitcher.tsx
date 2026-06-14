@@ -46,7 +46,7 @@ export default function LanguageSwitcher() {
       >
         <Globe className="w-5 h-5" />
       </SelectTrigger>
-      <SelectContent align="center" className="min-w-20">
+      <SelectContent align="center" className="rounded-md min-w-20">
         {routing.locales.map((loc) => (
           <SelectItem key={loc} value={loc}>
             {localeLabels[loc]}

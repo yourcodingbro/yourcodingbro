@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { Person, WebSite, WithContext } from "schema-dts";
 import { getTranslations } from "next-intl/server";
-import Navbar from "@/components/layout/Navbar";
+import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import ValueProp from "@/components/sections/ValueProp";
@@ -9,7 +9,7 @@ import WhyUs from "@/components/sections/WhyUs";
 import Services from "@/components/sections/Services";
 import Portfolio from "@/components/sections/Portfolio";
 import SocialProof from "@/components/sections/SocialProof";
-import ContactForm from "@/components/ContactForm";
+import ContactForm from "@/components/forms/ContactForm";
 import SectionBadgeDivider from "@/components/badges/SectionBadgeDivider";
 
 export const metadata: Metadata = {
@@ -95,7 +95,7 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
-      <Navbar />
+      <Header />
       <main>
         <Hero />
         <ValueProp depth="row" depthColor="via-violet/10" />

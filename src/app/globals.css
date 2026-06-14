@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "vanilla-cookieconsent/dist/cookieconsent.css";
 
 /* Wire shadcn's dark: variant to our data-theme attribute */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
@@ -59,6 +60,72 @@
   --fg-2: #334155;
   --fg-3: #64748b;
   --fg-4: #94a3b8;
+}
+
+/* ─── Cookie consent theming ──────────────────────────────────
+   Maps vanilla-cookieconsent's CSS variables to our design tokens
+   so the banner/modal follow the active light/dark theme automatically. */
+:root {
+  --cc-font-family: var(--font-geist-sans), system-ui, sans-serif;
+  --cc-z-index: 9999;
+  --cc-modal-border-radius: var(--radius-xl);
+  --cc-btn-border-radius: var(--radius-lg);
+
+  --cc-bg: var(--surface);
+  --cc-primary-color: var(--fg);
+  --cc-secondary-color: var(--fg-3);
+
+  --cc-cookie-category-block-bg: var(--elevated);
+  --cc-cookie-category-block-border: var(--line);
+  --cc-cookie-category-block-hover-bg: color-mix(in srgb, var(--elevated) 70%, var(--brand) 10%);
+  --cc-cookie-category-block-hover-border: var(--brand);
+  --cc-cookie-category-expanded-block-bg: transparent;
+  --cc-cookie-category-expanded-block-hover-bg: var(--elevated);
+  --cc-section-category-border: var(--line);
+
+  --cc-separator-border-color: var(--line);
+  --cc-overlay-bg: color-mix(in srgb, var(--bg) 75%, transparent);
+
+  --cc-btn-primary-bg: var(--brand);
+  --cc-btn-primary-color: #ffffff;
+  --cc-btn-primary-border-color: var(--brand);
+  --cc-btn-primary-hover-bg: var(--brand-hover);
+  --cc-btn-primary-hover-color: #ffffff;
+  --cc-btn-primary-hover-border-color: var(--brand-hover);
+
+  --cc-btn-secondary-bg: var(--elevated);
+  --cc-btn-secondary-color: var(--fg-2);
+  --cc-btn-secondary-border-color: var(--line);
+  --cc-btn-secondary-hover-bg: var(--line);
+  --cc-btn-secondary-hover-color: var(--fg);
+  --cc-btn-secondary-hover-border-color: var(--line);
+
+  --cc-toggle-on-bg: var(--brand);
+  --cc-toggle-off-bg: var(--line);
+  --cc-toggle-on-knob-bg: #ffffff;
+  --cc-toggle-off-knob-bg: #ffffff;
+  --cc-toggle-enabled-icon-color: var(--brand);
+  --cc-toggle-disabled-icon-color: var(--fg-4);
+  --cc-toggle-readonly-bg: color-mix(in srgb, var(--brand) 35%, var(--line));
+  --cc-toggle-readonly-knob-bg: #ffffff;
+  --cc-toggle-readonly-knob-icon-color: var(--cc-toggle-readonly-bg);
+
+  --cc-link-color: var(--accent);
+  --cc-footer-bg: var(--surface);
+  --cc-footer-color: var(--fg-3);
+  --cc-footer-border-color: var(--line);
+}
+
+#cc-main .cm,
+#cc-main .pm {
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 40px color-mix(in srgb, var(--bg) 50%, transparent);
+}
+
+#cc-main .cm__btn,
+#cc-main .pm__btn {
+  font-weight: 600;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
 /* ─── Tailwind theme ───────────────────────────────────────── */

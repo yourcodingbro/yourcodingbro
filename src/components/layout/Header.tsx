@@ -6,9 +6,9 @@ import cn from "classnames";
 import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { Button, ButtonLink } from "@/components/ui/button";
-import Logo from "@/components/Logo";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Logo from "@/components/atoms/Logo";
+import ThemeSwitcher from "@/components/buttons/ThemeSwitcher";
+import LanguageSwitcher from "@/components/buttons/LanguageSwitcher";
 
 function HamburgerIcon({ open }: { open: boolean }) {
   return (
@@ -32,7 +32,7 @@ function HamburgerIcon({ open }: { open: boolean }) {
   );
 }
 
-export default function Navbar() {
+export default function Header() {
   const t = useTranslations("globals.header");
 
   const [scrolled, setScrolled] = useState(false);

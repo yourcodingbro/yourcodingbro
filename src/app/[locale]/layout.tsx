@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { GoogleTagManager } from "@next/third-parties/google";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 import QueryProvider from "@/lib/providers/QueryProvider";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
@@ -55,7 +55,7 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex flex-col min-h-full">
         <NextIntlClientProvider>
           <ThemeProvider
             attribute="data-theme"
@@ -63,12 +63,10 @@ export default async function RootLayout({
             enableSystem
           >
             <QueryProvider>{children}</QueryProvider>
+            <CookieConsentBanner />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
-      {process.env.NEXT_PUBLIC_GTM_ID && (
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
-      )}
     </html>
   );
 }

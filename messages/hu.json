@@ -17,7 +17,34 @@
       "servicesTitle": "Szolgáltatások",
       "contactTitle": "Kapcsolat",
       "startProject": "Indítsunk projektet",
-      "copyright": "© {year} YourCodingBro. Minden jog fenntartva."
+      "copyright": "© {year} YourCodingBro. Minden jog fenntartva.",
+      "managePreferences": "Süti beállítások kezelése"
+    },
+    "cookieConsent": {
+      "consentModal": {
+        "title": "Tiszteletben tartjuk a magánszféráját",
+        "description": "Sütiket használunk a weboldal megfelelő működéséhez, és – hozzájárulásával – a forgalom elemzéséhez, hogy javíthassuk a felhasználói élményt.",
+        "acceptAllBtn": "Mindet elfogadom",
+        "acceptNecessaryBtn": "Mindet elutasítom",
+        "showPreferencesBtn": "Beállítások kezelése"
+      },
+      "preferencesModal": {
+        "title": "Süti beállítások",
+        "acceptAllBtn": "Mindet elfogadom",
+        "acceptNecessaryBtn": "Mindet elutasítom",
+        "savePreferencesBtn": "Beállítások mentése",
+        "closeIconLabel": "Bezárás",
+        "sections": {
+          "necessary": {
+            "title": "Feltétlenül szükséges sütik",
+            "description": "Ezek a sütik elengedhetetlenek a weboldal megfelelő működéséhez, és nem kapcsolhatók ki."
+          },
+          "analytics": {
+            "title": "Analitikai sütik",
+            "description": "Ezek a sütik segítenek megérteni, hogyan használják a látogatók a weboldalt, anonim adatok gyűjtésével."
+          }
+        }
+      }
     }
   },
   "pages": {
