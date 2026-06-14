@@ -110,7 +110,12 @@
   --cc-toggle-off-knob-bg: #ffffff;
   --cc-toggle-enabled-icon-color: var(--brand);
   --cc-toggle-disabled-icon-color: var(--fg-4);
-  --cc-toggle-readonly-bg: color-mix(in srgb, var(--brand) 35%, var(--line));
+  --cc-toggle-readonly-bg: color-mix(
+    in srgb,
+    var(--brand) 30%,
+    var(--elevated)
+  );
+  --cc-toggle-expendable-arrow-bg: var(--line);
   --cc-toggle-readonly-knob-bg: #ffffff;
   --cc-toggle-readonly-knob-icon-color: var(--cc-toggle-readonly-bg);
 
@@ -135,6 +140,10 @@
 
 #cc-main .pm__badge {
   @apply inline-flex items-center justify-center border border-border bg-background text-xs py-1 px-2 size-auto leading-3 font-medium rounded-full dark:border-input dark:bg-input/60;
+}
+
+#cc-main .pm__section--expandable .pm__section-arrow {
+  background: var(--cc-toggle-expendable-arrow-bg);
 }
 
 /* ─── Tailwind theme ───────────────────────────────────────── */
