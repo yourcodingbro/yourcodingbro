@@ -1,12 +1,15 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
-type SectionBadgeProps = {
+export type SectionBadgeProps = {
   children: React.ReactNode;
   className?: string;
-}
+};
 
-export default function SectionBadge({ children, className }: SectionBadgeProps) {
+export default function SectionBadge({
+  children,
+  className,
+}: SectionBadgeProps) {
   return (
     <Badge
       variant="outline"

@@ -4,11 +4,7 @@ import Image from "next/image";
 import { Boxes } from "lucide-react";
 import cn from "classnames";
 import { Button } from "@/components/ui/button";
-import type {
-  PortfolioItem,
-  ProjectType,
-  ProjectStatus,
-} from "@/types/project";
+import type { Project, ProjectType, ProjectStatus } from "@/types/project";
 
 export const typeStyle: Record<ProjectType, string> = {
   "App Development": "bg-brand/10 text-brand border-brand/25",
@@ -25,12 +21,12 @@ export const statusStyle: Record<ProjectStatus, string> = {
   "In Progress": "bg-amber-400/10 text-amber-400 border-amber-400/25",
 };
 
-type Props = {
-  item: PortfolioItem;
+export type ProjectCardProps = {
+  item: Project;
   onClick: () => void;
 };
 
-export default function PortfolioCard({ item, onClick }: Props) {
+export default function ProjectCard({ item, onClick }: ProjectCardProps) {
   return (
     <Button
       data-card
@@ -39,7 +35,7 @@ export default function PortfolioCard({ item, onClick }: Props) {
       className="border border-elevated rounded-2xl overflow-hidden flex flex-col items-start justify-start text-left w-full h-auto p-0 gap-0 whitespace-normal active:not-aria-[haspopup]:translate-y-0 group transition-all duration-300"
     >
       <div className="relative w-full aspect-video shrink-0">
-        <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-transparent transition-colors duration-300" />
+        <div className="absolute inset-0 z-10 transition-colors duration-300 bg-black/20 group-hover:bg-transparent" />
         {item.has_image ? (
           <Image
             src={item.thumbnail}
@@ -54,13 +50,13 @@ export default function PortfolioCard({ item, onClick }: Props) {
               item.thumbnail
             )}
           >
-            <Boxes className="w-8 h-8 text-white/30 group-hover:text-white/60 transition-colors duration-300" />
+            <Boxes className="w-8 h-8 transition-colors duration-300 text-white/30 group-hover:text-white/60" />
           </div>
         )}
       </div>
 
-      <div className="rounded-b-2xl w-full p-5 flex flex-col gap-3 hover:bg-elevated/50 transition-colors duration-300">
-        <h3 className="text-fg font-semibold text-base leading-snug">
+      <div className="flex flex-col gap-3 p-5 w-full rounded-b-2xl transition-colors duration-300 hover:bg-elevated/50">
+        <h3 className="text-base font-semibold leading-snug text-fg">
           {item.title}
         </h3>
 
@@ -86,7 +82,7 @@ export default function PortfolioCard({ item, onClick }: Props) {
           </span>
         </div>
 
-        <p className="text-fg-3 text-sm leading-relaxed line-clamp-2">
+        <p className="text-sm leading-relaxed text-fg-3 line-clamp-2">
           {item.short_desc}
         </p>
       </div>

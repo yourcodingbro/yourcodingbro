@@ -10,7 +10,7 @@ import Services from "@/components/sections/Services";
 import Portfolio from "@/components/sections/Portfolio";
 import SocialProof from "@/components/sections/SocialProof";
 import ContactForm from "@/components/forms/ContactForm";
-import SectionBadgeDivider from "@/components/badges/SectionBadgeDivider";
+import SectionBadgeDivider from "@/components/dividers/SectionBadgeDivider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yourcodingbro.com"),

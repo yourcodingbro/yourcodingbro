@@ -3,17 +3,17 @@
 import { CarouselApi } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 
-export type ItemIndicatorType = {
+export type CarouselItemIndicatorType = {
   api: CarouselApi;
   images: unknown[];
   selectedIndex: number;
 };
 
-export function ItemIndicator({
+export default function CarouselItemIndicator({
   api,
   images,
   selectedIndex,
-}: ItemIndicatorType) {
+}: CarouselItemIndicatorType) {
   return (
     <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 rounded-full bg-elevated p-1.5">
       {images.map((_, i) => (

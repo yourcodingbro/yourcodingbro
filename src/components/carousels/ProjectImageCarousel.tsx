@@ -11,7 +11,7 @@ import {
   CarouselNext,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { ItemIndicator } from "@/components/carousels/ItemIndicator";
+import CarouselItemIndicator from "@/components/carousels/CarouselItemIndicator";
 
 export type ProjectImageCarouselProps = {
   thumbnail: string;
@@ -45,7 +45,7 @@ export default function ProjectImageCarousel({
   }, [api]);
 
   return (
-    <div className="relative w-full shrink-0 overflow-hidden">
+    <div className="overflow-hidden relative w-full shrink-0">
       <Carousel
         setApi={setApi}
         opts={{ align: "start", loop: true }}
@@ -78,7 +78,7 @@ export default function ProjectImageCarousel({
               variant="outline"
               className="right-2 border-0"
             />
-            <ItemIndicator
+            <CarouselItemIndicator
               api={api}
               images={allImages}
               selectedIndex={selectedIndex}

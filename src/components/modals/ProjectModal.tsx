@@ -6,15 +6,15 @@ import { ExternalLink } from "lucide-react";
 import Modal from "@/components/modals/Modal";
 import { ButtonLink } from "@/components/ui/button";
 import ProjectImageCarousel from "@/components/carousels/ProjectImageCarousel";
-import { typeStyle, statusStyle } from "@/components/cards/PortfolioCard";
-import type { PortfolioItem } from "@/types/project";
+import { typeStyle, statusStyle } from "@/components/cards/ProjectCard";
+import type { Project } from "@/types/project";
 
-export type PortfolioModalProps = {
-  item: PortfolioItem | null;
+export type ProjectModalProps = {
+  item: Project | null;
   onClose: () => void;
 };
 
-export default function PortfolioModal({ item, onClose }: PortfolioModalProps) {
+export default function ProjectModal({ item, onClose }: ProjectModalProps) {
   return (
     <Modal open={item !== null} onClose={onClose}>
       {item && (
@@ -26,9 +26,9 @@ export default function PortfolioModal({ item, onClose }: PortfolioModalProps) {
             title={item.title}
           />
 
-          <div className="p-6 overflow-y-auto flex flex-col gap-5">
+          <div className="flex overflow-y-auto flex-col gap-5 p-6">
             <div>
-              <h2 className="text-fg font-bold text-xl mb-3">{item.title}</h2>
+              <h2 className="mb-3 text-xl font-bold text-fg">{item.title}</h2>
               <div className="flex flex-wrap gap-2">
                 {item.type.map((t) => (
                   <span
@@ -53,7 +53,7 @@ export default function PortfolioModal({ item, onClose }: PortfolioModalProps) {
             </div>
 
             <div
-              className="text-fg-2 text-sm leading-relaxed"
+              className="text-sm leading-relaxed text-fg-2"
               dangerouslySetInnerHTML={{
                 __html: sanitizeHtml(item.short_desc, {
                   allowedTags: sanitizeHtml.defaults.allowedTags.concat([
@@ -77,14 +77,14 @@ export default function PortfolioModal({ item, onClose }: PortfolioModalProps) {
               .filter((s) => s.items?.length > 0)
               .map((section) => (
                 <div key={section.label} className="flex flex-col gap-2">
-                  <p className="text-fg-4 text-xs font-semibold uppercase tracking-widest">
+                  <p className="text-xs font-semibold tracking-widest uppercase text-fg-4">
                     {section.label}
                   </p>
                   <ul className="flex flex-col gap-1.5">
                     {section.items!.map((point) => (
-                      <li key={point} className="flex items-start gap-2">
-                        <span className="text-accent shrink-0 mt-px">›</span>
-                        <span className="text-fg-2 text-sm leading-relaxed">
+                      <li key={point} className="flex gap-2 items-start">
+                        <span className="mt-px text-accent shrink-0">›</span>
+                        <span className="text-sm leading-relaxed text-fg-2">
                           {point}
                         </span>
                       </li>
@@ -97,7 +97,7 @@ export default function PortfolioModal({ item, onClose }: PortfolioModalProps) {
               {item.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-full bg-elevated border border-line text-fg-3 text-xs"
+                  className="px-3 py-1 text-xs rounded-full border bg-elevated border-line text-fg-3"
                 >
                   {tag}
                 </span>
@@ -112,7 +112,7 @@ export default function PortfolioModal({ item, onClose }: PortfolioModalProps) {
                 size="lg"
                 icon={<ExternalLink className="w-4 h-4" />}
                 iconPosition="after"
-                className="self-start bg-brand text-white hover:bg-brand-hover glow-blue"
+                className="self-start text-white bg-brand hover:bg-brand-hover glow-blue"
               >
                 Visit Project
               </ButtonLink>

@@ -13,10 +13,10 @@ import {
   CarouselNext,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import PortfolioCard from "@/components/cards/PortfolioCard";
-import PortfolioModal from "@/components/modals/PortfolioModal";
+import ProjectCard from "@/components/cards/ProjectCard";
+import ProjectModal from "@/components/modals/ProjectModal";
 import { useProjects } from "@/hooks/useProjects";
-import type { PortfolioItem } from "@/types/project";
+import type { Project } from "@/types/project";
 
 export type PortfolioProps = SectionProps;
 
@@ -24,7 +24,7 @@ export default function Portfolio({ ...props }: PortfolioProps) {
   const t = useTranslations("pages.homepage.portfolio");
   const [api, setApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selected, setSelected] = useState<PortfolioItem | null>(null);
+  const [selected, setSelected] = useState<Project | null>(null);
   const { data: projects = [], isLoading, isError } = useProjects();
 
   useEffect(() => {
@@ -44,42 +44,40 @@ export default function Portfolio({ ...props }: PortfolioProps) {
       <Container>
         <Carousel setApi={setApi} opts={{ align: "start", loop: false }}>
           {/* Header */}
-          <div className="flex items-end justify-between mb-8 sm:mb-12">
+          <div className="flex justify-between items-end mb-8 sm:mb-12">
             <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg tracking-tight">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-fg">
                 {t("title")}
                 <span className="gradient-text">{t("titleHighlight")}</span>
               </h2>
             </div>
 
-            <div className="hidden sm:flex items-center gap-2 shrink-0 ml-6 mb-1">
+            <div className="hidden gap-2 items-center mb-1 ml-6 sm:flex shrink-0">
               <CarouselPrevious
                 size="icon"
-                className="static translate-y-0 translate-x-0"
+                className="static translate-x-0 translate-y-0"
               />
               <CarouselNext
                 size="icon"
-                className="static translate-y-0 translate-x-0"
+                className="static translate-x-0 translate-y-0"
               />
             </div>
           </div>
 
           {isError ? (
-            <p className="text-fg-4 text-sm text-center py-12">
-              {t("error")}
-            </p>
+            <p className="py-12 text-sm text-center text-fg-4">{t("error")}</p>
           ) : isLoading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 3 }).map((_, i) => (
                 <div
                   key={i}
-                  className="gradient-border rounded-2xl overflow-hidden animate-pulse"
+                  className="overflow-hidden rounded-2xl animate-pulse gradient-border"
                 >
                   <div className="aspect-video bg-elevated" />
-                  <div className="p-5 flex flex-col gap-3">
-                    <div className="h-4 bg-elevated rounded w-3/4" />
-                    <div className="h-3 bg-elevated rounded w-1/2" />
-                    <div className="h-3 bg-elevated rounded w-full" />
+                  <div className="flex flex-col gap-3 p-5">
+                    <div className="w-3/4 h-4 rounded bg-elevated" />
+                    <div className="w-1/2 h-3 rounded bg-elevated" />
+                    <div className="w-full h-3 rounded bg-elevated" />
                   </div>
                 </div>
               ))}
@@ -92,7 +90,7 @@ export default function Portfolio({ ...props }: PortfolioProps) {
                     key={item.id}
                     className="pl-5 basis-[85%] sm:basis-1/2 lg:basis-1/3"
                   >
-                    <PortfolioCard
+                    <ProjectCard
                       item={item}
                       onClick={() => setSelected(item)}
                     />
@@ -100,7 +98,7 @@ export default function Portfolio({ ...props }: PortfolioProps) {
                 ))}
               </CarouselContent>
 
-              <div className="flex items-center justify-center gap-2 mt-5">
+              <div className="flex gap-2 justify-center items-center mt-5">
                 {(api?.scrollSnapList() ?? []).map((_, i) => (
                   <button
                     key={i}
@@ -116,14 +114,14 @@ export default function Portfolio({ ...props }: PortfolioProps) {
                 ))}
               </div>
 
-              <div className="flex sm:hidden items-center justify-center gap-3 mt-4">
+              <div className="flex gap-3 justify-center items-center mt-4 sm:hidden">
                 <CarouselPrevious
                   size="icon"
-                  className="static translate-y-0 translate-x-0"
+                  className="static translate-x-0 translate-y-0"
                 />
                 <CarouselNext
                   size="icon"
-                  className="static translate-y-0 translate-x-0"
+                  className="static translate-x-0 translate-y-0"
                 />
               </div>
             </>
@@ -131,7 +129,7 @@ export default function Portfolio({ ...props }: PortfolioProps) {
         </Carousel>
       </Container>
 
-      <PortfolioModal item={selected} onClose={() => setSelected(null)} />
+      <ProjectModal item={selected} onClose={() => setSelected(null)} />
     </Section>
   );
 }
