@@ -110,14 +110,14 @@
   --cc-toggle-off-knob-bg: #ffffff;
   --cc-toggle-enabled-icon-color: var(--brand);
   --cc-toggle-disabled-icon-color: var(--fg-4);
-  --cc-toggle-readonly-bg: color-mix(
-    in srgb,
-    var(--brand) 30%,
-    var(--elevated)
-  );
+  --cc-toggle-readonly-bg: color-mix(in srgb, var(--line) 70%, var(--fg-4) 30%);
   --cc-toggle-expendable-arrow-bg: var(--line);
-  --cc-toggle-readonly-knob-bg: #ffffff;
-  --cc-toggle-readonly-knob-icon-color: var(--cc-toggle-readonly-bg);
+  --cc-toggle-readonly-knob-bg: color-mix(
+    in srgb,
+    var(--elevated) 55%,
+    var(--line) 45%
+  );
+  --cc-toggle-readonly-knob-icon-color: var(--fg-4);
 
   --cc-link-color: var(--accent);
   --cc-footer-bg: var(--surface);
