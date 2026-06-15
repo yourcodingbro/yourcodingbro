@@ -354,3 +354,28 @@ body {
 .pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
 }
+
+/* ─── Custom scrollbar (visible only on hover/scroll) ──────── */
+.scrollbar-hover {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.scrollbar-hover:hover,
+.scrollbar-hover:focus-within {
+  scrollbar-color: var(--line) transparent;
+}
+.scrollbar-hover::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-hover::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-hover::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 3px;
+}
+.scrollbar-hover:hover::-webkit-scrollbar-thumb,
+.scrollbar-hover:focus-within::-webkit-scrollbar-thumb {
+  background-color: var(--line);
+}

@@ -25,6 +25,7 @@ import {
 
 export type ProjectFormProps = {
   defaultValues?: Partial<ProjectFormData>;
+  onSubmit?: (data: ProjectFormData) => void | Promise<void>;
   submitLabel?: string;
 };
 
@@ -35,6 +36,7 @@ const typeOptions = projectTypeOptions.map((type) => ({
 
 export default function ProjectForm({
   defaultValues,
+  onSubmit,
   submitLabel = "Save project",
 }: ProjectFormProps) {
   const {
@@ -57,14 +59,10 @@ export default function ProjectForm({
     },
   });
 
-  const onSubmit = (data: ProjectFormData) => {
-    console.log(data);
-  };
-
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-5 max-w-xl"
+      onSubmit={handleSubmit((data) => onSubmit?.(data))}
+      className="flex flex-col gap-5"
     >
       {/* Name */}
       <FormControl
