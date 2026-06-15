@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2, Mail, Check } from "lucide-react";
-import { createClient } from "@/lib/supabase/client";
+import { signInWithOtp } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -31,13 +31,7 @@ export default function LoginForm() {
   const onSubmit = async ({ email }: LoginFormData) => {
     setStatus("loading");
 
-    const supabase = createClient();
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: `${window.location.origin}/api/auth/callback`,
-      },
-    });
+    const { error } = await signInWithOtp(email);
 
     if (error) {
       setStatus("error");
