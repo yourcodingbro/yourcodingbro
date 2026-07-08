@@ -188,7 +188,7 @@ export default function ContactForm() {
               name="budget"
               control={control}
               render={({ field }) => (
-                <Select value={field.value} onValueChange={field.onChange}>
+                <Select value={field.value ?? ""} onValueChange={field.onChange}>
                   <SelectTrigger
                     className={cn(fieldClass, "w-full", {
                       "border-red-500/60": !!errors.budget,

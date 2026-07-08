@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { detectLocale } from "@/lib/utils";
+import { cn, detectLocale } from "@/lib/utils";
 
 const fieldClass =
   "h-auto px-4 py-3 bg-surface border-line text-fg placeholder:text-fg-4 focus-visible:border-brand focus-visible:ring-brand/30 rounded-lg";
@@ -64,7 +64,7 @@ export default function PhoneNumber({
           }
         }}
       >
-        <SelectTrigger className={`${fieldClass} min-w-24 shrink-0`}>
+        <SelectTrigger className={cn(fieldClass, "min-w-32 shrink-0")}>
           <SelectValue>
             {selectedCountry && (
               <span className="flex items-center gap-2">
@@ -97,7 +97,7 @@ export default function PhoneNumber({
             update(selectedCountry, e.target.value);
           }
         }}
-        placeholder={placeholder}
+        placeholder={createPlaceholder(selectedCountry?.format ?? placeholder)}
         className={fieldClass}
       />
     </div>
@@ -111,4 +111,16 @@ function Flag({ iso2 }: { iso2: string }) {
   if (!FlagComponent) return null;
 
   return <FlagComponent className="size-6 shrink-0 rounded-md" />;
+}
+
+function createPlaceholder(format: string): string {
+  const parenIdx = format.indexOf("(");
+  const dashIdx = format.indexOf("-");
+
+  const start = parenIdx !== -1 ? parenIdx : dashIdx !== -1 ? dashIdx + 1 : 0;
+  const relevant = format.slice(start);
+
+  let counter = 1;
+
+  return relevant.replace(/\./g, () => String(counter++ % 10));
 }
