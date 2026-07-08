@@ -3,9 +3,13 @@
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useMounted } from "@/hooks/useMounted";
 
 export default function ThemeSwitcher() {
   const { resolvedTheme, setTheme } = useTheme();
+  const mounted = useMounted();
+
+  if (!mounted) return <div className="w-9 h-9" />;
 
   return (
     <Button

@@ -8,7 +8,7 @@
         "testimonials": "Vélemények",
         "contact": "Kapcsolat"
       },
-      "startProject": "START",
+      "startProject": "Árajánlat kérése",
       "toggleMenu": "Menü megnyitása",
       "languageLabel": "Nyelv"
     },
@@ -228,20 +228,36 @@
           }
         ]
       },
-      "contactForm": {
+      "contact": {
         "badge": "Építsünk közösen valami újat",
         "title": "Van egy ötleted? ",
         "titleHighlight": "Beszéljünk róla.",
-        "description": "Oszd meg velem, mit szeretnél felépíteni, és 24 órán belül jelentkezem egy tervvel és becsléssel. Nyomulás nélkül.",
+        "description": "Oszd meg velem, mit szeretnél felépíteni, és {hours} órán belül jelentkezem egy tervvel és becsléssel. Nyomulás nélkül.",
         "perks": [
-          { "icon": "⚡", "text": "Válasz 24 órán belül" },
-          { "icon": "📋", "text": "Ingyenes projektfelmérő beszélgetés" },
-          { "icon": "🔒", "text": "Kérésre NDA (titoktartási megállapodás)" },
-          { "icon": "🚀", "text": "Azonnali kezdésre kész" }
+          {
+            "id": "responseTime",
+            "icon": "⚡",
+            "text": "Válasz {hours} órán belül"
+          },
+          {
+            "id": "scope",
+            "icon": "📋",
+            "text": "Ingyenes projektfelmérő beszélgetés"
+          },
+          {
+            "id": "nda",
+            "icon": "🔒",
+            "text": "Kérésre titoktartási megállapodás készítése"
+          },
+          {
+            "id": "availability",
+            "icon": "🚀",
+            "text": "Azonnali kezdésre kész"
+          }
         ],
         "success": {
           "title": "Üzenet elküldve!",
-          "description": "Köszönöm a megkeresést! 24 órán belül jelentkezem a következő lépésekkel.",
+          "description": "Köszönöm a megkeresést! {hours} órán belül jelentkezem a következő lépésekkel.",
           "sendAnother": "Új üzenet küldése"
         },
         "rateLimited": {

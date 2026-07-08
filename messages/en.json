@@ -2,13 +2,13 @@
   "globals": {
     "header": {
       "navLinks": {
-        "whyUs": "Why Us",
+        "whyUs": "Why me?",
         "services": "Services",
         "work": "Work",
         "testimonials": "Testimonials",
         "contact": "Contact"
       },
-      "startProject": "Start a Project",
+      "startProject": "Get a quote",
       "toggleMenu": "Toggle menu",
       "languageLabel": "Language"
     },
@@ -228,20 +228,28 @@
           }
         ]
       },
-      "contactForm": {
+      "contact": {
         "badge": "Let's build together",
         "title": "Got a project? ",
         "titleHighlight": "Let's talk.",
-        "description": "Tell me what you're building and I'll get back to you within 24 hours with a plan and estimate. No pushy sales calls.",
+        "description": "Tell me what you're building and I'll get back to you within {hours} hours with a plan and estimate. No pushy sales calls.",
         "perks": [
-          { "icon": "⚡", "text": "Response within 24 hours" },
-          { "icon": "📋", "text": "Free project scoping call" },
-          { "icon": "🔒", "text": "NDA available on request" },
-          { "icon": "🚀", "text": "Ready to start immediately" }
+          {
+            "id": "responseTime",
+            "icon": "⚡",
+            "text": "Response within {hours} hours"
+          },
+          { "id": "scope", "icon": "📋", "text": "Free project scoping call" },
+          { "id": "nda", "icon": "🔒", "text": "NDA available on request" },
+          {
+            "id": "availability",
+            "icon": "🚀",
+            "text": "Ready to start immediately"
+          }
         ],
         "success": {
           "title": "Message sent!",
-          "description": "Thanks for reaching out. I'll get back to you within 24 hours with next steps.",
+          "description": "Thanks for reaching out. I'll get back to you within {hours} hours with next steps.",
           "sendAnother": "Send another message"
         },
         "rateLimited": {

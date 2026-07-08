@@ -9,7 +9,7 @@ import WhyUs from "@/components/sections/WhyUs";
 import Services from "@/components/sections/Services";
 import Portfolio from "@/components/sections/Portfolio";
 import SocialProof from "@/components/sections/SocialProof";
-import ContactForm from "@/components/forms/ContactForm";
+import Contact from "@/components/sections/Contact";
 import SectionBadgeDivider from "@/components/dividers/SectionBadgeDivider";
 
 export const metadata: Metadata = {
@@ -105,7 +105,7 @@ export default async function Home() {
         <SectionBadgeDivider>{t("results")}</SectionBadgeDivider>
         <Portfolio depth="circles" depthColor="bg-violet/15" />
         <SocialProof depth="row" depthColor="via-brand/15" />
-        <ContactForm />
+        <Contact />
       </main>
       {process.env.CONTACT_EMAIL && (
         <Footer contactEmail={process.env.CONTACT_EMAIL} />
