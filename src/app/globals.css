@@ -48,16 +48,6 @@
   --input: var(--line);
   --ring: var(--brand);
   --radius: 0.625rem;
-
-  /* ── shadcn sidebar tokens ── */
-  --sidebar: var(--surface);
-  --sidebar-foreground: var(--fg);
-  --sidebar-primary: var(--brand);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--elevated);
-  --sidebar-accent-foreground: var(--fg-2);
-  --sidebar-border: var(--line);
-  --sidebar-ring: var(--brand);
 }
 
 [data-theme="light"] {
@@ -191,15 +181,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -353,29 +334,4 @@ body {
 }
 .pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
-}
-
-/* ─── Custom scrollbar (visible only on hover/scroll) ──────── */
-.scrollbar-hover {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-}
-.scrollbar-hover:hover,
-.scrollbar-hover:focus-within {
-  scrollbar-color: var(--line) transparent;
-}
-.scrollbar-hover::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-.scrollbar-hover::-webkit-scrollbar-track {
-  background: transparent;
-}
-.scrollbar-hover::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  border-radius: 3px;
-}
-.scrollbar-hover:hover::-webkit-scrollbar-thumb,
-.scrollbar-hover:focus-within::-webkit-scrollbar-thumb {
-  background-color: var(--line);
 }
