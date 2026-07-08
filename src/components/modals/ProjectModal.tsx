@@ -23,12 +23,14 @@ export default function ProjectModal({ item, onClose }: ProjectModalProps) {
             thumbnail={item.thumbnail}
             hasImage={item.has_image}
             images={item.images}
-            title={item.title}
+            title={item.translation.title}
           />
 
           <div className="flex overflow-y-auto flex-col gap-5 p-6">
             <div>
-              <h2 className="mb-3 text-xl font-bold text-fg">{item.title}</h2>
+              <h2 className="mb-3 text-xl font-bold text-fg">
+                {item.translation.title}
+              </h2>
               <div className="flex flex-wrap gap-2">
                 {item.type.map((t) => (
                   <span
@@ -55,7 +57,7 @@ export default function ProjectModal({ item, onClose }: ProjectModalProps) {
             <div
               className="text-sm leading-relaxed text-fg-2"
               dangerouslySetInnerHTML={{
-                __html: sanitizeHtml(item.short_desc, {
+                __html: sanitizeHtml(item.translation.short_desc, {
                   allowedTags: sanitizeHtml.defaults.allowedTags.concat([
                     "img",
                     "span",
@@ -69,10 +71,13 @@ export default function ProjectModal({ item, onClose }: ProjectModalProps) {
             />
 
             {[
-              { label: "Problems", items: item.problems },
-              { label: "Challenges", items: item.challanges },
-              { label: "Responsibilities", items: item.responsibilities },
-              { label: "Results", items: item.results },
+              { label: "Problems", items: item.translation.problems },
+              { label: "Challenges", items: item.translation.challanges },
+              {
+                label: "Responsibilities",
+                items: item.translation.responsibilities,
+              },
+              { label: "Results", items: item.translation.results },
             ]
               .filter((s) => s.items?.length > 0)
               .map((section) => (

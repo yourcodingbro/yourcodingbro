@@ -14,64 +14,96 @@ export type Database = {
   }
   public: {
     Tables: {
-      projects: {
+      project_translations: {
         Row: {
           challanges: string[]
+          created_at: string
+          id: number
+          locale: string
+          problems: string[]
+          project_id: string
+          responsibilities: string[]
+          results: string[]
+          short_desc: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          challanges: string[]
+          created_at?: string
+          id?: number
+          locale?: string
+          problems: string[]
+          project_id: string
+          responsibilities: string[]
+          results: string[]
+          short_desc: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          challanges?: string[]
+          created_at?: string
+          id?: number
+          locale?: string
+          problems?: string[]
+          project_id?: string
+          responsibilities?: string[]
+          results?: string[]
+          short_desc?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_translations_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
           created_at: string
           has_image: boolean
           id: string
           images: string[]
           link: string | null
           name: string
-          problems: string[]
-          responsibilities: string[]
-          results: string[]
-          short_desc: string
           showcase_order: number | null
           status: Database["public"]["Enums"]["Project Status"]
           tags: string[]
           thumbnail: string
-          title: string
           type: Database["public"]["Enums"]["Project Type"][]
           updated_at: string
         }
         Insert: {
-          challanges?: string[]
           created_at?: string
           has_image?: boolean
           id?: string
           images?: string[]
           link?: string | null
           name: string
-          problems?: string[]
-          responsibilities?: string[]
-          results?: string[]
-          short_desc: string
           showcase_order?: number | null
           status?: Database["public"]["Enums"]["Project Status"]
           tags: string[]
           thumbnail: string
-          title: string
           type?: Database["public"]["Enums"]["Project Type"][]
           updated_at?: string
         }
         Update: {
-          challanges?: string[]
           created_at?: string
           has_image?: boolean
           id?: string
           images?: string[]
           link?: string | null
           name?: string
-          problems?: string[]
-          responsibilities?: string[]
-          results?: string[]
-          short_desc?: string
           showcase_order?: number | null
           status?: Database["public"]["Enums"]["Project Status"]
           tags?: string[]
           thumbnail?: string
-          title?: string
           type?: Database["public"]["Enums"]["Project Type"][]
           updated_at?: string
         }
