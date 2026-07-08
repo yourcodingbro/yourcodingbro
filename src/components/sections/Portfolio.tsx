@@ -44,12 +44,15 @@ export default function Portfolio({ ...props }: PortfolioProps) {
       <Container>
         <Carousel setApi={setApi} opts={{ align: "start", loop: false }}>
           {/* Header */}
-          <div className="flex justify-between items-end mb-8 sm:mb-12">
+          <div className="flex justify-between items-center mb-8 sm:mb-12">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-fg">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-fg mb-2">
                 {t("title")}
                 <span className="gradient-text">{t("titleHighlight")}</span>
               </h2>
+              <p className="text-fg-3 max-w-2xl text-base sm:text-lg">
+                {t("description")}
+              </p>
             </div>
 
             <div className="hidden gap-2 items-center mb-1 ml-6 sm:flex shrink-0">

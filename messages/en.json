@@ -55,26 +55,26 @@
   "pages": {
     "homepage": {
       "sectionDividers": {
-        "whyUs": "Why work with me",
-        "results": "Results"
+        "whyUs": "What you actually get",
+        "results": "Shipped projects"
       },
       "hero": {
         "badge": "Available for new projects",
-        "title": "Your Vision, ",
-        "titleHighlight": "Built Fast.",
+        "title": "Your search ends",
+        "titleHighlight": "here.",
         "description": "Expert full-stack development that ships clean, scalable code — on time, every time. From MVP to production, I'm your dedicated coding partner.",
         "stats": [
           { "value": "50+", "label": "Projects shipped" },
           { "value": "100%", "label": "On-time delivery" },
-          { "value": "4.9★", "label": "Client rating" }
+          { "value": "5.0★", "label": "Client rating" }
         ],
         "ctaPrimary": "Start Your Project",
         "ctaSecondary": "See My Services",
         "scroll": "Scroll"
       },
       "valueProp": {
-        "title": "Everything you need, ",
-        "titleHighlight": "nothing you don't.",
+        "title": "Every detail ",
+        "titleHighlight": "handled with care",
         "description": "From idea to deployment — I handle the hard parts so you can focus on growing your business.",
         "values": [
           {
@@ -104,8 +104,8 @@
         ]
       },
       "whyUs": {
-        "title": "Not just another ",
-        "titleHighlight": "dev for hire.",
+        "title": "The developer who ",
+        "titleHighlight": "actually delivers.",
         "description": "There are thousands of developers available. Here's why founders keep coming back — and referring their friends.",
         "reasons": [
           {
@@ -131,8 +131,8 @@
         ]
       },
       "services": {
-        "title": "Services built for ",
-        "titleHighlight": "real outcomes.",
+        "title": "Services built around ",
+        "titleHighlight": "your goals",
         "description": "Three focused offerings — each designed to deliver tangible value without the overhead of a larger agency.",
         "items": [
           {
@@ -145,8 +145,7 @@
               "Scheduled jobs & triggers",
               "Custom internal dashboards",
               "Notification & alert pipelines",
-              "Data sync & ETL workflows",
-              "Legacy tool modernisation"
+              "Data sync & ETL workflows"
             ]
           },
           {
@@ -159,6 +158,7 @@
               "API development & third-party integrations",
               "Database design",
               "Deployment (CI/CD)",
+              "Legacy tool modernisation",
               "Performance audits & optimisation",
               "Technical consultation"
             ]
@@ -181,15 +181,16 @@
         "showLess": "Show less"
       },
       "portfolio": {
-        "title": "Projects that ",
-        "titleHighlight": "shipped.",
+        "title": "Proof is ",
+        "titleHighlight": "in the results.",
+        "description": "Real products, shipped for real clients — browse the work",
         "error": "Could not load projects. Please try again later.",
         "goToSlide": "Go to slide {number}"
       },
       "socialProof": {
-        "title": "Trusted by founders ",
-        "titleHighlight": "who ship.",
-        "description": "Real projects. Real results. Here's what clients say after we've shipped together.",
+        "title": "Hear it from ",
+        "titleHighlight": "the clients",
+        "description": "Don't just take my word for it — here's what they say",
         "stats": [
           { "value": "50+", "label": "Projects Shipped" },
           { "value": "30+", "label": "Happy Clients" },

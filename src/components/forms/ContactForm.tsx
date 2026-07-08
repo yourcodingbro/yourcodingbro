@@ -85,8 +85,8 @@ export default function ContactForm() {
           <div>
             <SectionBadge className="mb-5">{t("badge")}</SectionBadge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-5 tracking-tight leading-tight">
-              {t("title")}
-              <span className="gradient-text">{t("titleHighlight")}</span>
+              <div>{t("title")}</div>
+              <div className="gradient-text">{t("titleHighlight")}</div>
             </h2>
             <p className="text-fg-3 text-base sm:text-lg leading-relaxed mb-8">
               {t("description")}

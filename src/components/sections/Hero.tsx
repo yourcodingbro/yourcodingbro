@@ -113,8 +113,8 @@ export default function Hero() {
           </SectionBadge>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-fg mb-6">
-            {t("title")}
-            <span className="gradient-text">{t("titleHighlight")}</span>
+            <div>{t("title")}</div>
+            <div className="gradient-text">{t("titleHighlight")}</div>
           </h1>
 
           <p className="text-base sm:text-lg text-fg-3 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
@@ -211,9 +211,7 @@ export default function Hero() {
       </div>
 
       <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-fg-4">
-        <span className="text-xs tracking-widest uppercase">
-          {t("scroll")}
-        </span>
+        <span className="text-xs tracking-widest uppercase">{t("scroll")}</span>
         <svg
           className="w-5 h-5 animate-bounce"
           fill="none"
