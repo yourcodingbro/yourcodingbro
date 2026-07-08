@@ -281,6 +281,13 @@
             "label": "Tell me about your project",
             "placeholder": "I'm building a SaaS app..."
           },
+          "phone": {
+            "label": "Phone (optional)",
+            "placeholder": "Phone number"
+          },
+          "attachment": {
+            "label": "Attachment (optional)"
+          },
           "errors": {
             "nameMin": "Name must be at least 2 characters",
             "emailInvalid": "Please enter a valid email address",

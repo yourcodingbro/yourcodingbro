@@ -20,7 +20,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const body = await req.json();
+    const formData = await req.formData();
+    const body = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      budget: formData.get("budget"),
+      message: formData.get("message"),
+      phone: formData.get("phone") ?? undefined,
+    };
+
     const parsed = contactSchema.safeParse(body);
 
     if (!parsed.success) {
@@ -30,9 +38,18 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { name, email, budget, message } = parsed.data;
+    const { name, email, budget, message, phone } = parsed.data;
     const budgetLabel =
       budgetOptions.find((o) => o.value === budget)?.label ?? budget;
+
+    const attachmentFile = formData.get("attachment");
+    const attachment =
+      attachmentFile instanceof File && attachmentFile.size > 0
+        ? {
+            filename: attachmentFile.name,
+            content: Buffer.from(await attachmentFile.arrayBuffer()),
+          }
+        : null;
 
     if (!process.env.CONTACT_EMAIL) {
       console.error(
@@ -50,6 +67,7 @@ export async function POST(req: NextRequest) {
       to: process.env.CONTACT_EMAIL,
       replyTo: email,
       subject: `New project inquiry from ${name}`,
+      ...(attachment ? { attachments: [attachment] } : {}),
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; background: #020817; color: #f0f6ff; padding: 32px; border-radius: 16px;">
           <div style="border-bottom: 1px solid #1e3a5f; padding-bottom: 24px; margin-bottom: 24px;">
@@ -72,6 +90,10 @@ export async function POST(req: NextRequest) {
               <td style="padding: 8px 0; color: #64748b; font-size: 13px;">Budget</td>
               <td style="padding: 8px 0; color: #f0f6ff; font-size: 14px;">${budgetLabel}</td>
             </tr>
+            ${phone ? `<tr>
+              <td style="padding: 8px 0; color: #64748b; font-size: 13px;">Phone</td>
+              <td style="padding: 8px 0; color: #f0f6ff; font-size: 14px;">${phone}</td>
+            </tr>` : ""}
           </table>
 
           <div style="margin-top: 24px; padding: 20px; background: #0c1a2e; border: 1px solid #1e3a5f; border-radius: 12px;">

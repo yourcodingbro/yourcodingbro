@@ -6,15 +6,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import cn from "classnames";
 import { useTranslations } from "next-intl";
 import { Check, Send, Loader2, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import {
   getContactSchema,
   type ContactFormData,
 } from "@/lib/constants/contact";
-import type { SubmitState } from "@/types/contact";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -22,6 +21,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import PhoneNumber from "@/components/forms/blocks/PhoneNumber";
+import FileUpload from "@/components/forms/blocks/FileUpload";
+import type { SubmitState } from "@/types/contact";
 
 const fieldClass =
   "h-auto px-4 py-3 bg-surface border-line text-fg placeholder:text-fg-4 focus-visible:border-brand focus-visible:ring-brand/30 rounded-lg";
@@ -37,6 +39,7 @@ export default function ContactForm() {
 
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [rateLimitMessage, setRateLimitMessage] = useState("");
+  const [file, setFile] = useState<File | null>(null);
 
   const contactSchema = getContactSchema({
     nameMin: t("form.errors.nameMin"),
@@ -56,10 +59,17 @@ export default function ContactForm() {
   const onSubmit = async (data: ContactFormData) => {
     setSubmitState("loading");
     try {
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("budget", data.budget);
+      formData.append("message", data.message);
+      if (data.phone) formData.append("phone", data.phone);
+      if (file) formData.append("attachment", file);
+
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: formData,
       });
       if (res.status === 429) {
         const data = await res.json();
@@ -151,6 +161,24 @@ export default function ContactForm() {
             )}
           </div>
 
+          {/* Phone */}
+          <div className="flex flex-col gap-1.5">
+            <Label className="text-xs text-fg-3 uppercase tracking-wide">
+              {t("form.phone.label")}
+            </Label>
+            <Controller
+              name="phone"
+              control={control}
+              render={({ field }) => (
+                <PhoneNumber
+                  value={field.value ?? ""}
+                  onChange={field.onChange}
+                  placeholder={t("form.phone.placeholder")}
+                />
+              )}
+            />
+          </div>
+
           {/* Budget */}
           <div className="flex flex-col gap-1.5">
             <Label className="text-xs text-fg-3 uppercase tracking-wide">
@@ -203,6 +231,17 @@ export default function ContactForm() {
             {errors.message && (
               <p className="text-xs text-red-400">{errors.message.message}</p>
             )}
+          </div>
+
+          {/* Attachment */}
+          <div className="flex flex-col gap-1.5">
+            <Label className="text-xs text-fg-3 uppercase tracking-wide">
+              {t("form.attachment.label")}
+            </Label>
+            <FileUpload
+              onChange={setFile}
+              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            />
           </div>
 
           {submitState === "error" && (

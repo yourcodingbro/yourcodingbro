@@ -289,11 +289,18 @@
             "label": "Mesélj a projektedről",
             "placeholder": "Egy SaaS alkalmazást szeretnék építeni..."
           },
+          "phone": {
+            "label": "Telefonszám (opcionális)",
+            "placeholder": "Telefonszám"
+          },
+          "attachment": {
+            "label": "Melléklet (opcionális)"
+          },
           "errors": {
             "nameMin": "A névnek legalább 2 karakter hosszúnak kell lennie",
-            "emailInvalid": "Kérjük, érvényes e-mail címet adj meg",
-            "budgetRequired": "Kérjük, válassz egy költségkeretet",
-            "messageMin": "Kérjük, írj egy kicsit többet — legalább 100 karaktert",
+            "emailInvalid": "Érvénytelen e-mail cím",
+            "budgetRequired": "Válassz egy költségkeretet",
+            "messageMin": "Írj egy kicsit többet — legalább 100 karaktert",
             "generic": "Hiba történt. Kérjük, próbáld újra, vagy írj nekem közvetlenül e-mailt."
           },
           "submit": "Üzenet küldése",
