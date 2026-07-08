@@ -41,6 +41,7 @@ export default function ProjectCard({ item, onClick }: ProjectCardProps) {
             src={item.thumbnail}
             alt={item.title}
             fill
+            sizes="350px"
             className="object-cover"
           />
         ) : (

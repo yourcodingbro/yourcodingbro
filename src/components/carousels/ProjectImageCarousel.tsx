@@ -107,6 +107,7 @@ function ImageOrGradient({
         src={src}
         alt={alt}
         fill
+        sizes="(max-width: 768px) 300px, 450px"
         className={cn(
           isThumbnail ? "object-cover" : "object-contain max-w-[80%] m-auto"
         )}
