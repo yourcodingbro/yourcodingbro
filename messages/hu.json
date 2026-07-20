@@ -278,11 +278,11 @@
             "label": "Tervezett költségkeret",
             "placeholder": "Válassz költségkeretet",
             "options": [
-              { "value": "under-1k", "label": "1 000 $ alatt" },
-              { "value": "1k-5k", "label": "1 000 – 5 000 $" },
-              { "value": "5k-15k", "label": "5 000 – 15 000 $" },
-              { "value": "15k-plus", "label": "15 000 $ felett" },
-              { "value": "not-sure", "label": "Még nem dőlt el" }
+              { "value": "under-1k", "label": "Kevesebb, mint 500 000 HUF" },
+              { "value": "1k-5k", "label": "500 000 – 2 500 000 HUF" },
+              { "value": "5k-25k", "label": "2 500 000 – 10 000 000 HUF" },
+              { "value": "25k-plus", "label": "Több, mint 10 000 000 HUF" },
+              { "value": "not-sure", "label": "Nem tudom" }
             ]
           },
           "message": {
