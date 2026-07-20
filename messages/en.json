@@ -58,33 +58,12 @@
         "title": "YourCodingBro — Expert Dev, Fast Delivery",
         "description": "Clean code, on-time delivery, and real results. Your dedicated development partner for web apps, automation, and MVPs.",
         "ogLocale": "en_US",
-        "keywords": "freelance developer, web development, Next.js developer, full-stack developer, automation, MVP development, React developer, TypeScript, SaaS development, web app developer",
-        "faq": [
-          {
-            "question": "What kind of projects do you take on?",
-            "answer": "I specialise in full-stack web applications, SaaS products, internal automation tools, and MVPs. If it involves React, Next.js, Node.js, or TypeScript I can build it — from a landing page to a complex multi-tenant platform."
-          },
-          {
-            "question": "How long does it take to build an MVP?",
-            "answer": "Most MVPs are delivered in 3–6 weeks depending on scope. After a free scoping call I give you a realistic estimate with no surprises."
-          },
-          {
-            "question": "Do you work with international clients?",
-            "answer": "Yes. I work async-first across time zones and communicate in English. All project updates, documentation, and handoffs are in English."
-          },
-          {
-            "question": "What happens after the project is delivered?",
-            "answer": "You receive full source code ownership, clean git history, and documentation. I offer post-launch support packages and am available for ongoing maintenance or feature work."
-          },
-          {
-            "question": "How do I get started?",
-            "answer": "Fill in the contact form with a brief description of your project and budget. I respond within 48 hours with next steps — no sales pressure."
-          }
-        ]
+        "keywords": "freelance developer, web development, Next.js developer, full-stack developer, automation, MVP development, React developer, TypeScript, SaaS development, web app developer"
       },
       "sectionDividers": {
         "whyUs": "What you actually get",
-        "results": "Shipped projects"
+        "results": "Shipped projects",
+        "faq": "Got questions?"
       },
       "hero": {
         "badge": "Available for new projects",
@@ -253,6 +232,37 @@
             "role": "Frontend Developer",
             "avatar": "E",
             "stars": 5
+          }
+        ]
+      },
+      "faq": {
+        "title": "You're probably ",
+        "titleHighlight": "thinking...",
+        "description": "Straightforward answers to the questions and concerns clients usually have",
+        "items": [
+          {
+            "question": "\"Custom software is way out of my budget\"",
+            "answer": "Not every project requires a large budget. The cost depends on your goals, the complexity, and the scope of the work. If a full solution isn't the right fit today, we can often start with a smaller, high-impact first step and expand it over time."
+          },
+          {
+            "question": "\"I don't want to wait months\"",
+            "answer": "Neither do I. Small and medium-sized projects can often be delivered within weeks rather than months. During our first conversation, I'll give you a realistic timeline so you'll know exactly what to expect."
+          },
+          {
+            "question": "\"I only have an idea\"",
+            "answer": "You don't need a complete specification before reaching out. Many successful projects begin with just an idea. I'll help you clarify the requirements, define the scope, and choose the right technical approach before any development starts."
+          },
+          {
+            "question": "\"I don't want to commit right from the start\"",
+            "answer": "You don't have to. Our initial conversation is simply about understanding your project, answering your questions, and seeing whether we're a good fit to work together. There's no obligation to move forward."
+          },
+          {
+            "question": "\"I already have an existing project\"",
+            "answer": "That's not a problem. I can join existing projects, work alongside your current team, fix issues, implement new features, or modernize legacy code. You don't need to start over to benefit from my expertise."
+          },
+          {
+            "question": "\"What if something breaks after launch?\"",
+            "answer": "Launching your project isn't the end of our collaboration. I offer post-launch support to fix issues, make improvements, and help your application evolve as your business grows. Whether it's a quick bug fix or a new feature, you won't be left on your own."
           }
         ]
       },

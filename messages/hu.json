@@ -58,33 +58,12 @@
         "title": "YourCodingBro — Profi fejlesztés, gyors szállítás",
         "description": "Tiszta kód, határidőre teljesítve, valódi eredményekkel. Dedikált fejlesztő partnered webalkalmazásokhoz, automatizáláshoz és MVP-khez.",
         "ogLocale": "hu_HU",
-        "keywords": "freelance fejlesztő, webfejlesztés, Next.js fejlesztő, full-stack fejlesztő, automatizálás, MVP fejlesztés, React fejlesztő, TypeScript, SaaS fejlesztés, webalkalmazás fejlesztő",
-        "faq": [
-          {
-            "question": "Milyen projekteket vállalsz?",
-            "answer": "Full-stack webalkalmazásokra, SaaS termékekre, belső automatizálási eszközökre és MVP-kre specializálódtam. Ha React, Next.js, Node.js vagy TypeScript érintett, meg tudom csinálni — egy landing page-től egy összetett multi-tenant platformig."
-          },
-          {
-            "question": "Mennyi idő alatt készül el egy MVP?",
-            "answer": "A legtöbb MVP 3–6 hét alatt elkészül a scope-tól függően. Egy ingyenes projektfelmérő beszélgetés után reális becslést adok, meglepetések nélkül."
-          },
-          {
-            "question": "Dolgozol külföldi ügyfelekkel is?",
-            "answer": "Igen, de magyar ügyfeleket is szívesen fogadok. Aszinkron munkavégzéssel hatékonyan dolgozom különböző időzónákban is."
-          },
-          {
-            "question": "Mi történik a projekt átadása után?",
-            "answer": "Megkapod a teljes forráskódot, tiszta git előzményekkel és dokumentációval. Utólagos support csomagokat is kínálok, és elérhető vagyok folyamatos karbantartásra vagy további fejlesztésre."
-          },
-          {
-            "question": "Hogyan kezdjük el?",
-            "answer": "Töltsd ki a kapcsolatfelvételi űrlapot a projekted rövid leírásával és tervezett kereteddel. 48 órán belül visszajelzek a következő lépésekkel — nyomás nélkül."
-          }
-        ]
+        "keywords": "freelance fejlesztő, webfejlesztés, Next.js fejlesztő, full-stack fejlesztő, automatizálás, MVP fejlesztés, React fejlesztő, TypeScript, SaaS fejlesztés, webalkalmazás fejlesztő"
       },
       "sectionDividers": {
         "whyUs": "Amire számíthatsz",
-        "results": "Leszállított projektek"
+        "results": "Leszállított projektek",
+        "faq": "Kérdéseid vannak?"
       },
       "hero": {
         "badge": "Új projekteket vállalok",
@@ -253,6 +232,37 @@
             "role": "Frontend fejlesztő",
             "avatar": "E",
             "stars": 5
+          }
+        ]
+      },
+      "faq": {
+        "title": "Valószínűleg ",
+        "titleHighlight": "ezen gondolkodsz...",
+        "description": "Őszinte válaszok azokra a kérdésekre és aggodalmakra, amelyek az ügyfeleknek általában felmerülnek",
+        "items": [
+          {
+            "question": "\"Az egyedi szoftver messze meghaladja a büdzsémet\"",
+            "answer": "Nem minden projekt igényel nagy büdzsét. A költség a céljaidtól, a komplexitástól és a munka terjedelmétől függ. Ha egy teljes megoldás most nem megfelelő, gyakran elindulhatunk egy kisebb, nagy hatású első lépéssel, amelyet idővel bővíthetünk."
+          },
+          {
+            "question": "\"Nem akarok hónapokat várni\"",
+            "answer": "Én sem. A kis és közepes méretű projektek sokszor hetek, nem hónapok alatt elkészülnek. Az első beszélgetésünkön reális határidőt adok, hogy pontosan tudd, mire számíthatsz."
+          },
+          {
+            "question": "\"Csak egy ötletem van\"",
+            "answer": "Nem kell teljes specifikáció ahhoz, hogy megkeress. Sok sikeres projekt csupán egy ötlettel indult. Segítek tisztázni a követelményeket, meghatározni a hatókört és kiválasztani a megfelelő technikai megközelítést — még mielőtt bármilyen fejlesztés elkezdődne."
+          },
+          {
+            "question": "\"Nem akarok rögtön az elején elköteleződni\"",
+            "answer": "Nem is kell. Az első beszélgetésünk egyszerűen arról szól, hogy megismerjük egymást, megválaszolom a kérdéseidet, és megnézzük, hogy jól tudunk-e együtt dolgozni. Semmiféle kötelezettség nincs a folytatásra."
+          },
+          {
+            "question": "\"Már van egy meglévő projektem\"",
+            "answer": "Ez nem probléma. Csatlakozhatok meglévő projektekhez, dolgozhatok a jelenlegi csapatoddal együtt, javíthatok hibákat, implementálhatok új funkciókat, vagy modernizálhatok legacy kódot. Nem kell előlről kezdeni ahhoz, hogy profitálj a tudásomból."
+          },
+          {
+            "question": "\"Mi van, ha valami elromlik az élesítés után?\"",
+            "answer": "A projekt élesítése nem jelenti az együttműködésünk végét. Post-launch supportot kínálok hibák javítására, fejlesztések elvégzésére, és hogy segítsek az alkalmazásodnak fejlődni, ahogy a vállalkozásod növekszik. Akár egy gyors hibajavításról, akár egy új funkcióról van szó, nem maradsz magadra."
           }
         ]
       },
