@@ -29,24 +29,41 @@ export default async function FAQ({ ...props }: FAQProps) {
           </p>
         </Reveal>
 
-        <Reveal delay={SLOW_STAGGER_REVEAL_DELAY}>
-          <Accordion className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
-            {items.map((item, idx) => (
-              <AccordionItem
-                key={idx}
-                value={`item-${idx}`}
-                className="gradient-border rounded-xl px-6 border-0"
+        <Accordion>
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+            {[
+              items.slice(0, Math.ceil(items.length / 2)),
+              items.slice(Math.ceil(items.length / 2)),
+            ].map((col, colIdx) => (
+              <div
+                key={`faq-col-${colIdx}`}
+                className="flex flex-col gap-3 md:gap-4 flex-1"
               >
-                <AccordionTrigger className="text-left text-sm sm:text-base font-medium text-fg hover:no-underline py-3 gap-4">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-fg-3 text-sm leading-relaxed pb-3">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
+                {col.map((item, rowIdx) => {
+                  const idx = colIdx + rowIdx * 2;
+                  return (
+                    <Reveal
+                      key={`faq-row-${idx}`}
+                      delay={(idx + 1) * SLOW_STAGGER_REVEAL_DELAY}
+                    >
+                      <AccordionItem
+                        value={`faq-item-${idx}`}
+                        className="gradient-border rounded-xl px-6 border-0"
+                      >
+                        <AccordionTrigger className="text-left text-sm sm:text-base font-medium text-fg hover:no-underline py-3 gap-4">
+                          {item.question}
+                        </AccordionTrigger>
+                        <AccordionContent className="text-fg-3 text-sm leading-relaxed pb-3">
+                          {item.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Reveal>
+                  );
+                })}
+              </div>
             ))}
-          </Accordion>
-        </Reveal>
+          </div>
+        </Accordion>
       </Container>
     </Section>
   );
