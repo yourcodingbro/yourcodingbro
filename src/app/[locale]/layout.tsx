@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     default: "YourCodingBro",
     template: "%s | YourCodingBro",
   },
+  appleWebApp: {
+    title: "YourCodingBro",
+  },
   verification: {
     google: "jusdYBeTS06nLfNCmnSVcuhKuFiUlGW-v_DR8YUFqjA",
     other: {
