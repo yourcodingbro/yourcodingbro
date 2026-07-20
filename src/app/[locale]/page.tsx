@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import type { Person, WebSite, WithContext } from "schema-dts";
+// import type { FAQPage, WithContext } from "schema-dts";
 import { getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
@@ -11,79 +12,104 @@ import Portfolio from "@/components/sections/Portfolio";
 import SocialProof from "@/components/sections/SocialProof";
 import Contact from "@/components/sections/Contact";
 import SectionBadgeDivider from "@/components/dividers/SectionBadgeDivider";
+import { BASE_URL } from "@/lib/constants/globals";
+import {
+  getPersonSchema,
+  getServiceSchema,
+  getWebsiteSchema,
+} from "@/lib/seo/rich-schemas";
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://yourcodingbro.com"),
-  title: "YourCodingBro — Expert Dev, Fast Delivery",
-  description:
-    "Clean code, on-time delivery, and real results. Your dedicated development partner for web apps, automation, and MVPs.",
-  keywords: [
-    "freelance developer",
-    "web development",
-    "Next.js developer",
-    "full-stack developer",
-    "automation",
-    "MVP development",
-    "React developer",
-    "TypeScript",
-  ],
-  authors: [{ name: "Viktor Nagy", url: "https://yourcodingbro.com" }],
-  creator: "Viktor Nagy",
-  openGraph: {
-    title: "YourCodingBro — Expert Dev, Fast Delivery",
-    description:
-      "Clean code, on-time delivery, and real results. Your dedicated development partner for web apps, automation, and MVPs.",
-    url: "https://yourcodingbro.com",
-    siteName: "YourCodingBro",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "YourCodingBro — Expert Dev, Fast Delivery",
-    description:
-      "Clean code, on-time delivery, and real results. Your dedicated development partner for web apps, automation, and MVPs.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.homepage.seo" });
+
+  const title = t("title");
+  const description = t("description");
+  const ogLocale = t("ogLocale");
+  const keywords = t("keywords")
+    .split(",")
+    .map((k) => k.trim());
+
+  return {
+    metadataBase: new URL(BASE_URL),
+    title,
+    description,
+    keywords,
+    authors: [{ name: "Viktor Nagy", url: BASE_URL }],
+    creator: "Viktor Nagy",
+    openGraph: {
+      title,
+      description,
+      url: `${BASE_URL}/${locale}`,
+      siteName: "YourCodingBro",
+      locale: ogLocale,
+      alternateLocale: routing.locales
+        .filter((l) => l !== locale)
+        .map((l) => (l === "hu" ? "hu_HU" : "en_US")),
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      creator: "@yourcodingbro",
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-  alternates: {
-    canonical: "https://yourcodingbro.com",
-  },
-};
+    alternates: {
+      canonical: `${BASE_URL}/${locale}`,
+      languages: {
+        ...Object.fromEntries(
+          routing.locales.map((l) => [l, `${BASE_URL}/${l}`])
+        ),
+        "x-default": `${BASE_URL}/en`,
+      },
+    },
+  };
+}
 
-const personSchema: WithContext<Person> = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Viktor Nagy",
-  url: "https://yourcodingbro.com",
-  jobTitle: "Freelance Full-Stack Developer",
-  description:
-    "Freelance developer specialising in web apps, automation, and MVPs. Clean code, fast delivery, real results.",
-  sameAs: [
-    "https://www.linkedin.com/in/viktornagy97",
-    "https://github.com/kmpizmad",
-  ],
-};
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: "pages.homepage.sectionDividers",
+  });
 
-const websiteSchema: WithContext<WebSite> = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "YourCodingBro",
-  url: "https://yourcodingbro.com",
-  description:
-    "YourCodingBro — Expert freelance development. Web apps, automation, and MVPs delivered fast.",
-};
+  // const faq = tSeo.raw("faq") as { question: string; answer: string }[];
 
-export default async function Home() {
-  const t = await getTranslations("pages.homepage.sectionDividers");
+  const personSchema = await getPersonSchema(locale);
+  const websiteSchema = await getWebsiteSchema(locale);
+  const serviceSchema = await getServiceSchema(locale);
+
+  // const faqSchema: WithContext<FAQPage> = {
+  //   "@context": "https://schema.org",
+  //   "@type": "FAQPage",
+
+  //   mainEntity: faq.map((item) => ({
+  //     "@type": "Question",
+  //     name: item.question,
+  //     acceptedAnswer: {
+  //       "@type": "Answer",
+  //       text: item.answer,
+  //     },
+  //   })),
+  // };
 
   return (
     <>
@@ -95,6 +121,14 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      {/* <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      /> */}
       <Header />
       <main>
         <Hero />

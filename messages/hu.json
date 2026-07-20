@@ -54,6 +54,34 @@
   },
   "pages": {
     "homepage": {
+      "seo": {
+        "title": "YourCodingBro — Profi fejlesztés, gyors szállítás",
+        "description": "Tiszta kód, határidőre teljesítve, valódi eredményekkel. Dedikált fejlesztő partnered webalkalmazásokhoz, automatizáláshoz és MVP-khez.",
+        "ogLocale": "hu_HU",
+        "keywords": "freelance fejlesztő, webfejlesztés, Next.js fejlesztő, full-stack fejlesztő, automatizálás, MVP fejlesztés, React fejlesztő, TypeScript, SaaS fejlesztés, webalkalmazás fejlesztő",
+        "faq": [
+          {
+            "question": "Milyen projekteket vállalsz?",
+            "answer": "Full-stack webalkalmazásokra, SaaS termékekre, belső automatizálási eszközökre és MVP-kre specializálódtam. Ha React, Next.js, Node.js vagy TypeScript érintett, meg tudom csinálni — egy landing page-től egy összetett multi-tenant platformig."
+          },
+          {
+            "question": "Mennyi idő alatt készül el egy MVP?",
+            "answer": "A legtöbb MVP 3–6 hét alatt elkészül a scope-tól függően. Egy ingyenes projektfelmérő beszélgetés után reális becslést adok, meglepetések nélkül."
+          },
+          {
+            "question": "Dolgozol külföldi ügyfelekkel is?",
+            "answer": "Igen, de magyar ügyfeleket is szívesen fogadok. Aszinkron munkavégzéssel hatékonyan dolgozom különböző időzónákban is."
+          },
+          {
+            "question": "Mi történik a projekt átadása után?",
+            "answer": "Megkapod a teljes forráskódot, tiszta git előzményekkel és dokumentációval. Utólagos support csomagokat is kínálok, és elérhető vagyok folyamatos karbantartásra vagy további fejlesztésre."
+          },
+          {
+            "question": "Hogyan kezdjük el?",
+            "answer": "Töltsd ki a kapcsolatfelvételi űrlapot a projekted rövid leírásával és tervezett kereteddel. 48 órán belül visszajelzek a következő lépésekkel — nyomás nélkül."
+          }
+        ]
+      },
       "sectionDividers": {
         "whyUs": "Amire számíthatsz",
         "results": "Leszállított projektek"

@@ -54,6 +54,34 @@
   },
   "pages": {
     "homepage": {
+      "seo": {
+        "title": "YourCodingBro — Expert Dev, Fast Delivery",
+        "description": "Clean code, on-time delivery, and real results. Your dedicated development partner for web apps, automation, and MVPs.",
+        "ogLocale": "en_US",
+        "keywords": "freelance developer, web development, Next.js developer, full-stack developer, automation, MVP development, React developer, TypeScript, SaaS development, web app developer",
+        "faq": [
+          {
+            "question": "What kind of projects do you take on?",
+            "answer": "I specialise in full-stack web applications, SaaS products, internal automation tools, and MVPs. If it involves React, Next.js, Node.js, or TypeScript I can build it — from a landing page to a complex multi-tenant platform."
+          },
+          {
+            "question": "How long does it take to build an MVP?",
+            "answer": "Most MVPs are delivered in 3–6 weeks depending on scope. After a free scoping call I give you a realistic estimate with no surprises."
+          },
+          {
+            "question": "Do you work with international clients?",
+            "answer": "Yes. I work async-first across time zones and communicate in English. All project updates, documentation, and handoffs are in English."
+          },
+          {
+            "question": "What happens after the project is delivered?",
+            "answer": "You receive full source code ownership, clean git history, and documentation. I offer post-launch support packages and am available for ongoing maintenance or feature work."
+          },
+          {
+            "question": "How do I get started?",
+            "answer": "Fill in the contact form with a brief description of your project and budget. I respond within 48 hours with next steps — no sales pressure."
+          }
+        ]
+      },
       "sectionDividers": {
         "whyUs": "What you actually get",
         "results": "Shipped projects"
