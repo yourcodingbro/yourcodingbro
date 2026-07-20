@@ -5,16 +5,28 @@ import { CloudUpload, X, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
+export type FileUploadLabels = {
+  clickToUpload: string;
+  dragAndDrop: string;
+};
+
 export type FileUploadProps = {
   onChange: (file: File | null) => void;
   accept?: string;
   compact?: boolean;
+  labels?: FileUploadLabels;
+};
+
+const defaultLabels: FileUploadLabels = {
+  clickToUpload: "Click to upload",
+  dragAndDrop: "or drag & drop",
 };
 
 export default function FileUpload({
   onChange,
   accept,
   compact = false,
+  labels = defaultLabels,
 }: FileUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -107,8 +119,8 @@ export default function FileUpload({
           )}
           <div className="text-center">
             <p className="text-sm text-fg-3">
-              <span className="font-medium text-fg-2">Click to upload</span> or
-              drag & drop
+              <span className="font-medium text-fg-2">{labels.clickToUpload}</span>{" "}
+              {labels.dragAndDrop}
             </p>
           </div>
         </div>

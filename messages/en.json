@@ -286,7 +286,9 @@
             "placeholder": "Phone number"
           },
           "attachment": {
-            "label": "Attachment (optional)"
+            "label": "Attachment (optional)",
+            "clickToUpload": "Click to upload",
+            "dragAndDrop": "or drag & drop"
           },
           "errors": {
             "nameMin": "Name must be at least 2 characters",

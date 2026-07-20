@@ -294,7 +294,9 @@
             "placeholder": "Telefonszám"
           },
           "attachment": {
-            "label": "Melléklet (opcionális)"
+            "label": "Melléklet (opcionális)",
+            "clickToUpload": "Kattints a feltöltéshez",
+            "dragAndDrop": "vagy húzd ide a fájlt"
           },
           "errors": {
             "nameMin": "A névnek legalább 2 karakter hosszúnak kell lennie",

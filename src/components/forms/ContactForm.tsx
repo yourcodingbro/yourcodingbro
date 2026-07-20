@@ -245,6 +245,10 @@ export default function ContactForm() {
               onChange={setFile}
               accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
               compact
+              labels={{
+                clickToUpload: t("form.attachment.clickToUpload"),
+                dragAndDrop: t("form.attachment.dragAndDrop"),
+              }}
             />
           </div>
 
