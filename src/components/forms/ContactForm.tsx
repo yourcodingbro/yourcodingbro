@@ -188,7 +188,10 @@ export default function ContactForm() {
               name="budget"
               control={control}
               render={({ field }) => (
-                <Select value={field.value ?? ""} onValueChange={field.onChange}>
+                <Select
+                  value={field.value ?? ""}
+                  onValueChange={field.onChange}
+                >
                   <SelectTrigger
                     className={cn(fieldClass, "w-full", {
                       "border-red-500/60": !!errors.budget,
@@ -223,7 +226,7 @@ export default function ContactForm() {
             </Label>
             <Textarea
               {...register("message")}
-              rows={4}
+              rows={6}
               placeholder={t("form.message.placeholder")}
               aria-invalid={!!errors.message}
               className={cn(fieldClass, "resize-none")}
@@ -241,6 +244,7 @@ export default function ContactForm() {
             <FileUpload
               onChange={setFile}
               accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              compact
             />
           </div>
 
