@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import SectionBadge from "@/components/badges/SectionBadge";
+import Reveal from "@/components/atoms/Reveal";
+import { SLOW_STAGGER_REVEAL_DELAY } from "@/lib/constants/globals";
 
 const codeSnippet = `// Your idea → production-ready code
 const project = await yourCodingBro.build({
@@ -112,51 +114,62 @@ export default function Hero() {
             {t("badge")}
           </SectionBadge>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-fg mb-6">
-            <div>{t("title")}</div>
-            <div className="gradient-text">{t("titleHighlight")}</div>
-          </h1>
+          <Reveal delay={0 * SLOW_STAGGER_REVEAL_DELAY}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-fg mb-6">
+              <div>{t("title")}</div>
+              <div className="gradient-text">{t("titleHighlight")}</div>
+            </h1>
+          </Reveal>
 
-          <p className="text-base sm:text-lg text-fg-3 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
-            {t("description")}
-          </p>
+          <Reveal delay={1 * SLOW_STAGGER_REVEAL_DELAY}>
+            <p className="text-base sm:text-lg text-fg-3 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
+              {t("description")}
+            </p>
+          </Reveal>
 
-          <div className="flex items-center justify-center lg:justify-start gap-4 sm:gap-8 mb-10">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center lg:text-left">
-                <div className="text-xl sm:text-2xl font-bold text-fg">
-                  {stat.value}
+          <Reveal delay={2 * SLOW_STAGGER_REVEAL_DELAY}>
+            <div className="flex items-center justify-center lg:justify-start gap-4 sm:gap-8 mb-10">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center lg:text-left">
+                  <div className="text-xl sm:text-2xl font-bold text-fg">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-fg-4">{stat.label}</div>
                 </div>
-                <div className="text-xs text-fg-4">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </Reveal>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <ButtonLink
-              href="#contact"
-              size="xl"
-              style="pill"
-              icon={<ArrowRight className="w-4 h-4" />}
-              iconPosition="after"
-              className="w-full sm:w-auto text-white bg-brand hover:bg-brand-hover glow-blue"
-            >
-              {t("ctaPrimary")}
-            </ButtonLink>
-            <ButtonLink
-              href="#services"
-              size="xl"
-              style="pill"
-              variant="outline"
-              className="w-full sm:w-auto text-fg-2 border border-line hover:border-accent/40 hover:text-fg"
-            >
-              {t("ctaSecondary")}
-            </ButtonLink>
-          </div>
+          <Reveal delay={3 * SLOW_STAGGER_REVEAL_DELAY}>
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <ButtonLink
+                href="#contact"
+                size="xl"
+                style="pill"
+                icon={<ArrowRight className="w-4 h-4" />}
+                iconPosition="after"
+                className="w-full sm:w-auto text-white bg-brand hover:bg-brand-hover glow-blue"
+              >
+                {t("ctaPrimary")}
+              </ButtonLink>
+              <ButtonLink
+                href="#services"
+                size="xl"
+                style="pill"
+                variant="outline"
+                className="w-full sm:w-auto text-fg-2 border border-line hover:border-accent/40 hover:text-fg"
+              >
+                {t("ctaSecondary")}
+              </ButtonLink>
+            </div>
+          </Reveal>
         </div>
 
         {/* Code card — always dark, desktop only */}
-        <div className="hidden lg:block flex-1 min-w-0 w-full max-w-lg float-animation">
+        <Reveal
+          delay={SLOW_STAGGER_REVEAL_DELAY}
+          className="hidden lg:block flex-1 min-w-0 w-full max-w-lg float-animation"
+        >
           <div
             className="rounded-2xl overflow-hidden glow-cyan"
             style={{ border: "1px solid #1e3a5f" }}
@@ -207,10 +220,13 @@ export default function Hero() {
               </pre>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
 
-      <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-fg-4">
+      <Reveal
+        delay={4 * SLOW_STAGGER_REVEAL_DELAY}
+        className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-fg-4"
+      >
         <span className="text-xs tracking-widest uppercase">{t("scroll")}</span>
         <svg
           className="w-5 h-5 animate-bounce"
@@ -225,7 +241,7 @@ export default function Hero() {
             d="M19 9l-7 7-7-7"
           />
         </svg>
-      </div>
+      </Reveal>
     </section>
   );
 }

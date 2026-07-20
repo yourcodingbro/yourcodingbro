@@ -1,8 +1,10 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import SectionBadge from "@/components/badges/SectionBadge";
 import ContactForm from "@/components/forms/ContactForm";
-import { useTranslations } from "next-intl";
+import Reveal from "@/components/atoms/Reveal";
+import { SLOW_STAGGER_REVEAL_DELAY } from "@/lib/constants/globals";
 
 const RESPONSE_HOURS = 48;
 
@@ -23,7 +25,7 @@ export default function Contact() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — copy */}
-          <div>
+          <Reveal>
             <SectionBadge className="mb-5">{t("badge")}</SectionBadge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-5 tracking-tight leading-tight">
               <div>{t("title")}</div>
@@ -41,10 +43,12 @@ export default function Contact() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
           {/* Right — form */}
-          <ContactForm />
+          <Reveal delay={SLOW_STAGGER_REVEAL_DELAY}>
+            <ContactForm />
+          </Reveal>
         </div>
       </div>
     </section>

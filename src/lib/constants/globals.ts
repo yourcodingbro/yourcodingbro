@@ -1,0 +1,2 @@
+export const SLOW_STAGGER_REVEAL_DELAY = 100;
+export const STAGGER_REVEAL_DELAY = 80;

@@ -2,8 +2,13 @@ import { getTranslations } from "next-intl/server";
 import Section, { SectionProps } from "@/components/atoms/Section";
 import Container from "@/components/atoms/Container";
 import TestimonialCard from "@/components/cards/TestimonialCard";
+import Reveal from "@/components/atoms/Reveal";
 import type { Testimonial } from "@/types/testimonial";
 import { cn } from "@/lib/utils";
+import {
+  STAGGER_REVEAL_DELAY,
+  SLOW_STAGGER_REVEAL_DELAY,
+} from "@/lib/constants/globals";
 
 export type SocialProofProps = SectionProps;
 
@@ -22,7 +27,7 @@ export default async function SocialProof({
       {...props}
     >
       <Container>
-        <div className="text-center mb-8 sm:mb-16">
+        <Reveal className="text-center mb-8 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
             {t("title")}
             <span className="gradient-text">{t("titleHighlight")}</span>
@@ -30,9 +35,12 @@ export default async function SocialProof({
           <p className="text-fg-3 max-w-xl mx-auto text-base sm:text-lg">
             {t("description")}
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-line rounded-2xl overflow-hidden mb-8 sm:mb-14">
+        <Reveal
+          delay={SLOW_STAGGER_REVEAL_DELAY}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-line rounded-2xl overflow-hidden mb-8 sm:mb-14"
+        >
           {stats.map((s) => (
             <div
               key={s.label}
@@ -44,14 +52,16 @@ export default async function SocialProof({
               <div className="text-xs sm:text-sm text-fg-4">{s.label}</div>
             </div>
           ))}
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-          {testimonials.map((testimonialProps) => (
-            <TestimonialCard
+          {testimonials.map((testimonialProps, i) => (
+            <Reveal
               key={testimonialProps.author}
-              {...testimonialProps}
-            />
+              delay={(i + 2) * STAGGER_REVEAL_DELAY}
+            >
+              <TestimonialCard {...testimonialProps} />
+            </Reveal>
           ))}
         </div>
       </Container>

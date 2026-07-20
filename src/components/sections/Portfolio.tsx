@@ -15,8 +15,10 @@ import {
 } from "@/components/ui/carousel";
 import ProjectCard from "@/components/cards/ProjectCard";
 import ProjectModal from "@/components/modals/ProjectModal";
+import Reveal from "@/components/atoms/Reveal";
 import { useProjects } from "@/hooks/useProjects";
 import type { Project } from "@/types/project";
+import { SLOW_STAGGER_REVEAL_DELAY } from "@/lib/constants/globals";
 
 export type PortfolioProps = SectionProps;
 
@@ -44,7 +46,7 @@ export default function Portfolio({ ...props }: PortfolioProps) {
       <Container>
         <Carousel setApi={setApi} opts={{ align: "start", loop: false }}>
           {/* Header */}
-          <div className="flex justify-between items-center mb-8 sm:mb-12">
+          <Reveal className="flex justify-between items-center mb-8 sm:mb-12">
             <div>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-fg mb-2">
                 {t("title")}
@@ -65,70 +67,74 @@ export default function Portfolio({ ...props }: PortfolioProps) {
                 className="static translate-x-0 translate-y-0"
               />
             </div>
-          </div>
+          </Reveal>
 
-          {isError ? (
-            <p className="py-12 text-sm text-center text-fg-4">{t("error")}</p>
-          ) : isLoading ? (
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="overflow-hidden rounded-2xl animate-pulse gradient-border"
-                >
-                  <div className="aspect-video bg-elevated" />
-                  <div className="flex flex-col gap-3 p-5">
-                    <div className="w-3/4 h-4 rounded bg-elevated" />
-                    <div className="w-1/2 h-3 rounded bg-elevated" />
-                    <div className="w-full h-3 rounded bg-elevated" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <>
-              <CarouselContent className="-ml-5">
-                {projects.map((item) => (
-                  <CarouselItem
-                    key={item.id}
-                    className="pl-5 basis-[85%] sm:basis-1/2 lg:basis-1/3"
-                  >
-                    <ProjectCard
-                      item={item}
-                      onClick={() => setSelected(item)}
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-
-              <div className="flex gap-2 justify-center items-center mt-5">
-                {(api?.scrollSnapList() ?? []).map((_, i) => (
-                  <button
+          <Reveal delay={SLOW_STAGGER_REVEAL_DELAY}>
+            {isError ? (
+              <p className="py-12 text-sm text-center text-fg-4">
+                {t("error")}
+              </p>
+            ) : isLoading ? (
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: 3 }).map((_, i) => (
+                  <div
                     key={i}
-                    onClick={() => api?.scrollTo(i)}
-                    aria-label={t("goToSlide", { number: i + 1 })}
-                    className={cn(
-                      "rounded-full transition-all duration-200",
-                      i === selectedIndex
-                        ? "w-5 h-1.5 bg-accent"
-                        : "w-1.5 h-1.5 bg-line hover:bg-fg-4"
-                    )}
-                  />
+                    className="overflow-hidden rounded-2xl animate-pulse gradient-border"
+                  >
+                    <div className="aspect-video bg-elevated" />
+                    <div className="flex flex-col gap-3 p-5">
+                      <div className="w-3/4 h-4 rounded bg-elevated" />
+                      <div className="w-1/2 h-3 rounded bg-elevated" />
+                      <div className="w-full h-3 rounded bg-elevated" />
+                    </div>
+                  </div>
                 ))}
               </div>
+            ) : (
+              <>
+                <CarouselContent className="-ml-5">
+                  {projects.map((item) => (
+                    <CarouselItem
+                      key={item.id}
+                      className="pl-5 basis-[85%] sm:basis-1/2 lg:basis-1/3"
+                    >
+                      <ProjectCard
+                        item={item}
+                        onClick={() => setSelected(item)}
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
 
-              <div className="flex gap-3 justify-center items-center mt-4 sm:hidden">
-                <CarouselPrevious
-                  size="icon"
-                  className="static translate-x-0 translate-y-0"
-                />
-                <CarouselNext
-                  size="icon"
-                  className="static translate-x-0 translate-y-0"
-                />
-              </div>
-            </>
-          )}
+                <div className="flex gap-2 justify-center items-center mt-5">
+                  {(api?.scrollSnapList() ?? []).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => api?.scrollTo(i)}
+                      aria-label={t("goToSlide", { number: i + 1 })}
+                      className={cn(
+                        "rounded-full transition-all duration-200",
+                        i === selectedIndex
+                          ? "w-5 h-1.5 bg-accent"
+                          : "w-1.5 h-1.5 bg-line hover:bg-fg-4"
+                      )}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex gap-3 justify-center items-center mt-4 sm:hidden">
+                  <CarouselPrevious
+                    size="icon"
+                    className="static translate-x-0 translate-y-0"
+                  />
+                  <CarouselNext
+                    size="icon"
+                    className="static translate-x-0 translate-y-0"
+                  />
+                </div>
+              </>
+            )}
+          </Reveal>
         </Carousel>
       </Container>
 

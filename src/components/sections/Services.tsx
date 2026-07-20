@@ -5,7 +5,9 @@ import { useTranslations } from "next-intl";
 import Section, { SectionProps } from "@/components/atoms/Section";
 import Container from "@/components/atoms/Container";
 import ServiceCard from "@/components/cards/ServiceCard";
+import Reveal from "@/components/atoms/Reveal";
 import { serviceVisuals } from "@/lib/constants/services";
+import { SLOW_STAGGER_REVEAL_DELAY } from "@/lib/constants/globals";
 
 export type ServicesProps = SectionProps;
 
@@ -28,7 +30,7 @@ export default function Services({ ...props }: ServicesProps) {
     <Section id="services" {...props}>
       <Container>
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-14">
+        <Reveal className="text-center mb-8 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
             {t("title")}
             <span className="gradient-text">{t("titleHighlight")}</span>
@@ -36,18 +38,22 @@ export default function Services({ ...props }: ServicesProps) {
           <p className="text-fg-3 max-w-2xl mx-auto text-base sm:text-lg">
             {t("description")}
           </p>
-        </div>
+        </Reveal>
 
         {/* Service cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 items-start">
           {items.map((item, i) => (
-            <ServiceCard
+            <Reveal
               key={item.title}
-              {...item}
-              {...serviceVisuals[i]}
-              expanded={expandedIndex === i}
-              onToggle={() => handleToggle(i)}
-            />
+              delay={(i + 1) * SLOW_STAGGER_REVEAL_DELAY}
+            >
+              <ServiceCard
+                {...item}
+                {...serviceVisuals[i]}
+                expanded={expandedIndex === i}
+                onToggle={() => handleToggle(i)}
+              />
+            </Reveal>
           ))}
         </div>
       </Container>

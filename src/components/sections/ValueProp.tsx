@@ -12,6 +12,11 @@ import { useTranslations } from "next-intl";
 import Section, { SectionProps } from "@/components/atoms/Section";
 import Container from "@/components/atoms/Container";
 import ValueCard from "@/components/cards/ValueCard";
+import Reveal from "@/components/atoms/Reveal";
+import {
+  SLOW_STAGGER_REVEAL_DELAY,
+  STAGGER_REVEAL_DELAY,
+} from "@/lib/constants/globals";
 
 const valueVisuals = [
   {
@@ -49,7 +54,7 @@ export default function ValueProp({ ...props }: ValuePropProps) {
   return (
     <Section id="value-prop" {...props}>
       <Container>
-        <div className="text-center mb-8 sm:mb-14">
+        <Reveal className="text-center mb-8 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-fg mb-4 tracking-tight">
             {t("title")}
             <span className="gradient-text">{t("titleHighlight")}</span>
@@ -57,11 +62,13 @@ export default function ValueProp({ ...props }: ValuePropProps) {
           <p className="text-fg-3 max-w-2xl mx-auto text-base sm:text-lg">
             {t("description")}
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-14 sm:mb-20">
           {values.map((value, i) => (
-            <ValueCard key={value.title} {...value} {...valueVisuals[i]} />
+            <Reveal key={value.title} delay={(i + 1) * STAGGER_REVEAL_DELAY}>
+              <ValueCard {...value} {...valueVisuals[i]} />
+            </Reveal>
           ))}
         </div>
       </Container>
