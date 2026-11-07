@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/next";
 import CookieConsentBanner from "@/lib/components/CookieConsentBanner";
 import QueryProvider from "@/lib/providers/QueryProvider";
 import { routing } from "@/i18n/routing";
@@ -59,6 +60,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex flex-col min-h-full">
+        <Analytics />
         <NextIntlClientProvider>
           <ThemeProvider
             attribute="data-theme"
