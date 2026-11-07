@@ -1,4 +1,4 @@
-import type { Database } from "@/types/supabase";
+﻿import type { Database } from "@/types/supabase";
 
 export type ProjectRow = Database["public"]["Tables"]["projects"]["Row"];
 export type ProjectTranslation =

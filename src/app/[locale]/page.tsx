@@ -2,23 +2,23 @@ import type { Metadata } from "next";
 import type { FAQPage, WithContext } from "schema-dts";
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import Hero from "@/components/sections/Hero";
-import ValueProp from "@/components/sections/ValueProp";
-import WhyUs from "@/components/sections/WhyUs";
-import Services from "@/components/sections/Services";
-import Portfolio from "@/components/sections/Portfolio";
-import SocialProof from "@/components/sections/SocialProof";
-import Contact from "@/components/sections/Contact";
-import FAQ from "@/components/sections/FAQ";
-import SectionBadgeDivider from "@/components/dividers/SectionBadgeDivider";
-import { BASE_URL } from "@/lib/constants/globals";
+import Header from "@/lib/components/layout/Header";
+import Footer from "@/lib/components/layout/Footer";
+import Hero from "@/lib/components/sections/Hero";
+import ValueProp from "@/lib/components/sections/ValueProp";
+import WhyUs from "@/lib/components/sections/WhyUs";
+import Services from "@/lib/components/sections/Services";
+import Portfolio from "@/lib/components/sections/Portfolio";
+import SocialProof from "@/lib/components/sections/SocialProof";
+import Contact from "@/lib/components/sections/Contact";
+import FAQ from "@/lib/components/sections/FAQ";
+import SectionBadgeDivider from "@/lib/components/dividers/SectionBadgeDivider";
+import { BASE_URL } from "@/config";
 import {
   getPersonSchema,
   getServiceSchema,
   getWebsiteSchema,
-} from "@/lib/seo/rich-schemas";
+} from "@/schemas/rich-schemas";
 
 export async function generateMetadata({
   params,

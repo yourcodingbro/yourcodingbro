@@ -1,5 +1,5 @@
-import MainLayout from "@/components/layout/MainLayout";
-import { default as Content } from "@/components/sections/Contact";
+import MainLayout from "@/lib/components/layout/MainLayout";
+import { default as Content } from "@/lib/components/sections/Contact";
 
 export default async function Contact() {
   return (

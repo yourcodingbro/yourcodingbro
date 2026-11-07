@@ -1,5 +1,5 @@
-import MainLayout from "@/components/layout/MainLayout";
-import { default as Content } from "@/components/sections/WhyUs";
+import MainLayout from "@/lib/components/layout/MainLayout";
+import { default as Content } from "@/lib/components/sections/WhyUs";
 
 export default async function About() {
   return (

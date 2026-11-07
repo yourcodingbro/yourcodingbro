@@ -1,7 +1,8 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 import { checkRateLimit } from "@/lib/rate-limit";
-import { contactSchema, budgetOptions } from "@/lib/constants/contact";
+import { contactSchema } from "@/schemas/contact-schema";
+import { budgetOptions } from "@/data/budget-options";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

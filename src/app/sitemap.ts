@@ -1,6 +1,6 @@
-import type { MetadataRoute } from "next";
+﻿import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
-import { BASE_URL } from "@/lib/constants/globals";
+import { BASE_URL } from "@/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routing.locales.flatMap((locale) => [

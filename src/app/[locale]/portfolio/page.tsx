@@ -1,6 +1,6 @@
-import MainLayout from "@/components/layout/MainLayout";
-import { default as Content } from "@/components/sections/Portfolio";
-import SocialProof from "@/components/sections/SocialProof";
+import MainLayout from "@/lib/components/layout/MainLayout";
+import { default as Content } from "@/lib/components/sections/Portfolio";
+import SocialProof from "@/lib/components/sections/SocialProof";
 
 export default async function Portfolio() {
   return (

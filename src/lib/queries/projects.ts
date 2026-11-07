@@ -1,5 +1,5 @@
-import { createQueryKeys } from "@lukemorales/query-key-factory";
-import { createClient } from "@/lib/supabase/client";
+﻿import { createQueryKeys } from "@lukemorales/query-key-factory";
+import { createClient } from "@/supabase/client";
 import type { Project } from "@/types/project";
 
 async function fetchProjects(locale: string): Promise<Project[]> {
