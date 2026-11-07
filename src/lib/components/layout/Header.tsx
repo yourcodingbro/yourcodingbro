@@ -9,31 +9,9 @@ import { Button, ButtonLink } from "@/lib/components/ui/button";
 import Logo from "@/lib/components/atoms/Logo";
 import ThemeSwitcher from "@/lib/components/buttons/ThemeSwitcher";
 import LanguageSwitcher from "@/lib/components/buttons/LanguageSwitcher";
-import { NAV_ITEMS } from "@/data/nav-items";
-import { PROJECT_CTA } from "@/data/project-cta";
+import { NAV_ITEMS_ARRAY } from "@/data/nav-items";
+import { START_PROJECT_CTA } from "@/data/cta";
 import { MENU_LABELS } from "@/data/menu-labels";
-
-function HamburgerIcon({ open }: { open: boolean }) {
-  return (
-    <div className="w-6 h-6 flex flex-col justify-center gap-[5px]">
-      <motion.span
-        className="block h-[2px] w-6 bg-current origin-center rounded-full"
-        animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-        transition={{ duration: 0.25, ease: "easeInOut" }}
-      />
-      <motion.span
-        className="block h-[2px] w-6 bg-current rounded-full"
-        animate={open ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-        transition={{ duration: 0.2, ease: "easeInOut" }}
-      />
-      <motion.span
-        className="block h-[2px] w-6 bg-current origin-center rounded-full"
-        animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-        transition={{ duration: 0.25, ease: "easeInOut" }}
-      />
-    </div>
-  );
-}
 
 export default function Header() {
   const t = useTranslations("globals.header");
@@ -70,49 +48,12 @@ export default function Header() {
         <nav className="px-4 mx-auto max-w-6xl sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 sm:h-20">
             <Logo />
-
-            <div className="hidden gap-1 items-center md:flex">
-              {NAV_ITEMS.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="px-4 py-2 text-sm rounded-lg transition-all duration-200 text-fg-3 hover:text-fg hover:bg-fg/5"
-                >
-                  {t(item.labelKey)}
-                </a>
-              ))}
-            </div>
-
-            <div className="hidden gap-4 items-center md:flex">
-              <div className="flex items-center gap-1.5">
-                <ThemeSwitcher />
-                <LanguageSwitcher />
-              </div>
-              <ButtonLink
-                href={PROJECT_CTA.href}
-                size="lg"
-                style="pill"
-                icon={<ArrowRight className="w-4 h-4" />}
-                iconPosition="after"
-                className="text-white bg-brand hover:bg-brand-hover glow-blue"
-              >
-                {t(PROJECT_CTA.labelKey)}
-              </ButtonLink>
-            </div>
-
-            <div className="flex gap-1 items-center md:hidden">
-              <ThemeSwitcher />
-              <LanguageSwitcher />
-              <Button
-                variant="ghost"
-                size="icon"
-                icon={<HamburgerIcon open={menuOpen} />}
-                onClick={() => setMenuOpen(!menuOpen)}
-                aria-label={t(MENU_LABELS.toggleMenu)}
-                aria-expanded={menuOpen}
-                className="text-fg-3 hover:text-fg hover:bg-fg/5"
-              />
-            </div>
+            <Navigation translator={t} />
+            <ActionBar
+              translator={t}
+              isOpen={menuOpen}
+              onToggle={setMenuOpen}
+            />
           </div>
         </nav>
       </header>
@@ -143,7 +84,7 @@ export default function Header() {
               </div>
 
               <nav className="flex overflow-y-auto flex-col flex-1 gap-1 px-4 py-6">
-                {NAV_ITEMS.map((item) => (
+                {NAV_ITEMS_ARRAY.map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
@@ -156,22 +97,107 @@ export default function Header() {
               </nav>
 
               <div className="px-4 pb-8 shrink-0">
-                <ButtonLink
-                  href={PROJECT_CTA.href}
-                  size="lg"
-                  style="pill"
-                  onClick={() => setMenuOpen(false)}
-                  icon={<ArrowRight className="w-4 h-4" />}
-                  iconPosition="after"
-                  className="w-full text-white bg-brand hover:bg-brand-hover glow-blue"
-                >
-                  {t(PROJECT_CTA.labelKey)}
-                </ButtonLink>
+                {START_PROJECT_CTA.action === "link" && (
+                  <ButtonLink
+                    href={START_PROJECT_CTA.href}
+                    size="lg"
+                    style="pill"
+                    onClick={() => setMenuOpen(false)}
+                    icon={<ArrowRight className="w-4 h-4" />}
+                    iconPosition="after"
+                    className="w-full text-white bg-brand hover:bg-brand-hover glow-blue"
+                  >
+                    {t(START_PROJECT_CTA.labelKey)}
+                  </ButtonLink>
+                )}
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+type TranslatorProps = { translator: (key: string) => string };
+
+function Navigation({ translator }: TranslatorProps) {
+  return (
+    <div className="hidden gap-1 items-center md:flex">
+      {NAV_ITEMS_ARRAY.map((item) => (
+        <a
+          key={item.href}
+          href={item.href}
+          className="px-4 py-2 text-sm rounded-lg transition-all duration-200 text-fg-3 hover:text-fg hover:bg-fg/5"
+        >
+          {translator(item.labelKey)}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function ActionBar({
+  isOpen,
+  onToggle,
+  translator,
+}: TranslatorProps & { isOpen: boolean; onToggle: (isOpen: boolean) => void }) {
+  return (
+    <>
+      <div className="hidden gap-4 items-center md:flex">
+        <div className="flex items-center gap-1.5">
+          <ThemeSwitcher />
+          <LanguageSwitcher />
+        </div>
+        {START_PROJECT_CTA.action === "link" && (
+          <ButtonLink
+            href={START_PROJECT_CTA.href}
+            size="lg"
+            style="pill"
+            icon={<ArrowRight className="w-4 h-4" />}
+            iconPosition="after"
+            className="text-white bg-brand hover:bg-brand-hover glow-blue"
+          >
+            {translator(START_PROJECT_CTA.labelKey)}
+          </ButtonLink>
+        )}
+      </div>
+
+      <div className="flex gap-1 items-center md:hidden">
+        <ThemeSwitcher />
+        <LanguageSwitcher />
+        <Button
+          variant="ghost"
+          size="icon"
+          icon={<HamburgerIcon open={isOpen} />}
+          onClick={() => onToggle(!isOpen)}
+          aria-label={translator(MENU_LABELS.toggleMenu)}
+          aria-expanded={isOpen}
+          className="text-fg-3 hover:text-fg hover:bg-fg/5"
+        />
+      </div>
+    </>
+  );
+}
+
+function HamburgerIcon({ open }: { open: boolean }) {
+  return (
+    <div className="w-6 h-6 flex flex-col justify-center gap-[5px]">
+      <motion.span
+        className="block h-[2px] w-6 bg-current origin-center rounded-full"
+        animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+      />
+      <motion.span
+        className="block h-[2px] w-6 bg-current rounded-full"
+        animate={open ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
+      />
+      <motion.span
+        className="block h-[2px] w-6 bg-current origin-center rounded-full"
+        animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+      />
+    </div>
   );
 }

@@ -2,7 +2,7 @@ import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { contactSchema } from "@/schemas/contact-schema";
-import { budgetOptions } from "@/data/budget-options";
+import { BUDGET_OPTIONS } from "@/data/select-options";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
 
     const { name, email, budget, message, phone } = parsed.data;
     const budgetLabel =
-      budgetOptions.find((o) => o.value === budget)?.label ?? budget;
+      BUDGET_OPTIONS.find((o) => o.value === budget)?.label ?? budget;
 
     const attachmentFile = formData.get("attachment");
     const attachment =
@@ -91,10 +91,14 @@ export async function POST(req: NextRequest) {
               <td style="padding: 8px 0; color: #64748b; font-size: 13px;">Budget</td>
               <td style="padding: 8px 0; color: #f0f6ff; font-size: 14px;">${budgetLabel}</td>
             </tr>
-            ${phone ? `<tr>
+            ${
+              phone
+                ? `<tr>
               <td style="padding: 8px 0; color: #64748b; font-size: 13px;">Phone</td>
               <td style="padding: 8px 0; color: #f0f6ff; font-size: 14px;">${phone}</td>
-            </tr>` : ""}
+            </tr>`
+                : ""
+            }
           </table>
 
           <div style="margin-top: 24px; padding: 20px; background: #0c1a2e; border: 1px solid #1e3a5f; border-radius: 12px;">
