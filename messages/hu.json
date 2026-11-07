@@ -206,10 +206,10 @@
         ],
         "testimonials": [
           {
-            "quote": "4,5 éven keresztül dolgoztunk együtt. Ez idő alatt hihetetlen elhivatottságot mutatott a feladatai iránt, és folyamatosan fejleszteni akarta a tudását. Munkamorálja és pozitív hozzáállása miatt bármely projekt értékes tagja. Szívből ajánlom őt.",
+            "quote": "4,5 éven keresztül dolgoztunk együtt. Ez idő alatt hihetetlen elhivatottságot mutatott a feladatai iránt, és folyamatosan fejleszteni akarta a tudását. Munkamorálja és pozitív hozzáállása miatt bármely projekt értékes tagja. Szívből ajánlom őt!",
             "author": "Ferenc",
             "role": "CIO, Magyar Közút",
-            "avatar": "F",
+            "avatar": "MF",
             "stars": 5
           },
           {
@@ -220,17 +220,17 @@
             "stars": 5
           },
           {
-            "quote": "Viktor kiváló frontend, backend és grafikai szakember. Nagy teherbírással, megbízhatósággal és mélyreható webprogramozói tudással rendelkezik. Kiemelkedő önállósággal és kreativitással valósítja meg a feladatokat, mindig határidőre vagy még azelőtt.",
+            "quote": "Viktor kiváló frontend, backend és grafikai szakember. Nagy teherbírással, megbízhatósággal és mélyreható programozói tudással rendelkezik. Kiemelkedő önállósággal és kreativitással valósítja meg a feladatokat, mindig határidőre vagy még azelőtt.",
             "author": "András",
             "role": "CEO, Etheron Systems",
-            "avatar": "A",
+            "avatar": "MA",
             "stars": 5
           },
           {
             "quote": "Viktor kivételes mentor volt, megtanította nekem a frontend fejlesztés legjobb gyakorlatait. A reszponzív felületek tervezésében és kivitelezésében szerzett tudása felbecsülhetetlen volt számomra. Közös kódolások és kódfelülvizsgálatok során segített elérni a legmagasabb minőségi szintet. Nagyon ajánlom őt mindenkinek!",
             "author": "Enikő",
             "role": "Frontend fejlesztő",
-            "avatar": "E",
+            "avatar": "VME",
             "stars": 5
           }
         ]
@@ -270,7 +270,7 @@
         "badge": "Építsünk közösen valami újat",
         "title": "Van egy ötleted? ",
         "titleHighlight": "Beszéljünk róla.",
-        "description": "Oszd meg velem, mit szeretnél felépíteni, és {hours} órán belül jelentkezem egy tervvel és becsléssel. Nyomulás nélkül.",
+        "description": "Oszd meg velem, mit szeretnél felépíteni, és {hours} órán belül jelentkezem egy tervvel és becsléssel.",
         "perks": [
           {
             "id": "responseTime",

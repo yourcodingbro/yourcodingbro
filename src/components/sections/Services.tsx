@@ -60,3 +60,6 @@ export default function Services({ ...props }: ServicesProps) {
     </Section>
   );
 }
+
+// Sections részt húzzuk be a layout alá, vagy valahogy jelöljük hogy ez a főoldalhoz tartozik csak
+// Az aloldalaknak külön komponenst csináljunk

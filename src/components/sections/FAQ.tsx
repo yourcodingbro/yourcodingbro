@@ -48,7 +48,7 @@ export default async function FAQ({ ...props }: FAQProps) {
                     >
                       <AccordionItem
                         value={`faq-item-${idx}`}
-                        className="gradient-border rounded-xl px-6 border-0"
+                        className="gradient-border rounded-lg px-6 border-0"
                       >
                         <AccordionTrigger className="text-left text-sm sm:text-base font-medium text-fg hover:no-underline py-3 gap-4">
                           {item.question}

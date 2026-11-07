@@ -9,6 +9,9 @@ import { Button, ButtonLink } from "@/components/ui/button";
 import Logo from "@/components/atoms/Logo";
 import ThemeSwitcher from "@/components/buttons/ThemeSwitcher";
 import LanguageSwitcher from "@/components/buttons/LanguageSwitcher";
+import { NAV_ITEMS } from "@/data/nav-items";
+import { PROJECT_CTA } from "@/data/project-cta";
+import { MENU_LABELS } from "@/data/menu-labels";
 
 function HamburgerIcon({ open }: { open: boolean }) {
   return (
@@ -37,14 +40,6 @@ export default function Header() {
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const navLinks = [
-    { label: t("navLinks.whyUs"), href: "#why-us" },
-    { label: t("navLinks.services"), href: "#services" },
-    { label: t("navLinks.work"), href: "#projects" },
-    { label: t("navLinks.testimonials"), href: "#testimonials" },
-    { label: t("navLinks.contact"), href: "#contact" },
-  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -77,13 +72,13 @@ export default function Header() {
             <Logo />
 
             <div className="hidden gap-1 items-center md:flex">
-              {navLinks.map((link) => (
+              {NAV_ITEMS.map((item) => (
                 <a
-                  key={link.href}
-                  href={link.href}
+                  key={item.href}
+                  href={item.href}
                   className="px-4 py-2 text-sm rounded-lg transition-all duration-200 text-fg-3 hover:text-fg hover:bg-fg/5"
                 >
-                  {link.label}
+                  {t(item.labelKey)}
                 </a>
               ))}
             </div>
@@ -94,14 +89,14 @@ export default function Header() {
                 <LanguageSwitcher />
               </div>
               <ButtonLink
-                href="#contact"
+                href={PROJECT_CTA.href}
                 size="lg"
                 style="pill"
                 icon={<ArrowRight className="w-4 h-4" />}
                 iconPosition="after"
                 className="text-white bg-brand hover:bg-brand-hover glow-blue"
               >
-                {t("startProject")}
+                {t(PROJECT_CTA.labelKey)}
               </ButtonLink>
             </div>
 
@@ -113,7 +108,7 @@ export default function Header() {
                 size="icon"
                 icon={<HamburgerIcon open={menuOpen} />}
                 onClick={() => setMenuOpen(!menuOpen)}
-                aria-label={t("toggleMenu")}
+                aria-label={t(MENU_LABELS.toggleMenu)}
                 aria-expanded={menuOpen}
                 className="text-fg-3 hover:text-fg hover:bg-fg/5"
               />
@@ -148,21 +143,21 @@ export default function Header() {
               </div>
 
               <nav className="flex overflow-y-auto flex-col flex-1 gap-1 px-4 py-6">
-                {navLinks.map((link) => (
+                {NAV_ITEMS.map((item) => (
                   <a
-                    key={link.href}
-                    href={link.href}
+                    key={item.href}
+                    href={item.href}
                     onClick={() => setMenuOpen(false)}
                     className="px-4 py-3 text-sm font-medium rounded-xl transition-all text-fg-2 hover:text-fg hover:bg-fg/5"
                   >
-                    {link.label}
+                    {t(item.labelKey)}
                   </a>
                 ))}
               </nav>
 
               <div className="px-4 pb-8 shrink-0">
                 <ButtonLink
-                  href="#contact"
+                  href={PROJECT_CTA.href}
                   size="lg"
                   style="pill"
                   onClick={() => setMenuOpen(false)}
@@ -170,7 +165,7 @@ export default function Header() {
                   iconPosition="after"
                   className="w-full text-white bg-brand hover:bg-brand-hover glow-blue"
                 >
-                  {t("startProject")}
+                  {t(PROJECT_CTA.labelKey)}
                 </ButtonLink>
               </div>
             </motion.div>
