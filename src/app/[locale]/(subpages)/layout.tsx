@@ -1,20 +1,17 @@
-﻿import Header from "@/lib/components/layout/Header";
+import Header from "@/lib/components/layout/Header";
 import Footer from "@/lib/components/layout/Footer";
 import Contact from "@/lib/components/sections/Contact";
 
-export type MainLayoutProps = React.PropsWithChildren & {
-  hasContact?: boolean;
-};
-
-export default function MainLayout({
+export default async function SubpagesLayout({
   children,
-  hasContact = true,
-}: MainLayoutProps) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <Header />
       {children}
-      {hasContact && <Contact />}
+      <Contact />
       {process.env.CONTACT_EMAIL && (
         <Footer contactEmail={process.env.CONTACT_EMAIL} />
       )}

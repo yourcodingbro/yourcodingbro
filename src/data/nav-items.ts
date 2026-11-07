@@ -14,7 +14,7 @@ export const NAV_ITEMS: Navigation = {
     labelKey: "navLinks.work",
   },
   testimonials: {
-    href: "/testimonials",
+    href: "#testimonials",
     labelKey: "navLinks.testimonials",
   },
   contact: {

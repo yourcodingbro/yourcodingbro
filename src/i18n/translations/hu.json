@@ -86,11 +86,11 @@
         "values": [
           {
             "title": "Gyors szállítás",
-            "description": "Nincsenek végtelenbe nyúló megbeszélések vagy scope creep. Tempósan haladok, egyértelműen kommunikálok, és elkészítem a termékedet."
+            "description": "Nincsenek végtelenbe nyúló megbeszélések vagy scope creep. Tempósan haladok, egyértelműen kommunikálok, és időben elkészítem a termékedet."
           },
           {
             "title": "Tiszta kód",
-            "description": "TypeScript-alapú, alaposan tesztelt és dokumentált kód. Olyan fejlesztés, amit hosszú távon is könnyű karbantartani és skálázni."
+            "description": "Alaposan tesztelt és dokumentált kód. Olyan fejlesztés, amit hosszú távon is könnyű karbantartani és skálázni."
           },
           {
             "title": "Mobile-First megközelítés",
