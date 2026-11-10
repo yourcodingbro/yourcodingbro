@@ -6,16 +6,16 @@ import AboutPage from "@/views/AboutPage";
 
 const META = {
   en: {
-    title: "About Nagy Viktor — YourCodingBro",
+    title: "About — Viktor Nagy, websites and automations for small businesses | Your Coding Bro",
     description:
-      "Viktor Nagy is an independent full-stack engineer who builds websites, web apps, and automated workflows for founders and businesses.",
+      "Viktor Nagy builds websites, webshops, and automations for small businesses — reducing manual admin and repetitive tasks so owners spend time on work that matters.",
     path: "/en/about",
     ogLocale: "en_US",
   },
   hu: {
-    title: "Rólam — YourCodingBro",
+    title: "Nagy Viktor – weboldalkészítés, webshop és automatizálás kisvállalkozásoknak | Your Coding Bro",
     description:
-      "Nagy Viktor független full-stack fejlesztő, aki weboldalakat, webalkalmazásokat és automatizált munkafolyamatokat épít vállalkozásoknak.",
+      "Nagy Viktor szoftverfejlesztő weboldalakat, webshopokat és folyamatautomatizálásokat készít kisvállalkozásoknak. Kevesebb kézi adminisztráció, egyszerűbb rendszerek.",
     path: "/rolam",
     ogLocale: "hu_HU",
   },

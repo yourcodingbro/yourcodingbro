@@ -1,5 +1,5 @@
-import Header from "@/lib/components/layout/Header";
-import Footer from "@/lib/components/layout/Footer";
+import Header from "@/lib/layout/Header";
+import Footer from "@/lib/layout/Footer";
 
 export default async function ContactLayout({
   children,

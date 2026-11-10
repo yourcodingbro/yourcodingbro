@@ -1,6 +1,6 @@
-import Header from "@/lib/components/layout/Header";
-import Footer from "@/lib/components/layout/Footer";
-import Contact from "@/lib/components/sections/Contact";
+import Header from "@/lib/layout/Header";
+import Footer from "@/lib/layout/Footer";
+import Contact from "@/lib/layout/sections/Contact";
 
 export default async function SubpagesLayout({
   children,

@@ -4,7 +4,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/next";
-import CookieConsentBanner from "@/lib/components/CookieConsentBanner";
+import CookieConsentBanner from "@/lib/components/banners/CookieConsentBanner";
 import QueryProvider from "@/lib/providers/QueryProvider";
 import { routing } from "@/i18n/routing";
 import "../globals.css";

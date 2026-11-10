@@ -1,221 +1,308 @@
-// Static copy — extract to translations when HU localization is needed
+// Static copy — Hungarian. Extract to translations when EN localization is needed.
+// Personal name: "Nagy Viktor" in bio (explicit in brief); "Viktor" in conversational CTA copy.
 
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, Zap, Layers, Users } from "lucide-react";
 import Section from "@/lib/components/atoms/Section";
 import Container from "@/lib/components/atoms/Container";
 import Reveal from "@/lib/components/atoms/Reveal";
 import SectionBadge from "@/lib/components/badges/SectionBadge";
+import TestimonialCard from "@/lib/components/cards/TestimonialCard";
 import { STAGGER_REVEAL_DELAY } from "@/config";
 
-const SKILLS = [
-  "Next.js",
-  "TypeScript",
-  "React",
-  "Node.js",
-  "Supabase",
-  "Automation",
+// Unsplash: entrepreneur catching up on work at a desk. Swap photo ID if the shot changes.
+const HERO_SRC =
+  "https://images.unsplash.com/photo-1758876019043-cedb0b6f56ea?w=1600&q=80&auto=format&fit=crop";
+
+// Swap any photo ID if a 404 occurs — keep aspect-[4/3] consistent.
+const SITUATIONS = [
+  {
+    heading: "Folyamatautomatizálás",
+    problem:
+      "Ha valaki időpontot kér, megnézem a naptáramat, elküldöm a szabad időpontokat, aztán beírom, amelyiket választotta. Ha közben át kell tenni a foglalást, kezdhetem elölről...",
+    solution:
+      "Olyan weboldalt készítek, ahol az ügyfeleid látják a szabad időpontokat, és maguk foglalhatnak. A foglalás automatikusan bekerül a naptáradba, így te nyugodtan foglalkozhatsz a munkával.",
+    src: "https://images.unsplash.com/photo-1784798429938-039db6783292?w=800&q=80&auto=format&fit=crop",
+    alt: "Vállalkozó üzenetváltásokkal egyezteti az időpontokat",
+  },
+  {
+    heading: "Egyedi szoftver",
+    problem:
+      "Minden nap végignézem a webshopjaimat és a számlázót, hogy lássam a rendelések állapotát, a visszárut, a kiállított és hiányzó számlákat. Jó lenne, ha egy helyen lenne minden...",
+    solution:
+      "Automatizálom a rendszeres ellenőrzéseket. Egy helyen láthatod, melyik rendelés igényel figyelmet, és jelzést kaphatsz a problémákról. Így órákat spórolhatsz hetente.",
+    src: "https://images.unsplash.com/photo-1772588627373-729b0f47e5bb?w=800&q=80&auto=format&fit=crop",
+    alt: "Vállalkozó több ablak között keresgéli az elakadt rendeléseket",
+  },
+  {
+    heading: "Rendszer felújítás",
+    problem:
+      "Már külön táblázatot vezetünk ahhoz is, amit elvileg a rendszernek kellene tudnia. Egyre több ilyen kerülőút van, de enélkül nem tud dolgozni a csapat...",
+    solution:
+      "A napi munkátokhoz illő új rendszert fejlesztek. Amíg elkészül és fokozatosan álltok át rá, a jelenlegi rendszerhez is folyamatos támogatást nyújtok.",
+    src: "https://images.unsplash.com/photo-1573164574511-73c773193279?w=800&q=80&auto=format&fit=crop",
+    alt: "Frusztrált felhasználó küzd egy elavult rendszerrel",
+  },
 ];
 
-const HELP_CARDS = [
+const PROJECTS = [
   {
-    icon: Layers,
-    accent: "from-brand to-violet",
-    title: "Websites & web apps",
-    body: "Your site is slow, hard to update, or not converting. I rebuild it as a fast, modern web app that you can actually manage — from local business pages to full SaaS platforms.",
+    label: "Online jegyfoglalás",
+    problem:
+      "Egy mozi kezelte a jegyfoglalásokat telefonon és e-mailben. Forgalmas időszakokban a személyzet ideje nagy részét telefonálással töltötte.",
+    work: "Újraépítettem a weboldalukat és beépítettem egy online foglalási folyamatot. Az ügyfelek most böngészhetik a műsorrendet, kiválaszthatják a helyüket, és lefoglalhatják a jegyüket hívás nélkül.",
+    link: "/portfolio",
   },
   {
-    icon: Zap,
-    accent: "from-brand to-accent",
-    title: "Workflow automation",
-    body: "Your team spends hours on repetitive tasks — copying data, sending emails, chasing approvals. I connect your tools and automate the manual work so your team can focus on what matters.",
-  },
-  {
-    icon: Users,
-    accent: "from-violet to-accent",
-    title: "Dev partnership",
-    body: "You need a reliable engineer for a sprint, a feature, or an ongoing engagement. I slot into your process, write clean code, and hand over work your team can maintain.",
+    label: "Automatikus adatkezelés",
+    problem:
+      "Egy vállalkozó minden este kézzel másolta a weboldaláról érkező rendelések adatait egy táblázatba — naponta szinte egy óra munkát.",
+    work: "Összekötöttem a két rendszert: az új rendelések automatikusan megjelennek a táblázatban, kézi másolás nélkül.",
+    link: null,
   },
 ];
 
-const HOW_STEPS = [
+const TESTIMONIALS = [
   {
-    n: "01",
-    title: "First conversation",
-    body: "Tell me what you're building. No NDA, no commitment required. I'll ask the right questions to understand what you actually need.",
+    quote:
+      "We worked together for 4,5 years. During this time, he showcased incredible dedication to his tasks and willingness to grow as a developer. His work ethic and positive attitude make him a valuable asset to any project. I'd highly recommend him.",
+    author: "Ferenc",
+    role: "CIO, Magyar Közút",
+    avatar: "F",
+    stars: 5,
   },
   {
-    n: "02",
-    title: "Scoping",
-    body: "I break the project into phases with realistic timelines and fixed pricing. No scope creep, no surprise invoices.",
-  },
-  {
-    n: "03",
-    title: "Delivery",
-    body: "Daily updates, async communication across timezones. You can track progress and give feedback at every step.",
-  },
-  {
-    n: "04",
-    title: "Handover",
-    body: "Clean git history, documented code, and a walkthrough. Any developer can pick it up the day after I'm done.",
+    quote:
+      "Viktor is an excellent professional with solid technical skills and a proactive approach. He communicates clearly, meets deadlines, and always goes the extra mile to deliver quality work. A pleasure to work with.",
+    author: "András",
+    role: "CEO, Etheron Systems",
+    avatar: "A",
+    stars: 5,
   },
 ];
+
+function Problems() {
+  return (
+    <Section depth="circles" depthColor="bg-violet/10">
+      <Container>
+        <Reveal>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg mb-10 sm:mb-14">
+            Ismerős valamelyik?
+          </h2>
+        </Reveal>
+        <div className="space-y-16 sm:space-y-20">
+          {SITUATIONS.map((s, i) => {
+            // even rows: image left; odd row: image right (flex-row-reverse on md+)
+            const imageRight = i % 2 !== 0;
+            return (
+              <Reveal key={i}>
+                <div
+                  className={`flex flex-col ${
+                    imageRight ? "md:flex-row-reverse" : "md:flex-row"
+                  } gap-8 md:gap-12 items-center`}
+                >
+                  {/* Image — always first in source order so it appears first on mobile */}
+                  <div className="relative w-full md:w-2/5 aspect-[4/3] rounded-2xl overflow-hidden shrink-0">
+                    <Image
+                      src={s.src}
+                      alt={s.alt}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                    />
+                  </div>
+                  {/* Text: heading, problem in client voice, solution in my voice */}
+                  <div className="md:w-3/5">
+                    <span className="text-accent text-xs font-semibold uppercase tracking-widest">
+                      {s.heading}
+                    </span>
+                    <p className="mt-3 text-fg-2 text-lg sm:text-xl font-medium italic leading-snug">
+                      &ldquo;{s.problem}&rdquo;
+                    </p>
+                    <p className="mt-4 text-fg-3 text-base leading-relaxed">
+                      {s.solution}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </Container>
+    </Section>
+  );
+}
 
 export default function AboutPage() {
   return (
     <>
-      {/* Introduction */}
-      <Section depth="circles" depthColor="bg-violet/15">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-8 sm:pt-12 pb-4">
-            <Reveal>
-              <SectionBadge>Independent Software Engineer</SectionBadge>
-              <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-fg">
-                Nagy Viktor
-              </h1>
-              <p className="mt-1 text-accent font-semibold text-lg">
-                YourCodingBro
-              </p>
-              <p className="mt-5 text-fg-3 text-base sm:text-lg leading-relaxed max-w-lg">
-                I&apos;m an independent full-stack engineer. I build websites,
-                web applications, and automated workflows for founders and
-                businesses who need something that actually works — delivered on
-                time, without the agency overhead.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {SKILLS.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 rounded-full bg-elevated border border-line text-fg-3 text-xs font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
+      {/* 1. Hero — image-led, text overlay */}
+      <div className="relative min-h-[70vh] flex items-end overflow-hidden">
+        <Image
+          src={HERO_SRC}
+          alt="Vállalkozó, aki a munkanap végén az adminisztrációjával foglalkozik"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* Overlay: dark bottom-to-top gradient, works in both themes */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 pointer-events-none" />
 
+        <Container className="relative z-10 pb-14 sm:pb-20 pt-32">
+          <Reveal>
+            <SectionBadge className="border-white/20 bg-white/10 text-white/80 backdrop-blur-sm">
+              Weboldalkészítés kisvállalkozásoknak
+            </SectionBadge>
+            <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight max-w-3xl">
+              A munkanap véget ért.{" "}
+              <span className="text-white/70">Akkor most jön az admin?</span>
+            </h1>
+            <h2 className="mt-5 text-white/80 text-lg sm:text-xl font-medium max-w-2xl">
+              Rendelések, ügyfélüzenetek és táblázatok között megy el az időd?
+            </h2>
+            <p className="mt-4 text-white/60 text-sm sm:text-base max-w-xl leading-relaxed">
+              Olyan weboldalakat és egyedi rendszereket készítek
+              kisvállalkozásoknak, amelyek átveszik ezeket a visszatérő
+              feladatokat.
+            </p>
+            {/* GEO statement — in server-rendered HTML near the top */}
+            <p className="hidden">
+              Kisvállalkozóknak fejlesztek weboldalakat, webshopokat és
+              automatizálásokat, hogy kevesebb idő menjen el a kézi
+              adminisztrációra és az ismétlődő feladatokra.
+            </p>
+          </Reveal>
+        </Container>
+      </div>
+
+      {/* 2. Three recognizable situations */}
+      <Problems />
+
+      {/* 3. Why work with me */}
+      <Section depth="row" depthColor="via-brand/5">
+        <Container>
+          <Reveal className="max-w-2xl">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg mb-5">
+              Elég, ha elmondod, hol akad el a munka.
+            </h2>
+            <p className="text-fg-2 text-base leading-relaxed mb-4">
+              Az első lépés nem az, hogy megmondom, mit kell fejleszteni. Az
+              első lépés az, hogy megértjük, mi vesz el tőled időt és energiát.
+              Ha ez megvan, megállapodunk abban, mit fogok elkészíteni és
+              mikorra — szóval mindig tudod, hol tartunk.
+            </p>
+            <p className="text-fg-3 text-base leading-relaxed">
+              Az egyeztetett határidőket komolyan veszem: ha valami változik,
+              előre szólok, nem utólag mentegetőzöm. Átadás előtt
+              végigellenőrzöm a munkát, hogy ne maradjon olyasmi, amit később
+              kellene javítani.
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* 4. Bio — Nagy Viktor */}
+      <Section>
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-start">
+            <Reveal>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg mb-4">
+                Nagy Viktor vagyok — a Your Coding Bro mögött.
+              </h2>
+              <p className="text-fg-2 text-base leading-relaxed mb-3">
+                Több mint 10 éve dolgozom szoftverfejlesztőként. Az elmúlt
+                években főként kisvállalkozásokkal és kis csapatokkal dolgoztam:
+                weboldalakat és webshopokat készítettem, meglévő rendszereket
+                modernizáltam, egyedi szoftvereket és folyamatautomatizálásokat
+                építettem.
+              </p>
+              <p className="text-fg-3 text-base leading-relaxed">
+                Velem közvetlenül a kóddal foglalkozó emberrel dolgozol — nem
+                projektmenedzserrel vagy közvetítővel. Szeretem, ha az átadás
+                után te tudod irányítani, amit csináltunk, és nem szorulsz rá
+                folyamatosan a segítségemre az alap dolgokhoz.
+              </p>
+            </Reveal>
             <Reveal
               delay={STAGGER_REVEAL_DELAY}
-              className="flex justify-center lg:justify-end"
+              className="flex lg:justify-end shrink-0"
             >
-              <div className="w-56 h-56 sm:w-64 sm:h-64 rounded-3xl bg-gradient-to-br from-brand/30 via-violet/20 to-accent/30 border border-line flex flex-col items-center justify-center gap-3 glow-blue">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-brand to-accent flex items-center justify-center text-white text-3xl font-bold select-none">
-                  VN
-                </div>
-                <div className="text-center">
-                  <p className="text-fg font-semibold text-sm">Viktor Nagy</p>
-                  <p className="text-fg-4 text-xs">Full-Stack Engineer</p>
-                </div>
+              {/* Portrait placeholder — replace img src when portrait is available */}
+              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-brand to-accent flex items-center justify-center text-white text-2xl font-bold select-none">
+                NV
               </div>
             </Reveal>
           </div>
         </Container>
       </Section>
 
-      {/* What I help with */}
-      <Section>
+      {/* 5. Testimonials */}
+      <Section depth="circles" depthColor="bg-violet/10">
         <Container>
-          <Reveal className="mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-fg">
-              What I help with
+          <Reveal className="mb-8 sm:mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
+              Amit az ügyfelek mondanak
             </h2>
-            <p className="mt-3 text-fg-3 max-w-2xl text-base sm:text-lg">
-              Three areas where I do my best work.
-            </p>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {HELP_CARDS.map((card, i) => {
-              const Icon = card.icon;
-              return (
-                <Reveal key={card.title} delay={(i + 1) * STAGGER_REVEAL_DELAY}>
-                  <div className="gradient-border rounded-2xl p-7 h-full">
-                    <div
-                      className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${card.accent} mb-5`}
-                    >
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-fg font-bold text-lg mb-2">
-                      {card.title}
-                    </h3>
-                    <p className="text-fg-3 text-sm leading-relaxed">
-                      {card.body}
-                    </p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Selected work */}
-      <Section depth="row" depthColor="via-brand/10">
-        <Container>
-          <Reveal className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-fg mb-4">
-              Real projects, shipped for real clients
-            </h2>
-            <p className="text-fg-3 text-base sm:text-lg mb-8">
-              From rebuilding a cinema ticketing system to building internal ops
-              dashboards — browse the full portfolio to see the work.
-            </p>
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand hover:bg-brand-hover text-white font-semibold text-sm transition-colors"
-            >
-              View portfolio
-            </Link>
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* How I work */}
-      <Section>
-        <Container>
-          <Reveal className="mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-fg">
-              How I work
-            </h2>
-            <p className="mt-3 text-fg-3 max-w-2xl text-base sm:text-lg">
-              From first message to finished product.
-            </p>
-          </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {HOW_STEPS.map((step, i) => (
-              <Reveal key={step.n} delay={i * STAGGER_REVEAL_DELAY}>
-                <div className="gradient-border rounded-2xl p-7 h-full">
-                  <span className="text-accent text-sm font-mono font-bold">
-                    {step.n}
-                  </span>
-                  <h3 className="mt-2 text-fg font-bold text-lg mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-fg-3 text-sm leading-relaxed">{step.body}</p>
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {TESTIMONIALS.map((t, i) => (
+              <Reveal key={t.author} delay={(i + 1) * STAGGER_REVEAL_DELAY}>
+                <TestimonialCard {...t} />
               </Reveal>
             ))}
           </div>
         </Container>
       </Section>
 
-      {/* Contact CTA */}
+      {/* 6. Portfolio */}
       <Section>
         <Container>
-          <Reveal className="text-center max-w-2xl mx-auto py-8">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-fg mb-4">
-              Got a project in mind?
+          <Reveal className="mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
+              Néhány projekt
             </h2>
-            <p className="text-fg-3 text-base sm:text-lg mb-8">
-              Describe what you&apos;re building — or the process you want to
-              simplify. I&apos;ll get back to you within 24 hours.
-            </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand hover:bg-brand-hover text-white font-semibold text-sm transition-colors"
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {PROJECTS.map((p, i) => (
+              <Reveal key={p.label} delay={(i + 1) * STAGGER_REVEAL_DELAY}>
+                <div className="gradient-border rounded-2xl p-7 h-full flex flex-col">
+                  <span className="text-accent text-xs font-semibold uppercase tracking-widest mb-4">
+                    {p.label}
+                  </span>
+                  <p className="text-fg-3 text-sm leading-relaxed mb-3">
+                    <span className="text-fg-2 font-medium">A helyzet: </span>
+                    {p.problem}
+                  </p>
+                  <p className="text-fg-3 text-sm leading-relaxed mb-5">
+                    <span className="text-fg-2 font-medium">
+                      Mit csináltam:{" "}
+                    </span>
+                    {p.work}
+                  </p>
+                  {p.link && (
+                    <div className="mt-auto pt-2">
+                      <Link
+                        href={p.link}
+                        className="text-accent text-xs font-semibold hover:underline"
+                      >
+                        Részletek →
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-6 text-center">
+            <Link
+              href="/portfolio"
+              className="text-accent text-sm font-semibold hover:underline"
             >
-              <ArrowDown className="w-4 h-4" />
-              Get in touch
-            </a>
+              Az összes projekt megtekintése →
+            </Link>
           </Reveal>
         </Container>
       </Section>
